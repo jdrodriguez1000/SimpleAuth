@@ -4,7 +4,6 @@ jspm_packages/
 
 # IDE and environment
 .env
-.claude/
 .vscode/
 .idea/
 

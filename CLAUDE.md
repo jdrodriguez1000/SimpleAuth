@@ -155,6 +155,8 @@ Todo el desarrollo técnico sigue el **Pipeline de Tokens**: `Coder` → `Tester
 - **TDD (Test-Driven Development)**: Es obligatorio crear pruebas unitarias antes de la lógica funcional.
 - **Limpieza de Código**: El código debe seguir principios de Clean Code y ser autodocumentado.
 - **Seguridad por Diseño**: Todas las capas (Persistencia, Lógica, UI) deben implementar validaciones y seguridad de forma nativa.
+- **Ambiente virtual obligatorio**: Nunca instalar en Python global. Agregar dependencia antes de usarla en código
+al archivo 'requirements.txt' y ejecutar 'pip install -r requirements.txt'.
 
 
 ## Protocolo de Control de Cambios (CC)
