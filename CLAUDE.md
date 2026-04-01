@@ -137,6 +137,7 @@ Los documentos de gobernanza están en `docs/governance/`:
 - `PROJECT_scope.md` — Requerimientos de negocio y criterios de aceptación (v1.5.0 Final)
 - `PROJECT_architecture.md` — Arquitectura técnica y contratos de API (v1.5.0 Production-Ready)
 - `PROJECT_plan.md` — Hoja de ruta e implementación por fases (v1.6.1 Authorized)
+- `PROJECT_ui_kit.md` — Sistema de diseño, paleta de colores y reglas estéticas (v1.1.0)
 - `docs/references/process.md` — Protocolo de gobernanza de la Agencia (16 Agentes) y flujo de tokens.
 
 ## Agencia de Software Autónoma (16 Agentes)

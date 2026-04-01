@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile - User Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#deccfd",
+                        "on-tertiary-fixed": "#3c2f56",
+                        "outline": "#777b84",
+                        "on-error-container": "#6e0a12",
+                        "secondary": "#565f72",
+                        "tertiary-dim": "#5a4c75",
+                        "on-tertiary-fixed-variant": "#594b75",
+                        "secondary-fixed-dim": "#cbd5ea",
+                        "tertiary-fixed": "#deccfd",
+                        "secondary-container": "#d9e3f8",
+                        "primary-dim": "#0052a1",
+                        "on-secondary": "#f8f8ff",
+                        "background": "#f9f9fe",
+                        "on-error": "#fff7f6",
+                        "on-secondary-container": "#495264",
+                        "surface-container": "#ecedf6",
+                        "inverse-primary": "#5f9efb",
+                        "primary": "#005eb6",
+                        "secondary-dim": "#4a5365",
+                        "primary-fixed": "#5f9efb",
+                        "outline-variant": "#afb2bb",
+                        "error-dim": "#67040d",
+                        "surface-variant": "#e0e2ec",
+                        "on-secondary-fixed": "#364051",
+                        "on-surface": "#2f323a",
+                        "on-tertiary-container": "#50426b",
+                        "inverse-on-surface": "#9c9ca2",
+                        "primary-fixed-dim": "#5191ed",
+                        "surface-dim": "#d7dae4",
+                        "error": "#a83836",
+                        "surface": "#f9f9fe",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-highest": "#e0e2ec",
+                        "tertiary-fixed-dim": "#d0bfef",
+                        "inverse-surface": "#0c0e12",
+                        "on-background": "#2f323a",
+                        "secondary-fixed": "#d9e3f8",
+                        "surface-container-high": "#e6e8f1",
+                        "surface-bright": "#f9f9fe",
+                        "on-tertiary": "#fdf7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#002045",
+                        "surface-container-low": "#f3f3fa",
+                        "on-primary": "#f8f8ff",
+                        "tertiary": "#665882",
+                        "primary-container": "#5f9efb",
+                        "surface-tint": "#005eb6",
+                        "on-primary-fixed-variant": "#002956",
+                        "error-container": "#fa746f",
+                        "on-secondary-fixed-variant": "#525c6e",
+                        "on-surface-variant": "#5c5f68"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0c0e12; /* inverse-surface for dark background foundation */
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface dark:text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-950 flex flex-col py-8 px-4 z-50">
+<div class="mb-12 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="token">token</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-blue-700 dark:text-blue-400 font-headline tracking-tight">Monolith</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Admin Suite</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Dashboard Tab (Inactive) -->
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<!-- Profile Tab (Active) -->
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg transition-all duration-200 text-blue-700 dark:text-blue-400 font-semibold relative before:absolute before:left-0 before:w-1 before:h-6 before:bg-blue-600 before:rounded-r-full active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-medium">Profile</span>
+</a>
+<!-- Settings Tab (Inactive) -->
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<img alt="Organization Logo" class="w-10 h-10 rounded-full bg-surface-container" data-alt="minimalist logo for a modern tech organization with clean lines and a professional corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBsSfz1gCAEy6xe3yutMXopeZHEO8DhS4Ch8EjidN3qAUU-j-wkbQYEz2Hbq-BmoDBgU-delum3oDrzaZLe1TD2F0MecBE2CjKs9CGXREArefuhgfeFRIrSwUKfgdlIX4O3Be0H8qFAltJW5UcGcUOWlSzVWlfB8o4QhQLjoRlEeaAwwG2mqd_Ma1kZbKiHgri-RLhO3lKIfqtjUqgtJYVBav3sIWNhY4Ccc6JwVhdpqd2G3GtlU2h1FG9DDRvEaHW2CJtVv0SeJE"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate dark:text-on-background">Alex Rivers</p>
+<p class="text-xs text-slate-500 truncate">System Architect</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center h-16 px-8 shadow-[0_12px_40px_rgba(0,41,86,0.08)]">
+<div class="flex items-center gap-6">
+<h2 class="font-headline font-extrabold text-lg dark:text-on-background">User Management</h2>
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-on-surface-variant/50">
+<span class="material-symbols-outlined text-sm" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-low dark:bg-slate-900 border-none rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-2 focus:ring-primary/40 transition-all outline-none" placeholder="Search profiles..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-all">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<img alt="User Avatar" class="w-8 h-8 rounded-full ring-2 ring-primary/20" data-alt="professional portrait of a young male architect with a modern haircut and friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9qwczc-LpyfW1w4pzBWW0xVovln7GbVAw5JA1i0XwVSJAt2vHdGaMzpL_7XSkh5di812HpjkOvZl9WndMqnQtfT_SvlqorHwXEsad72CDMpQl2UwOuMtZs8a7z8nTsQeC54kI0aXKuPhPEsgUX5zQl8r7Fj7h1bavVu3g3v-6A5tJ0dx17alXg6fy3gwOc4gx3eB1QnpKcSKAgFayG3WZKYil3PCXQ2COfJ6eVyDBukfmQovGqRUeCm5fpHNYwcPYErKhUbLOXCo"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-16 min-h-screen bg-background dark:bg-[#0c0e12]">
+<!-- Profile Hero Section -->
+<div class="max-w-5xl mx-auto space-y-12">
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+<div class="md:col-span-8 flex items-center gap-8">
+<div class="relative group">
+<img alt="User" class="w-32 h-32 rounded-xl object-cover shadow-2xl dark:shadow-primary/5" data-alt="close-up studio portrait of a man with clean facial features and a sharp gaze, soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAynkVBkl5v66LFVzTK9chDGWn9y10XkvrzOzfPTAwVBYCEj5WGsAitpVNmk7BSH_FEyxagySu0iCtUI0PY53mAz3CqndkN4LaAuD1nWxlLfRvooU4uRXdTZr7wV83HzacVxPkAtrlxWdB6KMXtit9h_-hNzeUeymPdv65WiZlVjvWD_4rFMWRwF2XfrH-dQgikBbxR3bQ811j0aoEZMeREmPFnsUu-bHnjLoUAso2LdPN1MXrAFTNcxBAJs-S2Gzn6P4AWTsLYeWc"/>
+<button class="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-lg shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline text-4xl font-extrabold tracking-tight dark:text-white">Alex Rivers</h3>
+<p class="text-on-surface-variant dark:text-slate-400 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="verified">verified</span>
+                            Senior System Architect &amp; Core Contributor
+                        </p>
+</div>
+</div>
+<div class="md:col-span-4 flex justify-end gap-3">
+<button class="px-6 py-2.5 text-sm font-semibold rounded-lg bg-surface-container-high dark:bg-slate-800 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Cancel</button>
+<button class="px-6 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-br from-primary to-primary-container text-white shadow-lg shadow-primary/20 hover:opacity-90 transition-all">Save Changes</button>
+</div>
+</section>
+<!-- Bento Grid Layout for Profile Details -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Account Info (2/3 width) -->
+<div class="md:col-span-2 space-y-6">
+<div class="bg-surface-container-low dark:bg-slate-900/50 p-8 rounded-xl space-y-8">
+<h4 class="font-headline font-bold text-lg dark:text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+                            Personal Information
+                        </h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant dark:text-slate-500">First Name</label>
+<input class="w-full bg-surface-container-highest dark:bg-slate-800 border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary/40 dark:text-white transition-all outline-none" type="text" value="Alex"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant dark:text-slate-500">Last Name</label>
+<input class="w-full bg-surface-container-highest dark:bg-slate-800 border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary/40 dark:text-white transition-all outline-none" type="text" value="Rivers"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant dark:text-slate-500">Email Address</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest dark:bg-slate-800 border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary/40 dark:text-white transition-all outline-none" type="email" value="alex.rivers@monolith.ai"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-primary font-bold text-[10px] uppercase">Primary</span>
+</div>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant dark:text-slate-500">Professional Bio</label>
+<textarea class="w-full bg-surface-container-highest dark:bg-slate-800 border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary/40 dark:text-white transition-all outline-none resize-none" rows="4">Bridging the gap between scalable cloud infrastructure and intuitive user experiences. Focused on distributed systems and reactive UI patterns.</textarea>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low dark:bg-slate-900/50 p-8 rounded-xl space-y-6">
+<h4 class="font-headline font-bold text-lg dark:text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+                            Security &amp; Access
+                        </h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface dark:bg-slate-950 rounded-lg">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="vibration">vibration</span>
+</div>
+<div>
+<p class="text-sm font-bold dark:text-white">Two-Factor Authentication</p>
+<p class="text-xs text-on-surface-variant dark:text-slate-500">Secured via Authenticator App</p>
+</div>
+</div>
+<button class="text-primary text-xs font-bold uppercase tracking-widest hover:underline">Manage</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface dark:bg-slate-950 rounded-lg">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="devices">devices</span>
+</div>
+<div>
+<p class="text-sm font-bold dark:text-white">Active Sessions</p>
+<p class="text-xs text-on-surface-variant dark:text-slate-500">3 devices currently logged in</p>
+</div>
+</div>
+<button class="text-primary text-xs font-bold uppercase tracking-widest hover:underline">View All</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Info (1/3 width) -->
+<div class="space-y-6">
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 p-8 rounded-xl space-y-6 relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+<h4 class="font-headline font-bold text-lg dark:text-on-background relative z-10">Subscription Plan</h4>
+<div class="relative z-10 space-y-4">
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-extrabold dark:text-white">$49</span>
+<span class="text-sm text-on-surface-variant dark:text-slate-400">/mo</span>
+</div>
+<div class="inline-flex items-center px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase rounded-full">Pro Enterprise</div>
+<ul class="space-y-3 pt-4">
+<li class="flex items-center gap-2 text-sm dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Unlimited Projects
+                                </li>
+<li class="flex items-center gap-2 text-sm dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Advanced Analytics
+                                </li>
+<li class="flex items-center gap-2 text-sm dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    24/7 Priority Support
+                                </li>
+</ul>
+<button class="w-full py-3 bg-white dark:bg-slate-800 text-primary dark:text-primary-fixed font-bold rounded-lg mt-4 hover:bg-primary-container/20 transition-all border border-primary/20">Upgrade Plan</button>
+</div>
+</div>
+<div class="bg-surface-container-low dark:bg-slate-900/50 p-8 rounded-xl space-y-6">
+<h4 class="font-headline font-bold text-lg dark:text-on-background">System Preferences</h4>
+<div class="space-y-5">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium dark:text-slate-300">Email Notifications</span>
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium dark:text-slate-300">Push Alerts</span>
+<div class="w-10 h-5 bg-slate-300 dark:bg-slate-700 rounded-full relative">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium dark:text-slate-300">Dark Mode</span>
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-error/5 dark:bg-error-dim/20 border border-error/20 p-8 rounded-xl space-y-4">
+<h4 class="font-headline font-bold text-lg text-error">Danger Zone</h4>
+<p class="text-xs text-on-surface-variant dark:text-slate-500">Permanently delete your account and all associated data.</p>
+<button class="text-error text-xs font-bold uppercase tracking-widest hover:underline">Delete Account</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

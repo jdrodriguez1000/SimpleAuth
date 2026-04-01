@@ -44,7 +44,7 @@ graph TD
 ```
 
 ### 1.1 Matriz de Responsabilidades
-- **Frontend**: Gestiona la interacción del usuario, la validación de formularios (Zod) y el almacenamiento seguro de indicadores de sesión (Access Token en memoria, Refresh Token en cookie HttpOnly).
+- **Frontend**: Gestiona la interacción del usuario, la validación de formularios (Zod), el almacenamiento seguro de indicadores de sesión (Access Token en memoria, Refresh Token en cookie HttpOnly) y la gestión dinámica de temas (Dark/Light mode) mediante `next-themes`.
 - **Backend**: Aplica las reglas de negocio, gestiona el ciclo de vida de JWT, maneja la transmisión SMTP y ejecuta las transacciones de la base de datos.
 - **Base de Datos**: Almacenamiento relacional con restricciones estrictas e índices para búsquedas de alta velocidad en campos únicos (email).
 

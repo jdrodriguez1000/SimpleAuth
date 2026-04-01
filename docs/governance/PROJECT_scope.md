@@ -38,6 +38,9 @@ El proyecto **SimpleAuth** tiene como objetivo desarrollar una aplicación web d
 - **F4: Password Recovery**:
   - **Como** usuario, **quiero** solicitar un reset de contraseña vía email **para** recuperar mi cuenta si olvido mis credenciales.
   - **AC**: El enlace de recuperación tiene una validez de 1 hora.
+- **F8: Secure Logout (CC-002)**:
+  - **Como** usuario autenticado, **quiero** cerrar mi sesión **para** asegurar que nadie más pueda usar mi cuenta en el dispositivo.
+  - **AC**: El sistema invalida el Refresh Token en Postgres (`token_denylist`) y limpia las cookies del navegador de inmediato.
 
 ### 3.2 Management & Maintenance
 - **F5: Account Deletion (Soft & Hard Delete)**:
@@ -49,6 +52,10 @@ El proyecto **SimpleAuth** tiene como objetivo desarrollar una aplicación web d
 - **F6: Profile Update**:
   - **Como** usuario logueado, **quiero** cambiar mi contraseña o editar mis datos de perfil (excepto email) **para** mantener mi información actualizada.
   - **AC**: El correo electrónico NO es editable una vez verificado. **Seguridad**: El cambio de contraseña invalida automáticamente TODOS los tokens activos (Access y Refresh) del usuario en la base de datos de sesiones/denylist.
+### 3.3 UI & Extended Features
+- **F7: Theme Switching (Dark/Light Mode)**:
+  - **Como** usuario, **quiero** alternar entre modo claro y oscuro **para** mejorar mi ergonomía visual y accesibilidad.
+  - **AC**: El sistema persiste la elección del tema mediante `LocalStorage` en el navegador (no requiere almacenamiento en base de datos). El tema se aplica con estrategia de clases en Tailwind CSS.
 
 ## 4. Technical Constraints (Stack)
 - **Frontend**: Next.js 14/15, Tailwind (Shadcn UI), TypeScript, Zod/React Hook Form.

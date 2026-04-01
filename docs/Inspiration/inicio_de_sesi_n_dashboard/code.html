@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monolith Admin Suite - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#deccfd",
+              "on-tertiary-fixed": "#3c2f56",
+              "outline": "#777b84",
+              "on-error-container": "#6e0a12",
+              "secondary": "#565f72",
+              "tertiary-dim": "#5a4c75",
+              "on-tertiary-fixed-variant": "#594b75",
+              "secondary-fixed-dim": "#cbd5ea",
+              "tertiary-fixed": "#deccfd",
+              "secondary-container": "#d9e3f8",
+              "primary-dim": "#0052a1",
+              "on-secondary": "#f8f8ff",
+              "background": "#f9f9fe",
+              "on-error": "#fff7f6",
+              "on-secondary-container": "#495264",
+              "surface-container": "#ecedf6",
+              "inverse-primary": "#5f9efb",
+              "primary": "#005eb6",
+              "secondary-dim": "#4a5365",
+              "primary-fixed": "#5f9efb",
+              "outline-variant": "#afb2bb",
+              "error-dim": "#67040d",
+              "surface-variant": "#e0e2ec",
+              "on-secondary-fixed": "#364051",
+              "on-surface": "#2f323a",
+              "on-tertiary-container": "#50426b",
+              "inverse-on-surface": "#9c9ca2",
+              "primary-fixed-dim": "#5191ed",
+              "surface-dim": "#d7dae4",
+              "error": "#a83836",
+              "surface": "#f9f9fe",
+              "on-primary-fixed": "#000000",
+              "surface-container-highest": "#e0e2ec",
+              "tertiary-fixed-dim": "#d0bfef",
+              "inverse-surface": "#0c0e12",
+              "on-background": "#2f323a",
+              "secondary-fixed": "#d9e3f8",
+              "surface-container-high": "#e6e8f1",
+              "surface-bright": "#f9f9fe",
+              "on-tertiary": "#fdf7ff",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-container": "#002045",
+              "surface-container-low": "#f3f3fa",
+              "on-primary": "#f8f8ff",
+              "tertiary": "#665882",
+              "primary-container": "#5f9efb",
+              "surface-tint": "#005eb6",
+              "on-primary-fixed-variant": "#002956",
+              "error-container": "#fa746f",
+              "on-secondary-fixed-variant": "#525c6e",
+              "on-surface-variant": "#5c5f68"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #005eb6 0%, #5f9efb 100%);
+        }
+        .editorial-spacing {
+            letter-spacing: -0.02em;
+        }
+        .ghost-border:focus-within {
+            outline: 2px solid rgba(0, 94, 182, 0.4);
+            outline-offset: 0;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background min-h-screen flex flex-col justify-center items-center overflow-hidden">
+<div class="fixed inset-0 z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-tertiary/5 blur-[120px]"></div>
+</div>
+<main class="relative z-10 w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,41,86,0.08)]">
+<section class="hidden md:flex flex-col justify-between p-16 bg-surface-container-low relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-12">
+<div class="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<span class="text-xl font-bold font-headline text-on-primary-fixed-variant editorial-spacing">Monolith</span>
+</div>
+<h1 class="text-4xl font-extrabold font-headline text-on-surface leading-tight mb-6 editorial-spacing">
+                    Elevate your <br/>data ecosystem.
+                </h1>
+<p class="text-on-surface-variant max-w-sm body-md leading-relaxed">
+                    The Intelligent Monolith provides a curated workspace for professional teams to manage users, insights, and administrative workflows with quiet authority.
+                </p>
+</div>
+<div class="mt-12 relative z-10">
+<div class="bg-surface-container p-6 rounded-lg max-w-xs shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="close-up portrait of a professional woman with a soft confident expression in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-nnEDDfFrbtthRxk1IshGts9uWMJ5Y82lYMs6gqAlnjskNJVUXP_Lpmeup3gJqQCecFc3P1X0loiKoVns9hbyLWNOufhKOWl14PaQsvmwIPqazF89kMjRdWyWOct7NyLvDfnSQzUEcxKPHUXIRGNr7iT6v-AXLppDuvSpv5Up2kJ8PGu7RoPsmMHmqagvYa9I7lfkMu-2ODxpQbtlahS5D8Yuee8jDLNob5IkJu8yaOa11YjIE9iFFJvm0wCAHkamh2dJzhCFT-M"/>
+<div>
+<p class="text-sm font-semibold text-on-surface">Sarah Jenkins</p>
+<p class="text-xs text-on-surface-variant">Director of Operations</p>
+</div>
+</div>
+<p class="text-sm italic text-on-surface-variant leading-snug">
+                        "The interface is incredibly focused. It's the first dashboard that doesn't feel like a cockpit, but a workspace."
+                    </p>
+</div>
+</div>
+<div class="absolute -bottom-20 -right-20 w-96 h-96 opacity-10">
+<span class="material-symbols-outlined text-[300px] text-primary" style="font-variation-settings: 'wght' 100;">grid_view</span>
+</div>
+</section>
+<section class="flex flex-col justify-center items-center p-8 md:p-24 bg-surface-container-lowest">
+<div class="w-full max-w-sm">
+<div class="mb-12">
+<h2 class="text-3xl font-bold font-headline text-on-surface mb-2 editorial-spacing">Welcome back</h2>
+<p class="text-on-surface-variant text-sm">Please enter your details to access your workspace.</p>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface uppercase tracking-wider" for="email">Email Address</label>
+<div class="ghost-border bg-surface-container-highest rounded-lg transition-all duration-200">
+<input class="w-full bg-transparent border-none py-3 px-4 focus:ring-0 text-on-surface placeholder:text-on-surface-variant/50" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="text-xs font-semibold text-on-surface uppercase tracking-wider" for="password">Password</label>
+<a class="text-xs font-semibold text-primary hover:text-primary-dim transition-colors" href="#">Forgot password?</a>
+</div>
+<div class="ghost-border bg-surface-container-highest rounded-lg transition-all duration-200">
+<input class="w-full bg-transparent border-none py-3 px-4 focus:ring-0 text-on-surface placeholder:text-on-surface-variant/50" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center gap-3 py-2">
+<input class="w-4 h-4 rounded text-primary border-outline-variant focus:ring-primary/20" id="remember" type="checkbox"/>
+<label class="text-sm text-on-surface-variant" for="remember">Remember me for 30 days</label>
+</div>
+<button class="w-full py-4 rounded-lg bg-gradient-primary text-white font-bold font-headline text-lg shadow-[0_8px_20px_rgba(0,94,182,0.2)] hover:scale-[0.99] transition-transform active:scale-[0.97]" type="submit">
+                        Sign In
+                    </button>
+</form>
+<div class="mt-12 pt-8 text-center border-t border-surface-container-high">
+<p class="text-sm text-on-surface-variant">
+                        Don't have an account? 
+                        <a class="font-bold text-primary hover:text-primary-dim transition-colors ml-1" href="#">Contact your Administrator</a>
+</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mt-8 text-on-surface-variant/40 text-xs flex gap-8 z-10">
+<span>© 2024 Monolith Admin Suite</span>
+<a class="hover:text-on-surface-variant transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface-variant transition-colors" href="#">Terms of Service</a>
+</footer>
+</body></html>

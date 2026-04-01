@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | Monolith Admin Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#deccfd",
+                        "on-tertiary-fixed": "#3c2f56",
+                        "outline": "#777b84",
+                        "on-error-container": "#6e0a12",
+                        "secondary": "#565f72",
+                        "tertiary-dim": "#5a4c75",
+                        "on-tertiary-fixed-variant": "#594b75",
+                        "secondary-fixed-dim": "#cbd5ea",
+                        "tertiary-fixed": "#deccfd",
+                        "secondary-container": "#d9e3f8",
+                        "primary-dim": "#0052a1",
+                        "on-secondary": "#f8f8ff",
+                        "background": "#f9f9fe",
+                        "on-error": "#fff7f6",
+                        "on-secondary-container": "#495264",
+                        "surface-container": "#ecedf6",
+                        "inverse-primary": "#5f9efb",
+                        "primary": "#005eb6",
+                        "secondary-dim": "#4a5365",
+                        "primary-fixed": "#5f9efb",
+                        "outline-variant": "#afb2bb",
+                        "error-dim": "#67040d",
+                        "surface-variant": "#e0e2ec",
+                        "on-secondary-fixed": "#364051",
+                        "on-surface": "#2f323a",
+                        "on-tertiary-container": "#50426b",
+                        "inverse-on-surface": "#9c9ca2",
+                        "primary-fixed-dim": "#5191ed",
+                        "surface-dim": "#d7dae4",
+                        "error": "#a83836",
+                        "surface": "#f9f9fe",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-highest": "#e0e2ec",
+                        "tertiary-fixed-dim": "#d0bfef",
+                        "inverse-surface": "#0c0e12",
+                        "on-background": "#2f323a",
+                        "secondary-fixed": "#d9e3f8",
+                        "surface-container-high": "#e6e8f1",
+                        "surface-bright": "#f9f9fe",
+                        "on-tertiary": "#fdf7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#002045",
+                        "surface-container-low": "#f3f3fa",
+                        "on-primary": "#f8f8ff",
+                        "tertiary": "#665882",
+                        "primary-container": "#5f9efb",
+                        "surface-tint": "#005eb6",
+                        "on-primary-fixed-variant": "#002956",
+                        "error-container": "#fa746f",
+                        "on-secondary-fixed-variant": "#525c6e",
+                        "on-surface-variant": "#5c5f68"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #005eb6 0%, #5f9efb 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex items-center justify-center p-6 md:p-0 overflow-hidden">
+<!-- Split-Screen Registration Container -->
+<main class="w-full max-w-[1440px] h-full md:h-[921px] flex flex-row overflow-hidden bg-surface-container-lowest rounded-xl shadow-[0_12px_40px_rgba(0,41,86,0.08)]">
+<!-- Left Side: Registration Form -->
+<section class="flex-1 flex flex-col justify-center px-8 md:px-24 lg:px-32 py-12 relative overflow-y-auto">
+<!-- Brand Identity -->
+<div class="absolute top-12 left-8 md:left-24">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-2xl" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight text-on-primary-fixed-variant font-headline">Monolith</span>
+</div>
+</div>
+<!-- Form Content -->
+<div class="w-full max-w-md mt-12">
+<header class="mb-10">
+<h1 class="text-4xl font-extrabold text-on-surface mb-3 tracking-tight">Create your workspace</h1>
+<p class="text-on-surface-variant text-sm font-medium">Join 10,000+ teams managing their operations with Intelligent Monolith.</p>
+</header>
+<form class="space-y-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="block text-xs font-bold tracking-widest text-on-surface-variant uppercase" for="full_name">Full Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg py-4 px-5 text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary/40 focus:bg-surface-container transition-all" id="full_name" name="full_name" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="block text-xs font-bold tracking-widest text-on-surface-variant uppercase" for="email">Work Email</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg py-4 px-5 text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary/40 focus:bg-surface-container transition-all" id="email" name="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block text-xs font-bold tracking-widest text-on-surface-variant uppercase" for="password">Password</label>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg py-4 px-5 text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary/40 focus:bg-surface-container transition-all" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+<p class="text-[10px] text-outline-variant pt-1">Must be at least 8 characters with one special symbol.</p>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full btn-gradient py-4 rounded-lg text-on-primary font-bold text-sm tracking-wide shadow-lg shadow-primary/20 hover:scale-[0.99] transition-all duration-200" type="submit">
+                            Create Account
+                        </button>
+</div>
+<!-- Social Sign Up Separator -->
+<div class="relative py-4">
+<div class="absolute inset-0 flex items-center"><div class="w-full h-px bg-surface-container-high"></div></div>
+<div class="relative flex justify-center text-xs">
+<span class="px-4 bg-surface-container-lowest text-outline-variant font-medium">Or continue with</span>
+</div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-surface-container-low text-on-surface text-sm font-semibold hover:bg-surface-container-high transition-all" type="button">
+<span class="material-symbols-outlined text-lg">language</span>
+                            Google
+                        </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-surface-container-low text-on-surface text-sm font-semibold hover:bg-surface-container-high transition-all" type="button">
+<span class="material-symbols-outlined text-lg">terminal</span>
+                            GitHub
+                        </button>
+</div>
+</form>
+<footer class="mt-12 text-center">
+<p class="text-sm text-on-surface-variant font-medium">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="#">Log in</a>
+</p>
+</footer>
+</div>
+</section>
+<!-- Right Side: Illustrative Content & Branding -->
+<section class="hidden lg:flex flex-1 relative bg-primary-container items-center justify-center overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60 mix-blend-overlay" data-alt="Modern minimalist architectural interior with clean glass walls, soft blue ambient lighting, and elegant geometric shadows in a high-end corporate setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtoAbksuhTbzHDXQpsOk0FiznOomDEIJgY9Jfe55dR_MlDVuWtUG7LtjyGFz6BMJoTS7GARKeRuONXlSCvE-1DyXdtnnI0ZIktLS5CGho_DkVqPvwA0EYjNUIrGuAg5tUPSgQT1u1nM6_O8pD_0Zmk6DFSPcP_8Tu2ddX0mQX2SdYyZLTn1npnnx_-nXmmqjA0ajZVZxDG5KfDUBiIM6nkRgGBBxW6oMkI3gpsQgq4IrTMsK4O89IPRnSQscTaJ7uxLZCkGpPkLpE"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/80 via-primary-dim/40 to-transparent"></div>
+</div>
+<!-- Floating Bento Grid Graphic -->
+<div class="relative z-10 w-full max-w-xl p-12 space-y-6">
+<div class="grid grid-cols-6 grid-rows-6 gap-4 h-[500px]">
+<!-- Bento Item 1 -->
+<div class="col-span-4 row-span-3 bg-white/10 backdrop-blur-2xl rounded-xl p-6 border border-white/10 flex flex-col justify-between">
+<div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div>
+<h3 class="text-white text-xl font-bold mb-1">Real-time Analytics</h3>
+<p class="text-white/70 text-sm">Monitor your global operations with zero-latency data streaming.</p>
+</div>
+</div>
+<!-- Bento Item 2 -->
+<div class="col-span-2 row-span-2 bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/5 flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-extrabold text-white">99.9%</span>
+<span class="text-[10px] text-white/50 uppercase tracking-widest font-bold">Uptime SLA</span>
+</div>
+<!-- Bento Item 3 -->
+<div class="col-span-2 row-span-4 bg-white/10 backdrop-blur-2xl rounded-xl p-6 border border-white/10 flex flex-col justify-end gap-4">
+<div class="space-y-2">
+<div class="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full w-3/4 bg-white"></div>
+</div>
+<div class="h-1.5 w-1/2 bg-white/20 rounded-full"></div>
+</div>
+<p class="text-white/80 text-xs font-semibold">Capacity Optimization</p>
+</div>
+<!-- Bento Item 4 -->
+<div class="col-span-4 row-span-3 bg-primary-fixed-dim/20 backdrop-blur-3xl rounded-xl p-8 border border-white/10">
+<div class="flex items-center gap-4 mb-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-slate-200"></div>
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-slate-300"></div>
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-slate-400"></div>
+</div>
+<span class="text-white/80 text-xs font-medium">+2k developers joined today</span>
+</div>
+<h3 class="text-white text-lg font-bold">Secure Infrastructure</h3>
+<p class="text-white/60 text-sm">Enterprise-grade security baked into every single layer of your stack.</p>
+</div>
+</div>
+<div class="text-center pt-8">
+<p class="text-white/90 font-medium italic">"The most intuitive management suite we've ever deployed."</p>
+<p class="text-white/50 text-xs mt-2 uppercase tracking-widest">— CTO, NexaCorp Industries</p>
+</div>
+</div>
+</section>
+</main>
+</body></html>

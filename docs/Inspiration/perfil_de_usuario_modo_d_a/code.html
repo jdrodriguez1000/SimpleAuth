@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#deccfd",
+                        "on-tertiary-fixed": "#3c2f56",
+                        "outline": "#777b84",
+                        "on-error-container": "#6e0a12",
+                        "secondary": "#565f72",
+                        "tertiary-dim": "#5a4c75",
+                        "on-tertiary-fixed-variant": "#594b75",
+                        "secondary-fixed-dim": "#cbd5ea",
+                        "tertiary-fixed": "#deccfd",
+                        "secondary-container": "#d9e3f8",
+                        "primary-dim": "#0052a1",
+                        "on-secondary": "#f8f8ff",
+                        "background": "#f9f9fe",
+                        "on-error": "#fff7f6",
+                        "on-secondary-container": "#495264",
+                        "surface-container": "#ecedf6",
+                        "inverse-primary": "#5f9efb",
+                        "primary": "#005eb6",
+                        "secondary-dim": "#4a5365",
+                        "primary-fixed": "#5f9efb",
+                        "outline-variant": "#afb2bb",
+                        "error-dim": "#67040d",
+                        "surface-variant": "#e0e2ec",
+                        "on-secondary-fixed": "#364051",
+                        "on-surface": "#2f323a",
+                        "on-tertiary-container": "#50426b",
+                        "inverse-on-surface": "#9c9ca2",
+                        "primary-fixed-dim": "#5191ed",
+                        "surface-dim": "#d7dae4",
+                        "error": "#a83836",
+                        "surface": "#f9f9fe",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-highest": "#e0e2ec",
+                        "tertiary-fixed-dim": "#d0bfef",
+                        "inverse-surface": "#0c0e12",
+                        "on-background": "#2f323a",
+                        "secondary-fixed": "#d9e3f8",
+                        "surface-container-high": "#e6e8f1",
+                        "surface-bright": "#f9f9fe",
+                        "on-tertiary": "#fdf7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#002045",
+                        "surface-container-low": "#f3f3fa",
+                        "on-primary": "#f8f8ff",
+                        "tertiary": "#665882",
+                        "primary-container": "#5f9efb",
+                        "surface-tint": "#005eb6",
+                        "on-primary-fixed-variant": "#002956",
+                        "error-container": "#fa746f",
+                        "on-secondary-fixed-variant": "#525c6e",
+                        "on-surface-variant": "#5c5f68"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-8 px-4 z-50">
+<div class="mb-12 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<div>
+<div class="text-xl font-bold text-blue-700 dark:text-blue-400 leading-none">Monolith</div>
+<div class="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1 font-semibold">Admin Suite</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<!-- Profile (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-blue-700 dark:text-blue-400 font-semibold relative before:absolute before:left-0 before:w-1 before:h-6 before:bg-blue-600 before:rounded-r-full scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-semibold">Profile</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50 dark:border-slate-800/50">
+<div class="flex items-center gap-3 px-2">
+<img alt="Organization Logo" class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Professional corporate headshot of a middle-aged man in a dark suit, clean studio lighting, high-end editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCquUG9erHjWyqXJvnEu75c87nfrwfksjGqKAccXRemyhAwwIw5aDsvU3f7iumTgux9LhwnGmQsyOHkEWVAkmKjYVRhluWDBgI5ZGahVYR2lPWFEoZ4fim11ZhkcJd2asQegeH3Pq4MohCu1OzACbZZGBQSc9XSoNMY17yPr-VEl1_fIrE_lw71Xc2G8cNrrfMv5bnNJZuZRda_-jMC9X-6WRiq4OAtXbp2-rEzTsSPP8e3UfCMsxdCokxbM6zZRoyNOPY-8kINnw0"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-on-surface truncate">Marcus Chen</p>
+<p class="text-xs text-on-surface-variant truncate">Lead Administrator</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center h-16 px-8 shadow-[0_12px_40px_rgba(0,41,86,0.08)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search profiles..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-all relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-all">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/20"></div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-bold text-on-surface">User Management</span>
+<img alt="User Avatar" class="w-9 h-9 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Close up of a professional man smiling, bright daylight, high resolution profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb-sr9jyeSlNJXIFk_izwAy5DEjaGEM4k63Da-ehkF-mCEIjtyeRFo71Cj4yIUTqgy9lh5xNHgVskITtpgak2AVCzcE-TmOqyUJhnPeAV_B8EfC8XA0BNSqVMWCBcdWk7YvZPA37BXSA16wQK9b8vgFe91NN4jybKA5VRKBO9ot7cAe6anKc8561l4VZzgS2TBRLc1HzH4w_WqOSEQDs25vnhIXX31Hk6TndCHaT6c_0xKNjxgKcZUKy1qnALRaWVqd7W0dpIslHg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-16 px-16 min-h-screen">
+<div class="max-w-5xl mx-auto">
+<!-- Page Header -->
+<div class="mb-12">
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-2">Account Profile</h1>
+<p class="text-on-surface-variant text-sm max-w-lg">Manage your personal information, security settings, and professional preferences for the Monolith suite.</p>
+</div>
+<!-- Profile Layout: Bento Style -->
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Left Column: Avatar & Quick Actions -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col items-center text-center">
+<div class="relative group">
+<img alt="Marcus Chen Profile Picture" class="w-40 h-40 rounded-full object-cover border-4 border-surface shadow-xl" data-alt="Detailed professional headshot of a man with short dark hair, wearing a white shirt, soft natural light, bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYfbl-12AAgFChSLGyUdDK-210HlLc7bOH7Ln1uqtIFhlYw3MKJjjw-ZqjcgHycQ6E0Grsx6-g7xOVuI_TA2S9Qbw2mQdrW6UB5xt7zYtaGNa5XL1PQzAShjyh__0iczcQMsBivpH4G36uCaKvLGCPaDADWs4j59BZFqlm5tbfYxMbJlYiPHsXcF597pkH80eH6Ov5c8Shxn65faT4d6ewuOxp4DypjJo6fT8KMKUoURUV3gJKDFwQExc6t6XttNbsMRjbCLrBS80"/>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+<h2 class="mt-6 text-xl font-bold text-on-surface">Marcus Chen</h2>
+<p class="text-sm text-on-surface-variant">Senior Operations Director</p>
+<div class="mt-8 w-full space-y-2">
+<div class="flex justify-between text-xs font-semibold uppercase tracking-wider text-on-surface-variant px-1">
+<span>Profile Completion</span>
+<span>85%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full w-[85%] bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6">
+<h3 class="font-bold text-on-surface mb-4">Quick Links</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors cursor-pointer text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">security</span>
+                                Security Settings
+                            </li>
+<li class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors cursor-pointer text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">key</span>
+                                Change Password
+                            </li>
+<li class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors cursor-pointer text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+                                Notification Prefs
+                            </li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Personal Information Form -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-container-lowest rounded-xl p-10">
+<div class="flex items-center justify-between mb-10">
+<div>
+<h3 class="text-2xl font-bold text-on-surface">Personal Information</h3>
+<p class="text-sm text-on-surface-variant mt-1">Updates will be visible across the organization directory.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/30 text-4xl">contact_page</span>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Full Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 text-sm font-medium focus:ring-2 focus:ring-primary/40 transition-all outline-none" type="text" value="Marcus Chen"/>
+</div>
+<!-- Title -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Job Title</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 text-sm font-medium focus:ring-2 focus:ring-primary/40 transition-all outline-none" type="text" value="Senior Operations Director"/>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Email Address</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 text-sm font-medium focus:ring-2 focus:ring-primary/40 transition-all outline-none" type="email" value="m.chen@monolith-admin.io"/>
+</div>
+<!-- Phone -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Phone Number</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg p-4 text-sm font-medium focus:ring-2 focus:ring-primary/40 transition-all outline-none" type="tel" value="+1 (555) 902-3481"/>
+</div>
+</div>
+<!-- Bio Section -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Professional Bio</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-lg p-4 text-sm font-medium focus:ring-2 focus:ring-primary/40 transition-all outline-none resize-none" rows="4">Operations leader with 10+ years experience in systems optimization and executive management. Focusing on scaling SaaS infrastructures and internal governance for the Monolith suite.</textarea>
+</div>
+<!-- Form Actions -->
+<div class="pt-8 flex items-center justify-end gap-4 border-t border-surface-container-high">
+<button class="px-6 py-3 text-sm font-semibold text-on-surface hover:bg-surface-container-high rounded-lg transition-all" type="button">Cancel</button>
+<button class="px-8 py-3 text-sm font-bold text-white bg-gradient-to-br from-primary to-primary-container rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" type="button">
+                                    Save Changes
+                                </button>
+</div>
+</form>
+</div>
+<!-- Additional Context: Tonal Layering Example -->
+<div class="mt-8 grid grid-cols-2 gap-8">
+<div class="bg-surface-container-low rounded-xl p-6">
+<h4 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Login History</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface font-medium">San Francisco, CA</span>
+<span class="text-on-surface-variant text-xs">Today, 9:41 AM</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface font-medium">Palo Alto, CA</span>
+<span class="text-on-surface-variant text-xs">Yesterday, 4:22 PM</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6">
+<h4 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Workspace Status</h4>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+<span class="text-sm font-medium text-on-surface">Active in 4 Projects</span>
+</div>
+<p class="mt-2 text-xs text-on-surface-variant">Your account is currently synced across 3 devices.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
