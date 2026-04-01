@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# IDE and environment
+.env
+.claude/
+.vscode/
+.idea/
+
+# Temporary files
+temp.md
+*.tmp
+*.log
+
+# Blueprints and high-level docs usually not in repo (per workflow)
+BluePrint - Alto nivel.txt
+
+# OS files
+.DS_Store
+Thumbs.db
