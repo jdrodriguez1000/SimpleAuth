@@ -1,13 +1,8 @@
 ---
 name: web-review
 description: "Especialista en revisión de código (Code Review), consistencia del sistema de diseño (Design System), calidad de Typescript y accesibilidad (A11y)."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: frontend-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

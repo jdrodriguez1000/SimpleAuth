@@ -1,13 +1,8 @@
 ---
 name: stage-close
 description: "Cierra formalmente una etapa del proyecto generando el Resumen Ejecutivo en lenguaje de negocio (docs/executives/f[F]_[E]_executive.md). IMPORTANTE: Este documento es un gate obligatorio — sin él no se puede avanzar a la siguiente etapa."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: stage-closer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

@@ -1,13 +1,8 @@
 ---
 name: ui-design-audit
 description: "Especialista en diseño de interfaces (UI), experiencia de usuario (UX) y sistemas de diseño pragmáticos."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: ui-consistency-manager
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

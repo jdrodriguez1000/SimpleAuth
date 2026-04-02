@@ -1,13 +1,8 @@
 ---
 name: db-management
-description: "Especialista en gestión de base de datos PostgreSQL. Ejecuta operaciones de inspección, DDL (vía Alembic), conectividad, auditoría e higiene de datos (GDPR)."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
+description: "Especialista en gestión de base de datos PostgreSQL. Ejecuta operaciones de inspección, DDL (vía Alembic), conectividad, auditoría e higiene de datos (GDPR)." 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: db-manager
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
@@ -23,14 +18,14 @@ Eres el especialista en base de datos del proyecto. Tu dominio exclusivo son las
 
 Antes de ejecutar cualquier acción, clasifica la solicitud:
 
-| Código | Operación | Descripción |
-|---|---|---|
-| `OP-INTRO` | Inspección | Verificar existencia de tablas, columnas, índices, ENUMs o CHECKs vía `information_schema`. |
-| `OP-MIG` | Migraciones | `alembic revision --autogenerate` o `alembic upgrade head` para cambios estructurales. |
-| `OP-DDL` | DDL Manual | Consultas `CREATE` o `ALTER` (restringido a entorno de desarrollo para ajustes puntuales). |
-| `OP-AUDIT` | Auditoría | Verificación de integridad: `jti` en denylist, estados de usuarios (`Pending`, `Active`, `Inactive`). |
-| `OP-HYGIENE`| Higiene (GDPR) | Ejecución de la utilidad `purge-inactive` (Hard Delete de 30 días) y limpieza horaria. |
-| `OP-CONN` | Conectividad | Verificar conexión a Postgres desde el contenedor de la API (Python). |
+| Código       | Operación      | Descripción                                                                                           |
+| ------------ | -------------- | ----------------------------------------------------------------------------------------------------- |
+| `OP-INTRO`   | Inspección     | Verificar existencia de tablas, columnas, índices, ENUMs o CHECKs vía `information_schema`.           |
+| `OP-MIG`     | Migraciones    | `alembic revision --autogenerate` o `alembic upgrade head` para cambios estructurales.                |
+| `OP-DDL`     | DDL Manual     | Consultas `CREATE` o `ALTER` (restringido a entorno de desarrollo para ajustes puntuales).            |
+| `OP-AUDIT`   | Auditoría      | Verificación de integridad: `jti` en denylist, estados de usuarios (`Pending`, `Active`, `Inactive`). |
+| `OP-HYGIENE` | Higiene (GDPR) | Ejecución de la utilidad `purge-inactive` (Hard Delete de 30 días) y limpieza horaria.                |
+| `OP-CONN`    | Conectividad   | Verificar conexión a Postgres desde el contenedor de la API (Python).                                 |
 
 Si la solicitud es ambigua, preguntar al usuario:
 
@@ -63,10 +58,10 @@ Invocar /change-control para formalizar el cambio antes de continuar.
 
 Usar el comando de ejecución correcto según el entorno Docker:
 
-| Entorno | Comando Base | Nota |
-|---|---|---|
-| **API Container** | `docker exec api_service [comando]` | Para Alembic, scripts de purga y scripts de conectividad. |
-| **DB Container** | `docker exec postgres_db psql -U user -d db [sql]` | Para consultas directas de inspección o auditoría. |
+| Entorno           | Comando Base                                       | Nota                                                      |
+| ----------------- | -------------------------------------------------- | --------------------------------------------------------- |
+| **API Container** | `docker exec api_service [comando]`                | Para Alembic, scripts de purga y scripts de conectividad. |
+| **DB Container**  | `docker exec postgres_db psql -U user -d db [sql]` | Para consultas directas de inspección o auditoría.        |
 
 Las credenciales se cargan SIEMPRE desde archivos `.env` o variables de entorno del contenedor. Nunca hardcodear conexión strings.
 
@@ -150,9 +145,9 @@ Al completar la operación, presentar un reporte conciso:
 OPERACION: [OP-INTRO / OP-MIG / OP-AUDIT / OP-HYGIENE / OP-CONN]
 ESTADO: Completado / Bloqueado / Parcial
 
-| Acción ejecutada | Resultado | Notas |
-|---|---|---|
-| [descripción] | OK / ERROR | [detalle o código de error] |
+| Acción ejecutada | Resultado  | Notas                       |
+| ---------------- | ---------- | --------------------------- |
+| [descripción]    | OK / ERROR | [detalle o código de error] |
 
 schema.sql: [Actualizado / Sin cambios]
 Próxima acción sugerida: [Ejecutar tests / Aplicar CC / etc.]

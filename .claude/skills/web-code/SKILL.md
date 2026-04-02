@@ -1,13 +1,8 @@
 ---
 name: web-code
-description: "Especialista en desarrollo Frontend con Next.js, React y Tailwind CSS. Crea componentes, maneja estados en el cliente y consume APIs."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
+description: "Especialista en desarrollo Frontend con Next.js, React y Tailwind CSS. Crea componentes, maneja estados en el cliente y consume APIs." 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: frontend-coder
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

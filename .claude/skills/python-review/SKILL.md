@@ -1,13 +1,8 @@
 ---
 name: python-review
 description: "Especialista en revisión de código (Code Review), seguridad de aplicaciones Python y auditoría de estándares de desarrollo."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: backend-reviewer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

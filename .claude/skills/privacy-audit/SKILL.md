@@ -1,13 +1,8 @@
 ---
 name: privacy-audit
 description: "Especialista en protección de datos personales, privacidad por diseño (Privacy by Design) y cumplimiento de la normativa GDPR."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: gdpr-compliance-officer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

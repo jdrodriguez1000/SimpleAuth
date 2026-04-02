@@ -1,13 +1,8 @@
 ---
 name: web-test
 description: "Especialista en pruebas automatizadas de interfaz de usuario (UI), componentes React y flujos de cliente (UX) en Next.js."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: frontend-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

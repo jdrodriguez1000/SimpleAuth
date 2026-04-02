@@ -1,13 +1,8 @@
 ---
 name: devops-pipeline
 description: "Especialista en infraestructura como código (IaC), orquestación con Docker y automatización de despliegues (CI/CD)."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: devops-integrator
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

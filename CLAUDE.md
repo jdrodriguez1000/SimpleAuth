@@ -4,15 +4,15 @@ Este archivo provee orientación a Claude Code (claude.ai/code) al trabajar con 
 
 ## Stack Tecnológico
 
-| Capa | Tecnología |
-|---|---|
-| Frontend | Next.js 15, TypeScript, Shadcn UI + Tailwind, Zod + React Hook Form |
-| Backend | FastAPI (Python 3.12+), SQLModel |
-| Base de Datos | PostgreSQL 16, Alembic (migraciones) |
-| Seguridad Auth | PyJWT (HS256), Passlib/bcrypt (work factor 12) |
-| Infraestructura | Docker + Docker Compose, Nginx/Traefik como gateway |
-| Observabilidad | Logs JSON estructurados, Sentry, `X-Correlation-ID` por petición |
-| Correo | SMTP (Mailtrap en dev / SendGrid en prod) |
+| Capa            | Tecnología                                                          |
+| --------------- | ------------------------------------------------------------------- |
+| Frontend        | Next.js 15, TypeScript, Shadcn UI + Tailwind, Zod + React Hook Form |
+| Backend         | FastAPI (Python 3.12+), SQLModel                                    |
+| Base de Datos   | PostgreSQL 16, Alembic (migraciones)                                |
+| Seguridad Auth  | PyJWT (HS256), Passlib/bcrypt (work factor 12)                      |
+| Infraestructura | Docker + Docker Compose, Nginx/Traefik como gateway                 |
+| Observabilidad  | Logs JSON estructurados, Sentry, `X-Correlation-ID` por petición    |
+| Correo          | SMTP (Mailtrap en dev / SendGrid en prod)                           |
 
 
 ## Arquitectura
@@ -87,16 +87,16 @@ Todas las respuestas de error (4xx/5xx) usan esta estructura:
 
 ## Endpoints Principales de la API
 
-| Método | Ruta | Propósito |
-|---|---|---|
-| POST | `/auth/register` | Registrar usuario (upsert si está Pending) |
-| GET | `/auth/verify` | Verificación de correo (double opt-in) |
-| POST | `/auth/login` | Login → retorna AT + establece cookie RT |
-| POST | `/auth/refresh` | Rotar RT (lee de cookie, sin body) |
-| POST | `/auth/recovery` | Iniciar recuperación de contraseña por correo |
-| PATCH | `/users/me` | Actualizar perfil (email es inmutable) |
-| DELETE | `/users/me` | Soft delete de cuenta |
-| GET | `/health` | Health check para orquestación |
+| Método | Ruta             | Propósito                                     |
+| ------ | ---------------- | --------------------------------------------- |
+| POST   | `/auth/register` | Registrar usuario (upsert si está Pending)    |
+| GET    | `/auth/verify`   | Verificación de correo (double opt-in)        |
+| POST   | `/auth/login`    | Login → retorna AT + establece cookie RT      |
+| POST   | `/auth/refresh`  | Rotar RT (lee de cookie, sin body)            |
+| POST   | `/auth/recovery` | Iniciar recuperación de contraseña por correo |
+| PATCH  | `/users/me`      | Actualizar perfil (email es inmutable)        |
+| DELETE | `/users/me`      | Soft delete de cuenta                         |
+| GET    | `/health`        | Health check para orquestación                |
 
 ## Fases de Implementación
 
@@ -173,10 +173,10 @@ Proceso lineal y obligatorio de diseño para cada etapa del proyecto (ubicada en
 3.  **PLAN** — CUÁNDO: Estrategia de implementación y casos de prueba.
 4.  **TASK** — ACCIÓN: Checklist técnico granular para ejecución por agentes.
 
-### ⛓️ Cadena de Validación (Tokens)
+### Cadena de Validación (Tokens)
 Cada documento SDD debe ser auditado con mentalidad de **Abogado del Diablo** y poseer un token `AUTORIZADO` en `.agents/tokens/sdd/` para permitir el inicio del siguiente paso en la cadena.
 
-### ⚔️ Resolución de Conflictos y Brechas
+### Resolución de Conflictos y Brechas
 - **Prevalencia**: `Scope > Architecture > Plan > SDD Local (PRD/SPEC)`.
 - **Detección de Vacíos (Gaps)**: Si una etapa carece de definición técnica suficiente, el agente tiene la **obligación de detenerse**. No se permite la improvisación de lógica de negocio en la fase de codificación.
 
@@ -193,7 +193,7 @@ Cada documento SDD debe ser auditado con mentalidad de **Abogado del Diablo** y 
 Formato atómico en español: `feat:` | `fix:` | `docs:` | `refactor:` | `chore:`
 **Ejemplo**: `feat: motor de estrategias con redistribución meritocrática`
 
-## 🌍 7. Convenciones de Idioma
+## Convenciones de Idioma
 
 - **Código / Archivos / Carpetas**: Inglés (`snake_case` archivos, `CamelCase` clases).
 - **Documentación / Comentarios / Commits**: Español.
@@ -205,14 +205,16 @@ Formato atómico en español: `feat:` | `fix:` | `docs:` | `refactor:` | `chore:
 
 ### **Al Iniciar (Orden Obligatorio):**
 1.  **Leer `CLAUDE.md`** (Gobernanza central).
-2.  **Leer `.claude/agents-router.md`** (Mapa de delegación a subagentes).
-3.  **Leer `PROJECT_handoff.md`** — Estado macro y táctico del proyecto.
-4.  **Leer `docs/lessons/lessons-learned.md`** — Solo sección de etapa activa.
-5.  **Leer `docs/references/process.md`** — Protocolo de flujo de tokens y roles de agentes.
-6.  **Leer `docs/changes/`** — Solo CCs en estado `✅ Aprobado`.
-7.  **Leer `docs/database/schema.sql`** — Esquema actual de Supabase.
+2.  **Leer `PROJECT_handoff.md`** — Estado macro y táctico del proyecto.
+3.  **Leer `docs/lessons/lessons-learned.md`** — Solo sección de etapa activa.
+  
+### **Al Iniciar (Opcional):**
+1.  **Leer `.claude/agents-router.md`** (Mapa de delegación a subagentes).
+2.  **Leer `docs/references/process.md`** — Protocolo de flujo de tokens y roles de agentes.
+3.  **Leer `docs/changes/`** — Solo CCs en estado `✅ Aprobado`.
+4.  **Leer `docs/database/schema.sql`** — Esquema actual de Supabase.
 
-### **Al Cerrar sesión (Garantía de Continuidad):**
+### **Al Cerrar sesión técnica (Garantía de Continuidad):**
 1.  **Reescribir `PROJECT_handoff.md`**: Actualizar con archivos modificados, contexto inmediato, último error/bloqueador y próxima acción concreta.
 2.  **Actualizar `docs/lessons/lessons-learned.md`**: Registrar hitos o descubrimientos críticos. **Prohibido sobrescribir lecciones anteriores**.
 3.  **Asegurar** que el código pase los tests de la etapa actual (**TDD**).

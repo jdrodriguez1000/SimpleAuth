@@ -1,13 +1,8 @@
 ---
 name: session-close-handoff
 description: "Reescribe PROJECT_handoff.md con el estado macro completo del proyecto y el estado táctico exacto de la sesión."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: session-closer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

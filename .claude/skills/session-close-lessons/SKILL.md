@@ -1,13 +1,8 @@
 ---
 name: session-close-lessons
 description: "Actualiza docs/lessons/lessons-learned.md con las lecciones aprendidas de la sesión: qué funcionó, qué generó fricción y decisiones clave tomadas."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: session-closer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

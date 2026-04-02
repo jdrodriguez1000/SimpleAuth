@@ -1,13 +1,8 @@
 ---
 name: python-code
 description: "Especialista en desarrollo Backend con Python (FastAPI/SQLAlchemy). Escribe lógica de negocio, modelos de base de datos y esquemas Pydantic."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: backend-coder
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

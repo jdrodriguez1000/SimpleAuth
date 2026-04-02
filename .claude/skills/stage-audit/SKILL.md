@@ -1,13 +1,8 @@
 ---
 name: stage-audit
 description: "Ejecuta el protocolo de auditoría técnica y documental antes del cierre de una etapa. Verifica que cada tarea completada tenga evidencia física (código/tests/documentos) y detecta código no documentado (Código Fantasma). Adapta automáticamente sus criterios según el tipo de etapa: DOCUMENTACIÓN (1.x), PROTOTIPADO (2.1) o CÓDIGO (3.x / 4.x)."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: stage-auditor
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
@@ -38,12 +33,12 @@ Una vez identificada, construye los identificadores canónicos:
 
 Lee la sección **"Fases y Etapas del Proyecto"** de `CLAUDE.md` y aplica la siguiente lógica de clasificación:
 
-| Fase | Etapas | Modo de Auditoría |
-|---|---|---|
-| Fase 1 — Gobernanza y Cimientos | 1.1, 1.2, 1.3 | `DOCUMENTACIÓN` |
-| Fase 2 — Prototipado y Validación de Diseño | 2.1 | `PROTOTIPADO` |
-| Fase 3 — Ingeniería de Datos | 3.1 a 3.6 | `CÓDIGO` |
-| Fase 4 — Operación y Mejora Continua | 4.1 a 4.3 | `CÓDIGO` |
+| Fase                                        | Etapas        | Modo de Auditoría |
+| ------------------------------------------- | ------------- | ----------------- |
+| Fase 1 — Gobernanza y Cimientos             | 1.1, 1.2, 1.3 | `DOCUMENTACIÓN`   |
+| Fase 2 — Prototipado y Validación de Diseño | 2.1           | `PROTOTIPADO`     |
+| Fase 3 — Ingeniería de Datos                | 3.1 a 3.6     | `CÓDIGO`          |
+| Fase 4 — Operación y Mejora Continua        | 4.1 a 4.3     | `CÓDIGO`          |
 
 Informa al inicio:
 
@@ -106,12 +101,12 @@ La auditoría no puede iniciarse sin los documentos SDD de la etapa.
 
 ## Paso 4 — Evaluación del Definition of Done (DoD)
 
-| Criterio DoD | Verificación | Modo Relevante |
-|---|---|---|
-| Cero Hardcoding | Grep de IPs/Tokens literales | CÓDIGO |
-| Pipeline Approved | Verificar `.claude/tokens/reviewer_approved.md` | CÓDIGO |
-| Mock-Only | Cero llamadas a APIs reales | PROTOTIPADO |
-| Coherencia de Tags | Tags [REQ] coinciden en PRD y TASK | TODOS |
+| Criterio DoD       | Verificación                                    | Modo Relevante |
+| ------------------ | ----------------------------------------------- | -------------- |
+| Cero Hardcoding    | Grep de IPs/Tokens literales                    | CÓDIGO         |
+| Pipeline Approved  | Verificar `.claude/tokens/reviewer_approved.md` | CÓDIGO         |
+| Mock-Only          | Cero llamadas a APIs reales                     | PROTOTIPADO    |
+| Coherencia de Tags | Tags [REQ] coinciden en PRD y TASK              | TODOS          |
 
 ---
 

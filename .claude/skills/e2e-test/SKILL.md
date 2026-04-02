@@ -1,13 +1,8 @@
 ---
 name: e2e-test
 description: "Especialista en pruebas de extremo a extremo (E2E), automatización de navegación en el navegador y validación de flujos completos (Full-Stack)."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: integration-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 

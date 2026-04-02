@@ -1,13 +1,8 @@
 ---
 name: python-test
 description: "Especialista en pruebas automatizadas y aseguramiento de calidad (QA) para servicios Backend en Python. Ejecuta tests unitarios, de integración y de cobertura usando Pytest."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: backend-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
