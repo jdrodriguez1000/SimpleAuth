@@ -1,0 +1,346 @@
+/* [TSK-F-01] - Tokens CSS del Design System "The Intelligent Monolith" */
+/* Fuentes Google: Inter (body) + Manrope (display/headlines) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Variante dark: clase .dark en el elemento html (next-themes) */
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   DESIGN TOKENS — "The Intelligent Monolith"
+   Definición en @theme para que Tailwind v4 los exponga como utilidades CSS.
+   ========================================================================== */
+@theme inline {
+  /* --- Shadcn/Radix tokens base (requeridos por los componentes UI) --- */
+  --color-background:  var(--background);
+  --color-foreground:  var(--foreground);
+  --color-card:        var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover:     var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary:   var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:       var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent:      var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border:      var(--border);
+  --color-input:       var(--input);
+  --color-ring:        var(--ring);
+
+  /* --- Tokens del Design System SimpleAuth (SPEC §4.1 + UI Kit §1) --- */
+  --color-primary:                    var(--primary);
+  --color-primary-foreground:         var(--primary-foreground);
+  --color-surface:                    var(--surface);
+  --color-surface-container-low:      var(--surface-container-low);
+  --color-surface-container:          var(--surface-container);
+  --color-surface-container-high:     var(--surface-container-high);
+  --color-surface-container-highest:  var(--surface-container-highest);
+  --color-error:                      var(--error);
+
+  /* Sombras tintadas (UI Kit §2.3 — prohibido sombras negras puras) */
+  --shadow-ambient: 0 12px 40px rgba(0, 41, 86, 0.08);
+  --shadow-card:    0 4px 24px rgba(0, 41, 86, 0.06);
+  --shadow-elevated:0 20px 60px rgba(0, 41, 86, 0.12);
+
+  /* --- Tipografías duales (UI Kit §3) --- */
+  --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    ui-monospace, "Cascadia Code", monospace;
+
+  /* --- Radio base para bordes (SPEC §4 — radius 0.5rem) --- */
+  --radius:    0.5rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+
+  /* --- Box shadows mapeados como utilidades --- */
+  --shadow-sm:      var(--shadow-card);
+  --shadow-md:      var(--shadow-ambient);
+  --shadow-lg:      var(--shadow-elevated);
+
+  /* --- Sidebar tokens requeridos por Shadcn --- */
+  --color-sidebar:                    var(--sidebar);
+  --color-sidebar-foreground:         var(--sidebar-foreground);
+  --color-sidebar-primary:            var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:             var(--sidebar-accent);
+  --color-sidebar-accent-foreground:  var(--sidebar-accent-foreground);
+  --color-sidebar-border:             var(--sidebar-border);
+  --color-sidebar-ring:               var(--sidebar-ring);
+}
+
+/* ==========================================================================
+   VARIABLES CSS — LIGHT MODE (:root)
+   SPEC §4.1 + UI Kit §1 — Paleta "Intelligent Monolith"
+   ========================================================================== */
+:root {
+  /* --- Superficies (tonal layering — UI Kit §2.2) --- */
+  --surface-rgb:                249, 249, 254;
+  --surface:                    #f9f9fe;
+  --surface-container-low:      #f3f3fa;
+  --surface-container:          #ecedf6;
+  --surface-container-high:     #e6e8f1;
+  --surface-container-highest:  #e0e2ec;
+
+  /* --- Color primario y gradiente "The Intelligent Monolith" --- */
+  --primary:           #005eb6;
+  --primary-foreground:#ffffff;
+  --primary-gradient:  linear-gradient(135deg, #005eb6, #5f9efb);
+
+  /* --- Color de error --- */
+  --error: #cf142b;
+
+  /* --- Sombra tintada (modo claro) --- */
+  --shadow-tint: hsla(230, 20%, 30%, 0.1);
+
+  /* --- Tokens requeridos por Shadcn/Radix (mapeados a la paleta propia) --- */
+  --background:             var(--surface);
+  --foreground:             oklch(0.145 0 0);
+  --card:                   var(--surface-container-low);
+  --card-foreground:        oklch(0.145 0 0);
+  --popover:                var(--surface-container-low);
+  --popover-foreground:     oklch(0.145 0 0);
+  --secondary:              var(--surface-container);
+  --secondary-foreground:   oklch(0.205 0 0);
+  --muted:                  var(--surface-container);
+  --muted-foreground:       oklch(0.45 0 0);
+  --accent:                 var(--surface-container-high);
+  --accent-foreground:      oklch(0.205 0 0);
+  --destructive:            var(--error);
+  --border:                 var(--surface-container-high);
+  --input:                  var(--surface-container-highest);
+  --ring:                   #005eb6;
+
+  /* Sidebar (usa la paleta de superficies) */
+  --sidebar:                    var(--surface-container-low);
+  --sidebar-foreground:         oklch(0.145 0 0);
+  --sidebar-primary:            var(--primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             var(--surface-container-high);
+  --sidebar-accent-foreground:  oklch(0.145 0 0);
+  --sidebar-border:             var(--surface-container-high);
+  --sidebar-ring:               #005eb6;
+}
+
+/* ==========================================================================
+   VARIABLES CSS — DARK MODE (.dark)
+   next-themes aplica la clase .dark en <html> — SPEC §6 + UI Kit §5
+   ========================================================================== */
+.dark {
+  /* --- Superficies oscuras --- */
+  --surface-rgb:                12, 14, 18;
+  --surface:                    #0c0e12;
+  --surface-container-low:      #14171c;
+  --surface-container:          #1a1e24;
+  --surface-container-high:     #22272e;
+  --surface-container-highest:  #2b313a;
+
+  /* --- Color primario (más claro en dark para contraste) --- */
+  --primary:           #5f9efb;
+  --primary-foreground:#0c0e12;
+  --primary-gradient:  linear-gradient(135deg, #005eb6, #5f9efb);
+
+  /* --- Color de error (vibrante en dark) --- */
+  --error: #f43f5e;
+
+  /* --- Sombra tintada (modo oscuro — más densa) --- */
+  --shadow-tint: hsla(230, 20%, 5%, 0.5);
+
+  /* --- Tokens Shadcn/Radix en dark --- */
+  --background:             var(--surface);
+  --foreground:             oklch(0.94 0 0);
+  --card:                   var(--surface-container-low);
+  --card-foreground:        oklch(0.94 0 0);
+  --popover:                var(--surface-container);
+  --popover-foreground:     oklch(0.94 0 0);
+  --secondary:              var(--surface-container);
+  --secondary-foreground:   oklch(0.94 0 0);
+  --muted:                  var(--surface-container);
+  --muted-foreground:       oklch(0.65 0 0);
+  --accent:                 var(--surface-container-high);
+  --accent-foreground:      oklch(0.94 0 0);
+  --destructive:            var(--error);
+  --border:                 var(--surface-container-high);
+  --input:                  var(--surface-container-highest);
+  --ring:                   #5f9efb;
+
+  /* Sidebar en dark */
+  --sidebar:                    var(--surface-container-low);
+  --sidebar-foreground:         oklch(0.94 0 0);
+  --sidebar-primary:            var(--primary);
+  --sidebar-primary-foreground: #0c0e12;
+  --sidebar-accent:             var(--surface-container-high);
+  --sidebar-accent-foreground:  oklch(0.94 0 0);
+  --sidebar-border:             var(--surface-container-high);
+  --sidebar-ring:               #5f9efb;
+}
+
+/* ==========================================================================
+   BASE LAYER — Reglas globales del documento
+   ========================================================================== */
+@layer base {
+  /* Herencia de box-sizing y borde tonal (UI Kit §2.1 — No-Line Rule) */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Fuente base: Inter para máxima legibilidad (UI Kit §3) */
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    height: 100%;
+  }
+
+  body {
+    /* Superficie base de la app — SPEC §4.1 */
+    background-color: var(--surface);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Transición suave de tema (UI Kit §5 — Theme Switching Strategy) */
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Headlines y display: Manrope para precisión geométrica (UI Kit §3) */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  /* Eliminar outline por defecto, se reemplaza con ring tintado */
+  *:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--primary) 40%, transparent);
+    outline-offset: 2px;
+  }
+}
+
+/* ==========================================================================
+   UTILITIES LAYER — Clases de utilidad del Design System
+   ========================================================================== */
+@layer utilities {
+  /* --- Gradiente primario "The Intelligent Monolith" (UI Kit §4.1) --- */
+  .bg-primary-gradient {
+    background: var(--primary-gradient);
+  }
+
+  /* --- Sombras tintadas (UI Kit §2.3 — sin sombras negras puras) --- */
+  .shadow-ambient {
+    box-shadow: var(--shadow-ambient);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* --- GlassCard base (SPEC §3.3) --- */
+  .glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(var(--surface-rgb), 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* --- Fuente display para headlines (Manrope — UI Kit §3) --- */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* --- Escala tipográfica editorial (UI Kit §3) --- */
+  .text-headline-lg {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .text-headline-md {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .text-body-md {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .text-label-sm {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+}
+
+/* ==========================================================================
+   ANIMACIONES BASE — Fallback para Framer Motion (SPEC §6)
+   Framer Motion sobreescribirá estas cuando esté activo.
+   ========================================================================== */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Clases de animación listas para usar en componentes */
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out forwards;
+}
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+}

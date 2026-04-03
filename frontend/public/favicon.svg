@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="SimpleAuth favicon">
+  <defs>
+    <linearGradient id="fav-shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#005eb6"/>
+      <stop offset="100%" stop-color="#5f9efb"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    Escudo: misma proporción que logo.svg pero ajustado al viewBox 32×32.
+    Trazo/forma más sólida para mejor legibilidad a 16-32px.
+  -->
+  <path
+    d="M16 2.5
+       L28 7.5
+       L28 18
+       C28 24.5 22.5 29.5 16 31
+       C9.5 29.5 4 24.5 4 18
+       L4 7.5
+       Z"
+    fill="url(#fav-shield-grad)"
+  />
+
+  <!--
+    Checkmark con trazo 2.5px — más grueso que el logo para
+    garantizar visibilidad a tamaños de favicon (16–32px).
+  -->
+  <polyline
+    points="10,17 14.5,22 22,11"
+    stroke="#ffffff"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    stroke-opacity="0.95"
+  />
+</svg>

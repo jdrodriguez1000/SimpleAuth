@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" role="img" aria-label="SimpleAuth logo">
+  <defs>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#005eb6"/>
+      <stop offset="100%" stop-color="#5f9efb"/>
+    </linearGradient>
+    <linearGradient id="check-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#e8f0fe" stop-opacity="0.90"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    Escudo geométrico minimalista.
+    Forma: polígono de 6 puntos con curvaturas suaves.
+    El tope es plano-ancho, los lados descienden en ángulo recto
+    y la base converge en una punta central — silueta clásica de escudo.
+  -->
+  <path
+    d="M20 3
+       L35 9
+       L35 22
+       C35 30.5 28.5 36.5 20 38
+       C11.5 36.5 5 30.5 5 22
+       L5 9
+       Z"
+    fill="url(#shield-grad)"
+  />
+
+  <!--
+    Checkmark interior: dos segmentos que forman una V angular.
+    Posición centrada y escalada para que sea legible a tamaños pequeños.
+    Trazo blanco semi-opaco — visible tanto en light como en dark mode.
+  -->
+  <polyline
+    points="13,21 18,27 28,14"
+    stroke="url(#check-grad)"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+</svg>
