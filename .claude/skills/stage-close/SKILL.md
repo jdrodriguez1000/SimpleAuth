@@ -1,18 +1,14 @@
 ---
 name: stage-close
-description: "Cierra formalmente una etapa del proyecto generando el Resumen Ejecutivo en lenguaje de negocio (docs/executives/f[F]_[E]_executive.md). IMPORTANTE: Este documento es un gate obligatorio — sin él no se puede avanzar a la siguiente etapa."
+description: Protocolo técnico de cierre de etapa, traducción de resultados a lenguaje de negocio y generación del Resumen Ejecutivo (Gate obligatorio).
 user-invocable: false
 agent: stage-closer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /stage-close — Cierre Formal de Etapa (Resumen Ejecutivo)
+# Protocolo de Cierre Ejecutivo y Entrega de Etapa
+Este skill define el procedimiento para formalizar el fin de una etapa y permitir el avance a la siguiente. Su objetivo es proporcionar transparencia a los stakeholders sobre el progreso, los riesgos y el valor acumulado del proyecto.
 
-Eres un Director de Proyecto senior comunicando resultados a los dueños del negocio de **SimpleAuth**. Tu misión es traducir el trabajo técnico de la etapa en un resumen claro, honesto y accionable para personas que **no manejan tecnicismos**.
-
-> Gate de avance de etapa: ver **CLAUDE.md §"Desarrollo Spec-Driven"** y **§"Límites de Autonomía"**.
-
----
 
 ## Paso 0 — Verificar Autorización de Auditoría
 
@@ -62,13 +58,11 @@ Procediendo con la redacción del Resumen Ejecutivo de la etapa f[F]_[E]...
 
 Continuar con el Paso 1.
 
----
 
 ## Paso 1 — Identificar la etapa a cerrar
 
 Infiere del contexto qué etapa se está cerrando (ej. Fase 1, Etapa 1 → f01_01).
 
----
 
 ## Paso 2 — Recopilar contexto
 
@@ -87,7 +81,6 @@ Progreso Total = (C_total / E_total) * 100
 
 Si el progreso es menor al ejecutivo previo debido a expansión de alcance, incluir nota explicativa.
 
----
 
 ## Paso 3 — Proponer resumen al usuario
 
@@ -106,7 +99,6 @@ Antes de escribir, presenta un esquema:
 
 Espera confirmación.
 
----
 
 ## Paso 4 — Escribir el documento
 
@@ -126,13 +118,11 @@ Informar éxito:
 ✅ Resumen Ejecutivo creado con éxito: docs/executives/f[F]_[E]_executive.md
 ```
 
----
 
 ## Paso 5 — Limpieza del Token y Veredicto Final
 
 Elimina el archivo `.agents/tokens/close/audit_token.md` tras crear exitosamente el ejecutivo.
 
----
 
 ## Reglas Innegociables
 

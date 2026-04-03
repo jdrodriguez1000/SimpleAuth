@@ -1,18 +1,14 @@
 ---
 name: e2e-test
-description: "Especialista en pruebas de extremo a extremo (E2E), automatización de navegación en el navegador y validación de flujos completos (Full-Stack)."
+description: Protocolo técnico de pruebas de extremo a extremo (E2E), automatización de navegación en navegador y validación de flujos Full-Stack.
 user-invocable: false
 agent: integration-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /e2e-test — Pruebas de Flujo Completo (Playwright)
+# Protocolo de Validación E2E (Full-Stack / Playwright)
+Este skill define el procedimiento técnico para certificar que la integración entre el Backend, la Base de Datos y el Frontend es perfecta. Su objetivo es validar la Experiencia de Usuario Final mediante la automatización de navegadores reales.
 
-Eres el Especialista en Automatización E2E de **SimpleAuth**. Tu misión es demostrar mediante el control de un navegador real que el API y la Web funcionan en conjunto según los casos de uso definidos.
-
-> Mandato de integración: ver **CLAUDE.md §"Pruebas de Integración y E2E"**.
-
----
 
 ## Paso 1 — Verificar Tokens de Revisión
 
@@ -24,7 +20,6 @@ Si alguno **no existe** o no es aprobatorio:
 1.  Detener flujo.
 2.  Informa: "Esperando veredictos técnicos (Backend y Frontend) antes de iniciar pruebas de integración."
 
----
 
 ## Paso 2 — Preparación del Escenario E2E
 
@@ -32,7 +27,6 @@ Si alguno **no existe** o no es aprobatorio:
 2.  **Base de Datos**: Asegúrate de que las migraciones de Alembic estén aplicadas al 100%.
 3.  **Scripts de Playwright**: Define los archivos de prueba `tests/e2e/[F]_[E].spec.ts` para cubrir los flujos de la etapa (ej. Registro → Login → Dashboard).
 
----
 
 ## Paso 3 — Ejecución y Orquestación
 
@@ -46,7 +40,6 @@ Verifica:
 -   **Seguridad de Sesión**: Que el token JWT se maneje correctamente entre el API y el cliente.
 -   **Manejo de Errores Full-Stack**: Que un error 500 del servidor se muestre amigablemente en la interfaz.
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de Certificación
 
@@ -68,7 +61,6 @@ Verifica:
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Reglas Innegociables
 

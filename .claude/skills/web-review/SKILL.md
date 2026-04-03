@@ -1,18 +1,14 @@
 ---
 name: web-review
-description: "Especialista en revisión de código (Code Review), consistencia del sistema de diseño (Design System), calidad de Typescript y accesibilidad (A11y)."
+description: Protocolo técnico de auditoría de interfaz, validación de sistemas de diseño, accesibilidad (A11y) y calidad de TypeScript.
 user-invocable: false
 agent: frontend-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /web-review — Auditoría e Integración de UI
+# Protocolo de Auditoría y Certificación de UI (Frontend)
+Este skill define el procedimiento obligatorio para auditar la calidad estética y técnica de la capa de presentación. Su objetivo es garantizar una interfaz "pixel-perfect", accesible y de alto rendimiento. Se rige por los Estándares de Frontend y diseño y estética definidos en CLAUDE.md.
 
-Eres el Arquitecto Revisor Senior de Frontend de **SimpleAuth**. Tu misión es certificar que la interfaz de usuario no solo funciona, sino que es visualmente premium, accesible, consistente con el sistema de diseño y alineada con la visión técnica global de Next.js.
-
-> Mandato de auditoría: ver **CLAUDE.md §"Estándares de Frontend"** y **§"Diseño y Estética"**.
-
----
 
 ## Paso 1 — Verificar Token del Tester
 
@@ -21,7 +17,6 @@ Si el archivo **no existe** o el veredicto es diferente a `CONFORME`:
 1.  Detener flujo.
 2.  Informa: "Esperando validación del frontend-tester antes de iniciar el Code Review de la UI."
 
----
 
 ## Paso 2 — Auditoría Visual y Técnica
 
@@ -38,7 +33,6 @@ Realiza una lectura profunda del código frontend implementado (`[TSK-F-XX]`):
     *   Confirmar el uso de atributos `aria-label`, `alt` en imágenes y navegación accesible por teclado.
 4.  **Trazabilidad**: Confirmar que los tags `[REQ]` y `[TSK]` están presentes en los archivos web.
 
----
 
 ## Paso 3 — Veredicto UI Final
 
@@ -59,7 +53,6 @@ Realiza una lectura profunda del código frontend implementado (`[TSK-F-XX]`):
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Paso 4 — Cierre de Tarea Web (Task Done)
 
@@ -67,7 +60,6 @@ Solo tras emitir el token de `APROBADO` de forma exitosa:
 1.  Leer el archivo `docs/tasks/f[F]_[E]_task.md`.
 2.  Marcar formalmente la tarea frontend con `[x]` y registrar la fecha de cierre.
 
----
 
 ## Reglas Innegociables
 

@@ -1,18 +1,13 @@
 ---
 name: python-test
-description: "Especialista en pruebas automatizadas y aseguramiento de calidad (QA) para servicios Backend en Python. Ejecuta tests unitarios, de integración y de cobertura usando Pytest."
+description: Protocolo de ejecución de pruebas automatizadas (Pytest), validación de integración y reporte de cobertura.
 user-invocable: false
 agent: backend-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /python-test — Pruebas de API y Cobertura Python
-
-Eres el Especialista en Control de Calidad (QA) Backend del proyecto **SimpleAuth**. Tu misión es demostrar mediante evidencia física (logs de Pytest) que el código del backend cumple con los requerimientos funcionales y de seguridad.
-
-> Mandato de calidad: ver **CLAUDE.md §"Testing (TDD Universal)"**.
-
----
+# Protocolo de Validación y QA Backend (Pytest)
+Este skill define el procedimiento técnico para verificar la integridad funcional y la seguridad del código mediante pruebas automatizadas. Se rige por el estándar de TDD Universal definido en CLAUDE.md.
 
 ## Paso 1 — Verificar Token del Coder
 
@@ -21,15 +16,12 @@ Si el archivo **no existe** o el estado es diferente a `✅ TERMINADA`:
 1.  Detener flujo.
 2.  Informa: "Esperando a que el backend-coder emita su token de finalización."
 
----
-
 ## Paso 2 — Configurar Entorno de Pruebas
 
 1.  **Aislamiento**: Crea o limpia el entorno de base de datos de pruebas (ej. motor SQLite in-memory o base de datos temporal en Docker).
 2.  **Fixtures**: Define los datos iniciales (Mocks) para usuarios, roles y sesiones. Sigue los casos de prueba definidos en la SPEC.
 3.  **Mocks Externos**: Si el código interactúa con servicios externos o correos, utiliza `unittest.mock` para simular las respuestas.
 
----
 
 ## Paso 3 — Ejecución de Pytest
 
@@ -41,8 +33,6 @@ Calcula la cobertura:
 ```bash
 docker exec api_service pytest --cov=app --cov-report=term-missing
 ```
-
----
 
 ## Paso 4 — Notificación y Emisión de Token de Veredicto
 
@@ -63,8 +53,6 @@ docker exec api_service pytest --cov=app --cov-report=term-missing
 - **Veredicto**: CONFORME
 - **Fecha**: [YYYY-MM-DD]
 ```
-
----
 
 ## Reglas Innegociables
 

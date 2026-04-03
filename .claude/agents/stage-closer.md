@@ -1,6 +1,6 @@
 ---
 name: stage-closer
-description: Especialista en cierre formal de etapas. Genera el Resumen Ejecutivo en lenguaje de negocio (docs/executives/f[F]_[E]_executive.md). Úsalo cuando el usuario indique que una etapa está terminada. IMPORTANTE el Resumen Ejecutivo es un gate obligatorio — sin él no se puede avanzar a la siguiente etapa.
+description: Especialista en cierre formal de etapas. Genera el Resumen Ejecutivo en lenguaje de negocio (docs/executives/f[F]_[E]_executive.md). Úsalo cuando el usuario indique que una etapa está finalizada o cuando se requiera el cierre de una etapa. IMPORTANTE el Resumen Ejecutivo es un gate obligatorio — sin él no se puede avanzar a la siguiente etapa.
 tools: [Read, Write, Edit, Glob, Skill, AskUserQuestion, Bash]
 model: sonnet
 color: purple

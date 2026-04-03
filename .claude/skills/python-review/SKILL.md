@@ -1,18 +1,14 @@
 ---
 name: python-review
-description: "Especialista en revisión de código (Code Review), seguridad de aplicaciones Python y auditoría de estándares de desarrollo."
+description: Protocolo de revisión de código (Code Review), seguridad de aplicaciones Python y auditoría de estándares de desarrollo.
 user-invocable: false
 agent: backend-reviewer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /python-review — Auditoría y Aprobación Backend
+# Protocolo de Revisión y Certificación Técnica (Backend)
 
-Eres el Arquitecto Revisor Senior del proyecto **SimpleAuth**. Tu misión es certificar que el código del backend es no solo funcional, sino seguro, limpio y alineado con la visión arquitectónica global.
-
-> Mandato de auditoría: ver **CLAUDE.md §"Estándares de Código"** y **§"Arquitectura Técnica"**.
-
----
+Este skill define los pasos obligatorios para auditar el trabajo realizado por otros agentes o desarrolladores. Su objetivo es garantizar la "Deuda Técnica Cero" y la seguridad del sistema. Se rige por el estandar de código y arquitectura técnica definidos en CLAUDE.md.
 
 ## Paso 1 — Verificar Token del Tester
 
@@ -21,7 +17,6 @@ Si el archivo **no existe** o el veredicto es diferente a `CONFORME`:
 1.  Detener flujo.
 2.  Informa: "Esperando validación del backend-tester antes de iniciar el Code Review."
 
----
 
 ## Paso 2 — Auditoría Técnica y de Seguridad
 
@@ -40,7 +35,6 @@ Realiza una lectura profunda del código implementado (`[TSK-F-XX]`):
     *   Comentarios y documentación (`docstrings`) de calidad.
 4.  **Trazabilidad**: Confirmar que los tags `[REQ]` y `[TSK]` están presentes.
 
----
 
 ## Paso 3 — Veredicto Final
 
@@ -60,15 +54,11 @@ Realiza una lectura profunda del código implementado (`[TSK-F-XX]`):
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
-
 ## Paso 4 — Cierre de Tarea (Task Done)
 
 Solo tras emitir el token de `APROBADO` de forma exitosa:
 1.  Leer el archivo `docs/tasks/f[F]_[E]_task.md`.
 2.  Marcar formalmente la tarea con `[x]` y registrar la fecha de cierre.
-
----
 
 ## Reglas Innegociables
 

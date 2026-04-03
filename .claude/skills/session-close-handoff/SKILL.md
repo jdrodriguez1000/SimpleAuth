@@ -1,18 +1,15 @@
 ---
 name: session-close-handoff
-description: "Reescribe PROJECT_handoff.md con el estado macro completo del proyecto y el estado táctico exacto de la sesión."
+description: Protocolo técnico de consolidación de contexto, persistencia de estado macro/táctico y generación del archivo PROJECT_handoff.md.
 user-invocable: false
 agent: session-closer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /session-close-handoff — Registro del Punto de Guardado
+# Protocolo de Persistencia de Contexto (Punto de Guardado)
 
-Tu objetivo es reescribir `PROJECT_handoff.md` en la raíz del proyecto con el estado completo del proyecto al cierre de sesión. Este archivo es el **único punto de verdad de estado**: la próxima sesión solo necesita leerlo para arrancar con contexto completo.
+Este skill define el procedimiento técnico para capturar el estado exacto del proyecto antes de finalizar la sesión actual. Su objetivo es garantizar que la siguiente instancia de Claude pueda retomar el trabajo con Cero Pérdida de Contexto.
 
-> Reglas de comportamiento y protocolos: ver **CLAUDE.md**.
-
----
 
 ## Paso 1 — Leer el estado actual
 
@@ -21,7 +18,6 @@ Lee `PROJECT_handoff.md` existente (si existe). Extrae y preserva **íntegrament
 
 Si el archivo no existe (primera sesión), inicializa las secciones basándote en la información de gobernanza disponible en `CLAUDE.md`.
 
----
 
 ## Paso 2 — Reconstruir el estado de la sesión
 
@@ -33,7 +29,6 @@ Analiza la conversación completa para extraer:
 - **Próxima acción**: La tarea atómica más pequeña y concreta para iniciar la próxima sesión.
 - **Notas nuevas**: Decisiones de arquitectura relevantes ocurridas en esta sesión. Formato: `- **YYYY-MM-DD** — [hecho concreto]`.
 
----
 
 ## Paso 3 — Escritura de PROJECT_handoff.md
 
@@ -45,7 +40,6 @@ Escribe el archivo siguiendo estrictamente la estructura formal:
 - **§5. Notas y Decisiones Registradas**: Append de las nuevas notas al final del historial preservado.
 - **§6. Estado de Sesión**: Punto de guardado detallado (Working Set, Contexto, Bloqueador, Próxima Acción).
 
----
 
 ## Paso 4 — Reporte de Cierre
 
@@ -60,7 +54,6 @@ Cerrando sesión — Handoff:
 
 Informar: "`PROJECT_handoff.md` actualizado en la raíz del repositorio."
 
----
 
 ## Reglas innegociables
 

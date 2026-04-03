@@ -1,23 +1,14 @@
 ---
 name: contract-arbitration
-description: "Especialista en el arbitraje de contratos técnicos (API Design), mediación entre Backend y Frontend y sincronización de esquemas de datos."
-# ENCAPSULAMIENTO (Privacidad según Doc oficial)
-disable-model-invocation: true 
+description: Protocolo técnico de mediación de contratos API, validación de esquemas OpenAPI y sincronización entre modelos Pydantic e interfaces TypeScript.
 user-invocable: false
-
-# SUBAGENTE (Estructura de Fork Aislado)
-context: fork
-agent: Explore
+agent: integration-mediator
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /contract-arbitration — Arbitraje de Contratos de API
+# Protocolo de Arbitraje de Contratos (Contract-First)
+Este skill define el procedimiento para garantizar que la API es la Única Fuente de Verdad (SSOT). Su objetivo es asegurar que lo que el Backend emite es exactamente lo que el Frontend espera, eliminando errores de integración en tiempo de ejecución. Se rige por el estándar Contract First de CLAUDE.md.
 
-Eres el Especialista en Integración Senior de **SimpleAuth**. Tu misión es certificar que el contrato de datos entre la API (Backend/FastAPI) y la Web (Frontend/Next.js) es consistente, está documentado en OpenAPI (Swagger) y es la fuente de verdad única para ambas triadas.
-
-> Mandato de integración: ver **CLAUDE.md §"Contratos y API Design (Contract First)"**.
-
----
 
 ## Paso 1 — Análisis del Esquema Pydantic vs. Consumo Real
 
@@ -26,7 +17,6 @@ Revisa las definiciones de datos:
 2.  **Frontend (Types)**: ¿Qué interfaces Typescript se están usando para mapear el JSON de la API? ¿Existe discrepancia en nombres de campos (ej. `user_id` vs `userId`)?
 3.  **OpenAPI**: Genera o revisa el archivo `/openapi.json` para verificar la documentación oficial del servidor.
 
----
 
 ## Paso 2 — Resolución de Conflictos de Tipo
 
@@ -35,7 +25,6 @@ Identifica y resuelve discrepancias:
 2.  **Formatos de Respuesta**: ¿Los códigos de error (400, 401, 403, 404) están especificados uniformemente?
 3.  **Encabezados**: ¿Se están enviando los headers de autenticación (Bearer Token) correctamente?
 
----
 
 ## Paso 3 — Inyección de Recomendaciones de Integración
 
@@ -44,7 +33,6 @@ Si detectas un descalce técnico:
 2.  Redacta la **Recomendación de Contrato [CON-F-XX]** adjunta a la tarea.
 3.  Informa a los Reviewers: "Existe una discrepancia de tipos en la ruta `/auth/login` que romperá el despliegue."
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de Mediación
 
@@ -65,7 +53,6 @@ Si detectas un descalce técnico:
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Reglas Innegociables
 

@@ -1,18 +1,14 @@
 ---
 name: web-code
-description: "Especialista en desarrollo Frontend con Next.js, React y Tailwind CSS. Crea componentes, maneja estados en el cliente y consume APIs." 
+description: Protocolo técnico para la construcción de interfaces con Next.js (App Router), React, Tailwind CSS y consumo de APIs REST.
 user-invocable: false
 agent: frontend-coder
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /web-code — Desarrollo Web en Next.js y Tailwind
+# Protocolo de Ejecución: Desarrollo Frontend (Next.js/Tailwind)
+Este skill define el estándar técnico obligatorio para la creación de componentes, vistas y lógica de cliente. Se rige por los Estándares de Frontend definidos en CLAUDE.md.
 
-Eres el Desarrollador de Frontend Senior de **SimpleAuth**. Tu misión es construir una interfaz intuitiva, segura y visualmente premium utilizando las mejores prácticas de Next.js (App Router), React y Tailwind CSS.
-
-> Mandato técnico: ver **CLAUDE.md §"Estándares de Frontend (Next.js/React)"**.
-
----
 
 ## Paso 1 — Leer las Especificaciones (SPEC)
 
@@ -23,7 +19,6 @@ Antes de codificar, entiende el contexto:
 
 Si no entiendes la lógica de la API que debes consumir, consulta al **backend-coder** o revisa el contrato en la SPEC.
 
----
 
 ## Paso 2 — Implementar la Solución Web
 
@@ -32,7 +27,6 @@ Si no entiendes la lógica de la API que debes consumir, consulta al **backend-c
 3.  **Consumo de API**: Utiliza `fetch` o hooks de datos personalizados. Asegúrate de manejar correctamente los estados: **Cargando**, **Éxito** y **Error**.
 4.  **Diseño Responsivo**: Toda interfaz debe verse impecable en Móvil, Tablet y Desktop. Usa utilidades de Tailwind (`sm:`, `md:`, `lg:`).
 
----
 
 ## Paso 3 — Trazabilidad y Limpieza
 
@@ -47,7 +41,6 @@ Auto-revisión de accesibilidad básica:
 -   Roles ARIA si son necesarios.
 -   Contraste de color adecuado.
 
----
 
 ## Paso 4 — Notificación y Emisión de Token "Done"
 
@@ -61,7 +54,6 @@ Auto-revisión de accesibilidad básica:
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Reglas Innegociables
 

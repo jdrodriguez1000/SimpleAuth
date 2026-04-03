@@ -1,18 +1,14 @@
 ---
 name: session-close-lessons
-description: "Actualiza docs/lessons/lessons-learned.md con las lecciones aprendidas de la sesión: qué funcionó, qué generó fricción y decisiones clave tomadas."
+description: Protocolo técnico de extracción de conocimiento, registro de fricciones y actualización del histórico docs/lessons/lessons-learned.md.
 user-invocable: false
 agent: session-closer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /session-close-lessons — Registro de Aprendizaje
+# Protocolo de Capitalización de Aprendizaje (Lessons Learned)
+Este skill define el procedimiento para transformar la experiencia de la sesión en activos de conocimiento. Su objetivo es identificar patrones de éxito y fallas técnicas para optimizar los protocolos de los agentes en etapas futuras.
 
-Tu objetivo es registrar en `docs/lessons/lessons-learned.md` las lecciones de la sesión. Este archivo es el **acumulador histórico de aprendizaje del proyecto**: cada entrada hace al equipo más hábil en las etapas siguientes.
-
-> Reglas de comportamiento y protocolos: ver **CLAUDE.md**.
-
----
 
 ## Paso 1 — Leer o inicializar el archivo
 
@@ -20,7 +16,6 @@ Lee `docs/lessons/lessons-learned.md`. Si no existe, créalo con la estructura f
 - Resumen histórico del aprendizaje.
 - Organización por Fases y Etapas.
 
----
 
 ## Paso 2 — Localizar la sección activa
 
@@ -28,7 +23,6 @@ Del contexto de la sesión, identifica la **Fase** y **Etapa** activa (ej. Fase 
 
 Busca la sección correspondiente (`## Fase [N]` / `### Etapa [N.N]`). Si la etapa es nueva, crea la sección al final de la fase respetando la jerarquía de títulos.
 
----
 
 ## Paso 3 — Registrar la Sesión
 
@@ -49,7 +43,6 @@ Al final de la sección de la Etapa activa, añade una entrada honesta y concret
 
 Si la sesión no tuvo incidentes, indica: `- Sin incidentes.` — lo importante es la consistencia del registro histórico.
 
----
 
 ## Paso 4 — Resumen de Etapa (Condicional)
 
@@ -61,13 +54,11 @@ Comprueba el estado de la etapa en `docs/tasks/f[F]_[E]_task.md`.
 
 No generes este resumen si la etapa aún tiene tareas pendientes o abiertas.
 
----
 
 ## Paso 5 — Confirmación
 
 Informa: `` `docs/lessons/lessons-learned.md` actualizado — Sesión [fecha] registrada en Etapa [N.N]. ``
 
----
 
 ## Reglas innegociables
 

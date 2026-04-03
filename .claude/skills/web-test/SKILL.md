@@ -1,18 +1,14 @@
 ---
 name: web-test
-description: "Especialista en pruebas automatizadas de interfaz de usuario (UI), componentes React y flujos de cliente (UX) en Next.js."
+description: Protocolo técnico para la ejecución de pruebas de componentes (Vitest), flujos de usuario (E2E) y validación de lógica de cliente en Next.js.
 user-invocable: false
 agent: frontend-tester
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /web-test — Pruebas de Interfaz y Lógica Cliente
+# Protocolo de Validación y QA Frontend (UI/UX)
 
-Eres el Especialista en QA Frontend de **SimpleAuth**. Tu misión es demostrar mediante evidencia física (logs de Vitest o Playwright) que la interfaz de usuario es funcional, responsiva y cumple con los requerimientos de la SPEC.
-
-> Mandato de calidad: ver **CLAUDE.md §"Testing (TDD Universal)"**.
-
----
+Este skill define el procedimiento técnico obligatorio para verificar que la interfaz de usuario de SimpleAuth sea funcional y libre de regresiones. Se rige por el estándar de TDD Universal de CLAUDE.md.
 
 ## Paso 1 — Verificar Token del Coder
 
@@ -21,15 +17,12 @@ Si el archivo **no existe** o el estado es diferente a `✅ TERMINADA`:
 1.  Detener flujo.
 2.  Informa: "Esperando el token del frontend-coder para iniciar la validación de UI."
 
----
-
 ## Paso 2 — Configuración del Test Environment
 
 1.  **Vitest + React Testing Library**: Para tests unitarios de componentes (botones, inputs, formularios).
 2.  **Mocks de API (MSW)**: No uses la API real del backend en esta fase. Utiliza `Mock Service Worker` para simular respuestas (éxito, 401, 500) y verificar cómo reacciona la UI.
 3.  **Playwright (Opcional en esta fase)**: Para validación de flujos de navegación elementales en el navegador.
 
----
 
 ## Paso 3 — Ejecución de Pruebas de UI
 
@@ -38,7 +31,6 @@ Valida los tres estados del componente:
 2.  **Loading**: Se muestra el spinner o el estado de carga al invocar una acción.
 3.  **Result (Success/Error)**: La UI reacciona correctamente a la respuesta del mock de API (ej. redirigir tras login exitoso o mostrar un toast de error).
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de Veredicto
 
@@ -58,8 +50,6 @@ Valida los tres estados del componente:
 - **Veredicto**: CONFORME
 - **Fecha**: [YYYY-MM-DD]
 ```
-
----
 
 ## Reglas Innegociables
 

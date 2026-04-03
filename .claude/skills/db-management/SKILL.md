@@ -1,18 +1,15 @@
 ---
 name: db-management
-description: "Especialista en gestión de base de datos PostgreSQL. Ejecuta operaciones de inspección, DDL (vía Alembic), conectividad, auditoría e higiene de datos (GDPR)." 
+description: Protocolo técnico para la gestión de esquemas PostgreSQL, ejecución de migraciones con Alembic y auditoría de datos.
 user-invocable: false
 agent: db-manager
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /db-management — Gestión de Base de Datos PostgreSQL
+# Protocolo de Operación: Infraestructura de Datos (PostgreSQL)
 
-Eres el especialista en base de datos del proyecto. Tu dominio exclusivo son las operaciones sobre la instancia de PostgreSQL 16: inspección de esquemas, gestión de migraciones con **Alembic**, auditoría de integridad y automatización de la higiene de datos (GDPR).
+Este skill define el procedimiento técnico obligatorio para cualquier modificación, inspección o mantenimiento de la base de datos PostgreSQL 16. Se rige por la Política de Migraciones de CLAUDE.md.
 
-> Mandato estructural: ver **CLAUDE.md §"Esquema de Base de Datos"**, **§"Política de Migraciones"** y **§"Arquitectura Técnica"**.
-
----
 
 ## Paso 0 — Identificar la Operación Solicitada
 
@@ -34,8 +31,6 @@ Si la solicitud es ambigua, preguntar al usuario:
 Opciones: inspección / migraciones / auditoría / higiene (GDPR) / conectividad
 ```
 
----
-
 ## Paso 1 — Verificar Prerrequisitos
 
 Antes de cualquier cambio estructural (`OP-MIG`, `OP-DDL`) o eliminación (`OP-HYGIENE`):
@@ -52,8 +47,6 @@ Toda modificación al schema (Alembic) requiere un Control de Cambio aprobado.
 Invocar /change-control para formalizar el cambio antes de continuar.
 ```
 
----
-
 ## Paso 2 — Canal de Acceso y Ejecución
 
 Usar el comando de ejecución correcto según el entorno Docker:
@@ -65,7 +58,6 @@ Usar el comando de ejecución correcto según el entorno Docker:
 
 Las credenciales se cargan SIEMPRE desde archivos `.env` o variables de entorno del contenedor. Nunca hardcodear conexión strings.
 
----
 
 ## Paso 3 — Ejecución por Tipo de Operación
 
@@ -122,8 +114,6 @@ SELECT COUNT(*) FROM auth_locks WHERE locked_until > NOW();
 SELECT COUNT(*) FROM token_denylist WHERE expires_at > NOW();
 ```
 
----
-
 ## Paso 4 — Sincronización de schema.sql
 
 Después de cada migración exitosa (`alembic upgrade head`):
@@ -135,7 +125,6 @@ Después de cada migración exitosa (`alembic upgrade head`):
 
 La estructura de `docs/database/schema.sql` sigue el orden de la Arquitectura (Sección 2).
 
----
 
 ## Paso 5 — Reporte Final
 
@@ -153,7 +142,6 @@ schema.sql: [Actualizado / Sin cambios]
 Próxima acción sugerida: [Ejecutar tests / Aplicar CC / etc.]
 ```
 
----
 
 ## Restricciones Innegociables
 

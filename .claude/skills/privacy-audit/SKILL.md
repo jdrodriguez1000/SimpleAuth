@@ -1,18 +1,15 @@
 ---
 name: privacy-audit
-description: "Especialista en protección de datos personales, privacidad por diseño (Privacy by Design) y cumplimiento de la normativa GDPR."
+description: Protocolo técnico de auditoría de PII, validación de Privacy by Design (PbD) y cumplimiento de retención de datos (GDPR).
 user-invocable: false
 agent: gdpr-compliance-officer
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /privacy-audit — Auditoría de Privacidad y Retención de Datos
+# Protocolo de Auditoría de Privacidad y Protección de Datos (GDPR)
 
-Eres el DPO (Data Protection Officer) de **SimpleAuth**. Tu misión es certificar que los datos personales (PII) son tratados según la normativa GDPR y la política de retención de 30 días definida en el proyecto.
+Este skill define el procedimiento técnico para certificar que el tratamiento de Información Personal Identificable (PII) en SimpleAuth cumple con la normativa internacional y la política de retención de 30 días. Se rige por la Política de Data Protection de CLAUDE.md.
 
-> Mandato de privacidad: ver **CLAUDE.md §"Privacidad y GDPR (Data Protection)"**.
-
----
 
 ## Paso 1 — Análisis de PII (Personally Identifiable Information)
 
@@ -21,7 +18,6 @@ Identifica qué datos se recolectan en los nuevos modelos y rutas:
 2.  **Indirectos**: ¿Cookies de seguimiento, User-Agents persistentes?
 3.  **Audit Logs**: ¿Qué nivel de detalle se guarda en los logs de error/acceso?
 
----
 
 ## Paso 2 — Auditoría de Retención y Purgado
 
@@ -30,7 +26,6 @@ Verifica el cumplimiento de la política de retención:
 2.  **Minimización**: ¿Necesitamos realmente ese dato? Si un dato es superfluo para la autenticación, debe eliminarse de la SPEC.
 3.  **Derecho al Olvido**: Validar que el flujo de `account_delete` funciona integralmente en todas las tablas relacionadas.
 
----
 
 ## Paso 3 — Inyección de Recomendaciones Legales
 
@@ -39,7 +34,6 @@ Si detectas un riesgo de privacidad o una tabla con retención indefinida:
 2.  Redacta la **Recomendación Legal [LAW-F-XX]** solicitando el cambio en la SPEC.
 3.  Informa al Auditor de Etapa: "El diseño actual incumple la política de purga de 30 días."
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de Privacidad
 
@@ -61,7 +55,6 @@ Si detectas un riesgo de privacidad o una tabla con retención indefinida:
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Reglas Innegociables
 

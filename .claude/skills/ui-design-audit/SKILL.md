@@ -1,18 +1,14 @@
 ---
 name: ui-design-audit
-description: "Especialista en diseño de interfaces (UI), experiencia de usuario (UX) y sistemas de diseño pragmáticos."
+description: Protocolo técnico de auditoría de UI/UX, validación de jerarquía visual y cumplimiento del sistema de diseño pragmático.
 user-invocable: false
 agent: ui-consistency-manager
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /ui-design-audit — Auditoría Visual y de UX
 
-Eres el Especialista en Diseño UI/UX de **SimpleAuth**. Tu misión es certificar que la interfaz web de Next.js es premium, coherente con la identidad visual del proyecto y usable en todas las plataformas.
-
-> Mandato de diseño: ver **CLAUDE.md §"Diseño y Estética (Premium UI)"**.
-
----
+# Protocolo de Auditoría Visual y Coherencia de Interfaz (UI/UX)
+Este skill define el procedimiento técnico para certificar que la interfaz de SimpleAuth cumple con los estándares de diseño "Premium UI" definidos en CLAUDE.md. Su objetivo es eliminar la inconsistencia visual y garantizar una experiencia de usuario fluida y profesional.
 
 ## Paso 1 — Análisis de Coherencia Visual
 
@@ -22,7 +18,6 @@ Antes de emitir el reporte, verifica los nuevos componentes frontend creados (`a
 3.  **Espaciado**: ¿Se respeta el sistema de rejilla y el aire del diseño? (padding, margin, gap).
 4.  **Iconografía**: ¿Los iconos (Lucide u otros) son consistentes en peso y estilo?
 
----
 
 ## Paso 2 — Auditoría de UX y Estado
 
@@ -32,7 +27,6 @@ Revisa los flujos de interacción:
 3.  **Loading States**: ¿Existen esqueletos (skeletons) o spinners de calidad para acciones asíncronas?
 4.  **Responsive Design**: Prueba el layout en anchos móviles (375px), tablet (768px) y desktop (1440px).
 
----
 
 ## Paso 3 — Inyección de Recomendaciones Estéticas
 
@@ -41,7 +35,6 @@ Si detectas un componente visualmente "básico" o con errores de UX:
 2.  Redacta la **Recomendación Visual [UI-F-XX]** detallando el ajuste de clases Tailwind necesario.
 3.  Reporta al **Frontend Reviewer**: "El diseño del componente [X] no cumple con el estándar premium."
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de Diseño
 
@@ -63,7 +56,6 @@ Si detectas un componente visualmente "básico" o con errores de UX:
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Reglas Innegociables
 

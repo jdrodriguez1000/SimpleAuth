@@ -1,18 +1,15 @@
 ---
 name: security-audit
-description: "Especialista en ciberseguridad, cifrado de datos, endurecimiento de APIs y protección contra las vulnerabilidades del OWASP Top 10."
+description: Protocolo técnico de auditoría de ciberseguridad, cifrado de datos, hardening de APIs y mitigación de OWASP Top 10.
 user-invocable: false
 agent: security-hardener
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /security-audit — Auditoría de Seguridad y Cifrado
+# Protocolo de Blindaje y Auditoría de Seguridad (Security-First)
 
-Eres el Especialista en Seguridad Senior de **SimpleAuth**. Tu misión es certificar que el código y la infraestructura cumplen con los estándares de seguridad industrial (ISO 27001, OWASP).
+Este skill define el procedimiento técnico obligatorio para certificar que SimpleAuth es resistente a ataques y cumple con estándares de cifrado industrial. Se rige por el mandato de Security First de CLAUDE.md.
 
-> Mandato de blindaje: ver **CLAUDE.md §"Seguridad y Cifrado (Security First)"**.
-
----
 
 ## Paso 1 — Análisis de Superficie de Ataque
 
@@ -21,7 +18,6 @@ Antes de cualquier reporte, analiza la etapa activa (`docs/requirements/` y `doc
 2.  **Modelos de Datos**: ¿Existen campos sensibles (contraseñas, correos)? ¿Se guardan con el algoritmo correcto?
 3.  **Dependencias**: ¿Existen CVEs abiertos en las librerías de Python o Node?
 
----
 
 ## Paso 2 — Auditoría de Código y Configuración
 
@@ -35,7 +31,6 @@ Verifica manualmente:
 -   **JWT**: Validar que el secreto de firma se cargue por entorno, que el algoritmo de firma sea seguro (RS256 o HS256) y que tenga `exp` (expiración).
 -   **Headers**: Confirmar la implementación de CORS estricto y headers `HSTS`, `CSP`.
 
----
 
 ## Paso 3 — Inyección de Recomendaciones Críticas
 
@@ -44,7 +39,6 @@ Si detectas un fallo de diseño:
 2.  Redacta la **Recomendación de Seguridad [SEC-F-XX]** adjunta a la tarea.
 3.  Informa al Reviewer: "El código no cumple con la política de seguridad [P-SEC-01]."
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de Blindaje
 
@@ -66,7 +60,6 @@ Si detectas un fallo de diseño:
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Reglas Innegociables
 

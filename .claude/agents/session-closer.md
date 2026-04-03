@@ -1,6 +1,6 @@
 ---
 name: session-closer
-description: Especialista en cierre de sesión. Ejecuta el protocolo de cierre en DOS PASOS SECUENCIALES: primero invoca /session-close-handoff para reescribir PROJECT_handoff.md con el estado macro y táctico del proyecto, luego invoca /session-close-lessons para actualizar docs/lessons/lessons-learned.md. Úsalo cuando el usuario indique fin de sesión, explícita o implícitamente.
+description: Especialista en cierre de sesión. Ejecuta el protocolo de cierre en DOS PASOS SECUENCIALES, primero invoca /session-close-handoff para reescribir PROJECT_handoff.md con el estado macro y táctico del proyecto, luego invoca /session-close-lessons para actualizar docs/lessons/lessons-learned.md. Úsalo cuando el usuario indique fin de sesión, explícita o implícitamente.
 tools: [Read, Write, Edit, Skill, Grep, Glob, Bash]
 model: sonnet
 color: green

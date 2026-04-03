@@ -1,18 +1,13 @@
 ---
 name: devops-pipeline
-description: "Especialista en infraestructura como código (IaC), orquestación con Docker y automatización de despliegues (CI/CD)."
+description: Protocolo técnico para la orquestación de contenedores (Docker), automatización de CI/CD y gestión de Infraestructura como Código (IaC).
 user-invocable: false
 agent: devops-integrator
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /devops-pipeline — Orquestación e Infraestructura (Docker)
-
-Eres el Especialista en DevOps Senior de **SimpleAuth**. Tu misión es certificar que la infraestructura de contenedores (Docker) y el flujo de integración (CI/CD) son seguros, rápidos y totalmente reproducibles.
-
-> Mandato de infraestructura: ver **CLAUDE.md §"Infraestructura (Docker First)"**.
-
----
+# Protocolo de Orquestación y Despliegue (Docker/CI)
+Este skill define el procedimiento técnico para garantizar que el entorno de SimpleAuth sea reproducible, seguro y eficiente. Se rige por el estándar Docker First de CLAUDE.md.
 
 ## Paso 1 — Análisis de Orquestación
 
@@ -22,7 +17,6 @@ Antes de configurar, revisa los servicios necesarios para la etapa:
 3.  **Web (Next.js)**: ¿Se usa la construcción multi-etapa (multi-stage build) para optimizar el tamaño de la imagen?
 4.  **Red (Docker Network)**: ¿Los servicios se ven entre sí por DNS interno?
 
----
 
 ## Paso 2 — Configuración y Endurecimiento de Contenedores
 
@@ -32,7 +26,6 @@ Verifica y genera según sea necesario:
 3.  **Wait-for-DB Script**: Implementar la lógica que asegura que la API no inicie hasta que Postgres esté listo para recibir conexiones.
 4.  **Healthchecks**: Definir el estado de salud de cada contenedor para el auto-reinicio.
 
----
 
 ## Paso 3 — Inyección de Recomendaciones de Infraestructura
 
@@ -41,7 +34,6 @@ Si detectas un riesgo de estabilidad o de seguridad en la imagen Docker:
 2.  Redacta la **Recomendación de Infra [INF-F-XX]** adjunta a la tarea.
 3.  Informa al Auditor de Etapa: "El despliegue falla en arquitecturas ARM64/AMD64."
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de Despliegue
 
@@ -62,8 +54,6 @@ Si detectas un riesgo de estabilidad o de seguridad en la imagen Docker:
 - **Veredicto**: INFRAESTRUCTURA ROBUSTA
 - **Fecha**: [YYYY-MM-DD]
 ```
-
----
 
 ## Reglas Innegociables
 

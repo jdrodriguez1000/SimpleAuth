@@ -1,18 +1,14 @@
 ---
 name: stage-audit
-description: "Ejecuta el protocolo de auditoría técnica y documental antes del cierre de una etapa. Verifica que cada tarea completada tenga evidencia física (código/tests/documentos) y detecta código no documentado (Código Fantasma). Adapta automáticamente sus criterios según el tipo de etapa: DOCUMENTACIÓN (1.x), PROTOTIPADO (2.1) o CÓDIGO (3.x / 4.x)."
+description: Protocolo técnico de auditoría documental y de código. Verifica la trazabilidad entre requisitos, tareas y evidencia física (tokens/tests).
 user-invocable: false
 agent: stage-auditor
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /stage-audit — Auditoría Técnica y Documental de Etapa
+# Protocolo de Auditoría Técnica y Documental (Stage-Gate)
+Este skill define el procedimiento para certificar el cierre de una etapa del proyecto. Su objetivo es garantizar que no exista "Código Fantasma" (código sin tarea asociada) ni "Tareas Fantasma" (tareas marcadas como listas sin archivos que las respalden).
 
-Eres un auditor forense de software. Tu misión es transformar el repositorio en una "escena del crimen" técnica donde cada tarea debe dejar evidencia física verificable. No se acepta la palabra del desarrollador; solo se acepta la existencia comprobable de los entregables.
-
-> Mandato de auditoría: ver **CLAUDE.md §"Desarrollo Spec-Driven"** y **§"Testing (TDD Universal)"**.
-
----
 
 ## Paso 0 — Identificar la Etapa a Auditar
 
@@ -27,7 +23,6 @@ Una vez identificada, construye los identificadores canónicos:
 - `[E]` = número de etapa con dos dígitos (ej. `02`)
 - Prefijo SDD: `f[F]_[E]` (ej. `f01_02`)
 
----
 
 ## Paso 0.5 — Detección del Modo de Auditoría
 
@@ -47,7 +42,6 @@ Informa al inicio:
 📌 Etapa: f[F]_[E] — [Descripción de la etapa según CLAUDE.md]
 ```
 
----
 
 ## Paso 1 — Sincronización de Contexto
 
@@ -69,7 +63,6 @@ No existe: [ruta del documento faltante]
 La auditoría no puede iniciarse sin los documentos SDD de la etapa.
 ```
 
----
 
 ## Paso 2 — Verificación de Evidencia (Cross-Check)
 
@@ -88,7 +81,6 @@ La auditoría no puede iniciarse sin los documentos SDD de la etapa.
 - **Validación de Tests**: Comprobar archivos en `pipeline/tests/` o `web/tests/`. Los tests no deben estar vacíos.
 - **Trazabilidad de Tags**: Los archivos de código deben contener comentarios con el tag `[TSK-F-XX]`.
 
----
 
 ## Paso 3 — Detección de "Código Fantasma" (Solo Prototipado y Código)
 
@@ -97,7 +89,6 @@ La auditoría no puede iniciarse sin los documentos SDD de la etapa.
 3. **Cruce con CC**: Verificar si existe un Control de Cambio aprobado en `docs/changes/` que justifique archivos adicionales.
 4. Si un archivo no aparece en tareas ni en CC: **Hallazgo de Código Fantasma**.
 
----
 
 ## Paso 4 — Evaluación del Definition of Done (DoD)
 
@@ -108,7 +99,6 @@ La auditoría no puede iniciarse sin los documentos SDD de la etapa.
 | Mock-Only          | Cero llamadas a APIs reales                     | PROTOTIPADO    |
 | Coherencia de Tags | Tags [REQ] coinciden en PRD y TASK              | TODOS          |
 
----
 
 ## Paso 5 — Generación del Dictamen de Auditoría
 
@@ -121,7 +111,6 @@ Presentar informe final con:
 - ✅ **CONFORME**: Escribe `.agents/tokens/close/audit_token.md` con estado CONFORME.
 - 🚫 **BLOQUEADO**: Escribe `.agents/tokens/close/audit_token.md` con estado BLOQUEADO y lista acciones correctivas.
 
----
 
 ## Reglas Innegociables
 

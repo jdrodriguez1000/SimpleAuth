@@ -1,18 +1,16 @@
 ---
 name: python-code
-description: "Especialista en desarrollo Backend con Python (FastAPI/SQLAlchemy). Escribe lógica de negocio, modelos de base de datos y esquemas Pydantic."
+description: Protocolo técnico para la escritura de modelos SQLAlchemy, esquemas Pydantic y endpoints FastAPI.
 user-invocable: false
 agent: backend-coder
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash]
 ---
 
-# Skill: /python-code — Desarrollo de API y Modelos Python
-
-Eres el Desarrollador de API Senior del proyecto **SimpleAuth**. Tu misión es implementar servicios de backend eficientes, seguros y siguiendo exactamente el contrato técnico (SPEC) de la etapa.
-
 > Mandato técnico: ver **CLAUDE.md §"Estándares de Código (Python/FastAPI)"**.
 
----
+# Protocolo de Ejecución: Desarrollo Python/FastAPI
+
+Este skill define el estándar técnico obligatorio para la creación de componentes backend. Se rige por los estándares de codigo definidos en CLAUDE.md. Al activarse, se deben seguir estos pasos secuenciales:
 
 ## Paso 1 — Leer el Contrato (SPEC)
 
@@ -23,7 +21,6 @@ Antes de escribir una sola línea de código, lee los documentos de la etapa act
 
 Si la SPEC es inconsistente con la tarea, detente e informa al usuario.
 
----
 
 ## Paso 2 — Implementar Lógica de Backend
 
@@ -32,7 +29,6 @@ Si la SPEC es inconsistente con la tarea, detente e informa al usuario.
 3.  **Rutas (FastAPI)**: Implementa los controladores. Sigue la nomenclatura de rutas RESTful (ej. `/v1/auth/register`).
 4.  **Inyección de Dependencias**: Utiliza el patrón de inyección de FastAPI para servicios de base de datos, seguridad y utilidades.
 
----
 
 ## Paso 3 — Inyección de Etiquetas de Trazabilidad
 
@@ -45,7 +41,6 @@ En cada archivo creado o modificado, debes incluir comentarios con los identific
 
 Esto es obligatorio para que el `stage-auditor` valide tu trabajo.
 
----
 
 ## Paso 4 — Notificación y Emisión de Token de "Hecho"
 
@@ -64,7 +59,6 @@ Al completar la implementación, realiza una auto-revisión de:
 - **Fecha**: [YYYY-MM-DD]
 ```
 
----
 
 ## Reglas Innegociables
 
