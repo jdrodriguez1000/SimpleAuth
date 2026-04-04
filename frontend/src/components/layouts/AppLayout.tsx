@@ -1,5 +1,6 @@
 // [TSK-F-03.2] - AppLayout: contenedor base para vistas protegidas — SPEC v1.3.0 §3.2 + §3.3
 // [TSK-F-04] - Logo SVG premium integrado; placeholder ShieldCheck eliminado (G-11)
+// [TSK-F-14] - Transiciones de página con Framer Motion integradas (SPEC v1.3.0 §6)
 // Server Component: el estado de usuario es mock; los sub-componentes interactivos son Client.
 
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { UserNav } from "@/components/ui/UserNav";
 import { SidebarNav } from "@/components/layouts/SidebarNav";
+import { PageTransition } from "@/components/ui/PageTransition";
 import { cn } from "@/lib/utils";
 
 // --- Interfaz del componente ---
@@ -104,13 +106,18 @@ function AppLayout({ children }: AppLayoutProps) {
         </aside>
 
         {/* Área de contenido principal */}
+        {/*
+         * [TSK-F-14] PageTransition: envuelve el contenido de la vista con
+         * una animación de entrada sutil (opacity 0→1, y 8→0, 0.3s easeOut).
+         * La transición proviene del Layout, nunca de las páginas individuales.
+         */}
         <main
           className={cn(
             "flex-1 overflow-y-auto",
             "px-4 py-6 sm:px-6 lg:px-8"
           )}
         >
-          {children}
+          <PageTransition className="h-full">{children}</PageTransition>
         </main>
       </div>
     </div>

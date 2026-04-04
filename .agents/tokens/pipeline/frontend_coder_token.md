@@ -1,8 +1,30 @@
 # TOKEN: FRONTEND_CODER_DONE
 
-- **Tarea**: TSK-F-04 — Generación de Assets AI (Logo/Favicon)
+- **Tarea**: TSK-F-14 — Configurar Framer Motion y transiciones globales
 - **Estado**: ✅ TERMINADA
-- **Fecha**: 2026-04-03
+- **Fecha**: 2026-04-04
+
+---
+
+## Archivos Modificados / Creados
+
+| Archivo | Operación |
+|---|---|
+| `frontend/src/components/ui/PageTransition.tsx` | CREADO |
+| `frontend/src/components/ui/GlassCard.tsx` | MODIFICADO |
+| `frontend/src/components/layouts/AuthLayout.tsx` | MODIFICADO |
+| `frontend/src/components/layouts/AppLayout.tsx` | MODIFICADO |
+| `frontend/package.json` | MODIFICADO (framer-motion instalado) |
+
+## Build Validation
+
+- 15 rutas estáticas generadas correctamente (13 de aplicación + 2 del sistema)
+- TypeScript sin errores
+- Compilación exitosa con Turbopack
+
+---
+
+## Historial anterior
 - **Agente emisor**: frontend-coder
 
 ## Archivos Modificados / Creados
@@ -399,3 +421,35 @@ El **frontend-tester** puede iniciar la validacion de TSK-F-04.
   - Semantica A11y: `role="alert" aria-label` descriptivo en bloque de alerta; `aria-hidden` en SVGs decorativos; foco gestionado por Link nativo
 - **Token Final**: TSK-F-11_DONE
 - **Proxima Accion**: frontend-tester puede iniciar la validacion de TSK-F-11
+
+---
+
+# TOKEN: FRONTEND_CODER_DONE — TSK-F-12.1
+- **Tarea**: TSK-F-12.1 — Definir esquemas Zod (Auth & Profile)
+- **Archivos Modificados**:
+  - `frontend/src/lib/validations/auth.ts` (CREADO)
+  - `frontend/src/lib/validations/profile.ts` (CREADO)
+  - `frontend/package.json` (dependencia `zod ^4.3.6` agregada)
+- **Estado**: TERMINADA
+- **Fecha**: 2026-04-04
+- **Build**: EXITOSO — Next.js 16.2.2 compila sin errores (TypeScript + Turbopack). 13 rutas generadas.
+- **Trazabilidad**:
+  - SPEC v1.3.0 §5 — 7 esquemas Zod definidos segun contratos exactos
+  - Scope §6 "Password Policy" — regex de fortaleza: 8+ chars, mayuscula, numero, especial
+  - SPEC §2 CC-002 — Enums M/F/O y CO/US/CA/MX/VE/OT alineados con UI forms existentes
+  - PRD FR-1.1.9 — deleteAccountSchema: literal "ELIMINAR MI CUENTA"
+- **Esquemas Implementados**:
+  - `auth.ts`: loginSchema, registerSchema, recoverySchema, resetPasswordSchema
+  - `profile.ts`: profileSchema, securitySchema, deleteAccountSchema
+- **Tipos TypeScript exportados**: LoginFormData, RegisterFormData, RecoveryFormData, ResetPasswordFormData, ProfileFormData, SecurityFormData, DeleteAccountFormData
+- **Decisiones Tecnicas**:
+  - Zod v4 API: `z.enum([] as const, { error: "..." })` en lugar de `errorMap` (breaking change v4)
+  - `z.literal(true/string, { error: "..." })` para terms y confirmation keyword
+  - `z.refine()` en schemas de password para validar igualdad de confirmacion
+  - `isAtLeast18()` helper puro (sin dependencias) reutilizado en registerSchema y profileSchema
+  - `token` incluido en resetPasswordSchema como `z.string().uuid()` para validacion completa del payload
+  - securitySchema incluye segundo refine para garantizar que la nueva contrasena sea distinta a la actual
+  - Email excluido de profileSchema — inmutabilidad garantizada a nivel de schema (Scope §3.2 F6)
+  - Sin React Hook Form — schemas Zod puros segun instrucciones TSK-F-12.1
+- **Token Final**: TSK-F-12.1_COMPLETADO
+- **Proxima Accion**: frontend-tester puede iniciar la validacion de TSK-F-12.1

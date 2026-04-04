@@ -63,3 +63,23 @@
 - **`/auth/blocked` como Server Component** (sin `"use client"`): la vista de bloqueo por rate limit no requiere interactividad. Patrón correcto para vistas informativas estáticas — reduce el bundle de JS enviado al cliente.
 - **Deuda técnica O-4 registrada formalmente**: `PasswordStrengthChecklist` triplicado (register, reset-password, profile/security). La extracción a componente compartido está diferida a TSK-F-15. Esta decisión es **intencional** y no debe interpretarse como omisión.
 - **FR-1.1.9 implementado en dos puntos**: el aviso de 30 días aparece en el bloque de advertencia inicial Y en el estado de éxito post-borrado. Esto garantiza que el usuario lo lee en el momento más crítico (confirmación) además del momento informativo.
+
+#### Sesión: 2026-04-04 (Bloque 4 — Validation & UX Polish)
+
+**✅ Lo que funcionó bien:**
+- El pipeline completo de 4 agentes (`frontend-coder` → `frontend-tester` → `integration-mediator` → `frontend-reviewer`) ejecutó el Bloque 4 en una sola sesión sin iteraciones de corrección mayor. Los gates de calidad funcionan de forma predecible cuando cada agente recibe contexto completo.
+- El `integration-mediator` detectó proactivamente los campos "frontend-only" (`terms`, `confirm_password`, `confirmation`) que no deben enviarse al backend — documentación que de otro modo habría generado bugs de integración en Fase 4.
+- El `frontend-reviewer` aplicó el refactor O-1 (`shared.ts`) in situ sin rebotar al coder, lo que mantuvo el pipeline fluido. Los revisores con permiso de corrección directa aceleran el cierre sin sacrificar calidad.
+- Vitest configurado correctamente desde el primer intento (jsdom + alias `@` + setup file). La suite de 109 tests pasó sin ajustes adicionales.
+
+**⚠️ Lo que no funcionó / fricción encontrada:**
+- **Zod v4 API break silencioso**: `errorMap` fue removido en Zod v4 y reemplazado por `error:` como propiedad directa. El `frontend-coder` tuvo que adaptar la API en tiempo de ejecución. Lección: al briefar al coder sobre Zod, especificar explícitamente la versión instalada y las diferencias de API si es v4+.
+- **Enums UI vs DB no documentados en la SPEC**: la SPEC v1.3.0 no especificaba si los valores de `gender` y `country` en los esquemas Zod deben ser los valores de base de datos (`Masculino`, `CO`) o los valores abreviados de UI (`M`, `CO`). El `integration-mediator` tuvo que resolver la ambigüedad consultando los formularios existentes. Lección: la SPEC debe incluir una tabla explícita de mapeo UI→DB para todos los enums.
+- **GAP-R4-01 sin resolver**: el transporte del token de reset-password (query param vs body en `PATCH /auth/reset-password`) no está definido en la Architecture v1.5.0. Es una brecha de diseño que deberá ser resuelta antes de Fase 4 mediante un CC formal.
+
+**💡 Decisiones clave tomadas:**
+- **Zod v4 API**: usar `error: "mensaje"` como segundo argumento en `z.enum()` y `z.literal()`. No usar `errorMap`. Esta decisión es definitiva para toda la etapa — no revertir.
+- **Enums Zod siguen CC-002** (valores abreviados de UI: `M/F/O`, `CO/US/CA/MX/VE/OT`): el mapeo a valores de DB (`Masculino/Femenino/Otro`, `Other`) es responsabilidad de una capa de transformación en Fase 4, no del schema de validación frontend.
+- **`src/lib/validations/shared.ts`** como módulo canónico de helpers Zod compartidos (`PASSWORD_REGEX`, `passwordField`, `isAtLeast18`). Cualquier nueva validación reutilizable entre schemas debe añadirse aquí — no duplicar en `auth.ts`/`profile.ts`.
+- **Framer Motion como capa de polish no intrusiva**: variantes definidas como constantes externas al componente (sin recreación en cada render), `useReducedMotion` obligatorio, duración máxima 300ms. `PageTransition` es el punto único de animación de entrada de página — no añadir animaciones individuales en los `page.tsx`.
+- **Mocks de Framer Motion en Vitest**: `motion.div` se mapea a `div` descartando props de animación; `useReducedMotion` se mockea con `vi.fn()` para controlar el comportamiento en tests. Este patrón es el estándar para cualquier test futuro que implique componentes animados.

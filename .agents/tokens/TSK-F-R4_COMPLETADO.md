@@ -1,0 +1,14 @@
+# TOKEN: TSK-F-R4_COMPLETADO
+- **Tarea**: TSK-F-R4 — Auditoria Tecnica y de Contratos: Zod Schemas vs SPEC
+- **Etapa**: f1_1.1
+- **Estado**: COMPLETADO
+- **Veredicto de Mediacion**: CONTRATO_SINCRONIZADO con OBSERVACIONES
+- **Schemas Auditados**: 7 (loginSchema, registerSchema, recoverySchema, resetPasswordSchema, profileSchema, securitySchema, deleteAccountSchema)
+- **Discrepancias Criticas**: 2 (DIS-01: gender enum, DIS-02: country enum OT vs Other)
+- **Brechas de Diseno**: 1 (GAP-R4-01: transporte de token en reset-password)
+- **Campos Frontend-Only Identificados**: terms, confirm_password, confirm_new_password, confirmation
+- **Bloqueantes para f1_1.1**: NINGUNO
+- **Acciones Pendientes para Fase 4**: CON-F-01, CON-F-02, CON-F-03, CON-F-04
+- **Fecha**: 2026-04-04
+- **Documento de Auditoria**: `docs/f1_1.1/audits/TSK-F-R4_audit.md`
+- **Token de Mediacion**: `.agents/tokens/consulting/api_contract_token.md`

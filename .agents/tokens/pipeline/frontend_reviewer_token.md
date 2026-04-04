@@ -1,5 +1,26 @@
 # TOKEN: FRONTEND_REVIEWER_APROBADO
 
+- **Tarea**: TSK-F-R4.1 — Code Review Block 4: Esquemas Zod y Animaciones
+- **Veredicto UI**: APROBADO
+- **Estado Visual**: PREMIUM + CONSISTENTE
+- **Auditoría Técnica**: Typescript Estricto (Cumple)
+- **Fecha**: 2026-04-04
+
+## Resumen TSK-F-R4.1
+
+- Build: EXITOSO — 13 rutas estaticas, 0 errores TypeScript
+- Tests: 109/109 PASANDO tras refactor de shared.ts
+- Esquemas Zod: 7 schemas sin `any`, tipos exportados, refine() correctos, mensajes en espanol
+- Animaciones: variantes externas al render, useReducedMotion aplicado, 300ms, sin springs
+- "use client": justificado por useReducedMotion en PageTransition y GlassCard
+- Layouts: Server Components correctos, integracion minima de PageTransition
+- A11y: no aria-hidden, no pointer-events:none, WCAG 2.1 SC2.3 cumplido
+- Correccion aplicada in situ: O-1 — helpers duplicados extraidos a lib/validations/shared.ts
+
+---
+
+## REGISTRO HISTORICO — TSK-F-R3 (2026-04-04)
+
 - **Tarea**: TSK-F-R3 (TSK-F-09, TSK-F-10.1, TSK-F-10.2, TSK-F-11)
 - **Veredicto UI**: APROBADO
 - **Estado Visual**: PREMIUM + CONSISTENTE

@@ -9,7 +9,8 @@
       "Skill(session-close-handoff)",
       "Skill(session-close-lessons)",
       "Bash(npx tsc:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(npx vitest:*)"
     ]
   }
 }

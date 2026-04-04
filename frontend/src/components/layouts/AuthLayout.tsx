@@ -1,9 +1,11 @@
 // [TSK-F-03.1] - AuthLayout: contenedor base para vistas públicas /auth — SPEC v1.3.0 §3.2
 // [TSK-F-04] - Logo SVG premium integrado; placeholder ShieldCheck eliminado (G-11)
-// Server Component — no necesita "use client". El ThemeToggle es el único cliente.
+// [TSK-F-14] - Transiciones de página con Framer Motion integradas (SPEC v1.3.0 §6)
+// Server Component — no necesita "use client". El ThemeToggle y PageTransition son clientes.
 
 import Image from "next/image";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { PageTransition } from "@/components/ui/PageTransition";
 import { cn } from "@/lib/utils";
 
 // --- Interfaz del componente ---
@@ -103,7 +105,12 @@ function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
          * GlassCard es responsabilidad de cada vista individual.
          * max-w-md ≈ 448px — ancho estándar para formularios de auth.
          */}
-        <div className="w-full max-w-md">{children}</div>
+        {/*
+         * [TSK-F-14] PageTransition: envuelve el contenido de la vista con
+         * una animación de entrada sutil (opacity 0→1, y 8→0, 0.3s easeOut).
+         * La transición proviene del Layout, nunca de las páginas individuales.
+         */}
+        <PageTransition className="w-full max-w-md">{children}</PageTransition>
       </main>
     </div>
   );

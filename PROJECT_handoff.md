@@ -24,7 +24,7 @@
 
 ```
 Fase 1 — Prototipado y QA Plan
-  [🔄] E1.1 — Mockups Visuales y UX          ← ACTIVA (Bloques 1, 2 y 3 completos, Bloque 4 pendiente)
+  [🔄] E1.1 — Mockups Visuales y UX          ← ACTIVA (Bloques 1-4 completos, Bloque 5 pendiente)
 
 Fase 2 — Backend Core & Unit Testing
   [⬜] E2.1 — Infraestructura, DB y Observabilidad
@@ -50,12 +50,13 @@ Fase 4 — Integración UI, Operaciones e Higiene
 |---|---|---|
 | Design System Tokens | `src/app/globals.css` | ✅ Completo (token `.text-body-sm` añadido) |
 | Root Layout + ThemeProvider | `src/app/layout.tsx` | ✅ Completo |
-| GlassCard | `src/components/ui/GlassCard.tsx` | ✅ Completo |
+| GlassCard | `src/components/ui/GlassCard.tsx` | ✅ Completo (prop `animated`, Framer Motion) |
 | StatusCard + ResendButton + ConfirmDeleteButton | `src/components/ui/StatusCard.tsx` | ✅ Completo |
 | ThemeToggle | `src/components/ui/ThemeToggle.tsx` | ✅ Completo |
 | Toast | `src/components/ui/Toast.tsx` | ✅ Completo (TSK-F-08.2) |
-| AuthLayout | `src/components/layouts/AuthLayout.tsx` | ✅ Completo |
-| AppLayout | `src/components/layouts/AppLayout.tsx` | ✅ Completo |
+| PageTransition | `src/components/ui/PageTransition.tsx` | ✅ Completo (TSK-F-14, useReducedMotion) |
+| AuthLayout | `src/components/layouts/AuthLayout.tsx` | ✅ Completo (PageTransition integrado) |
+| AppLayout | `src/components/layouts/AppLayout.tsx` | ✅ Completo (PageTransition integrado) |
 | SidebarNav | `src/components/layouts/SidebarNav.tsx` | ✅ Completo |
 | UserNav | `src/components/ui/UserNav.tsx` | ✅ Completo |
 | MockAuthContext | `src/context/MockAuthContext.tsx` | ✅ Completo |
@@ -72,6 +73,14 @@ Fase 4 — Integración UI, Operaciones e Higiene
 | Vista /profile/security | `src/app/profile/security/page.tsx` | ✅ Completo (TSK-F-10.1) |
 | Vista /profile/delete | `src/app/profile/delete/page.tsx` | ✅ Completo (TSK-F-10.2) |
 | Vista /auth/blocked | `src/app/auth/blocked/page.tsx` | ✅ Completo (TSK-F-11) |
+| Zod auth schemas | `src/lib/validations/auth.ts` | ✅ Completo (TSK-F-12.1) |
+| Zod profile schemas | `src/lib/validations/profile.ts` | ✅ Completo (TSK-F-12.1) |
+| Zod shared helpers | `src/lib/validations/shared.ts` | ✅ Completo (O-1 TSK-F-R4.1) |
+| Tests schemas auth | `src/lib/validations/__tests__/auth.test.ts` | ✅ Completo (TSK-F-13, 30 tests) |
+| Tests schemas profile | `src/lib/validations/__tests__/profile.test.ts` | ✅ Completo (TSK-F-13, 30 tests) |
+| Tests GlassCard animated | `src/components/ui/__tests__/GlassCard.animated.test.tsx` | ✅ Completo (TSK-F-14.1, 10 tests) |
+| Tests PageTransition | `src/components/ui/__tests__/PageTransition.test.tsx` | ✅ Completo (TSK-F-14.1, 13 tests) |
+| Vitest config | `vitest.config.ts` + `src/test/setup.ts` | ✅ Completo (TSK-F-13) |
 
 ### Backend — Sin iniciar (Fase 2+)
 ### Infraestructura Docker — Sin iniciar (Fase 2+)
@@ -85,8 +94,10 @@ Fase 4 — Integración UI, Operaciones e Higiene
 | PRD v1.3.0 | `docs/f1_1.1/f1_1.1_prd.md` | ✅ Autorizado |
 | SPEC v1.3.0 | `docs/f1_1.1/f1_1.1_spec.md` | ✅ Autorizado |
 | PLAN | `docs/f1_1.1/f1_1.1_plan.md` | ✅ Autorizado |
-| TASK | `docs/f1_1.1/f1_1.1_task.md` | 🔄 En progreso — Bloques 1, 2 y 3 completos |
+| TASK | `docs/f1_1.1/f1_1.1_task.md` | 🔄 En progreso — Bloques 1–4 completos |
 | Auditoría TSK-F-R1 | `docs/f1_1.1/audits/TSK-F-R1_audit.md` | ✅ UI_CONSISTENTE_OK |
+| Auditoría TSK-F-R4 | `docs/f1_1.1/audits/TSK-F-R4_audit.md` | ✅ CONTRATO_SINCRONIZADO |
+| Review TSK-F-R4.1 | `docs/f1_1.1/audits/TSK-F-R4.1_review.md` | ✅ APROBADO |
 
 ### Estado del TASK (f1_1.1_task.md)
 
@@ -115,11 +126,16 @@ Fase 4 — Integración UI, Operaciones e Higiene
 - [x] TSK-F-10.1 — Vista /profile/security (3 campos password, PasswordStrengthChecklist, coincidencia)
 - [x] TSK-F-10.2 — Vista /profile/delete (GDPR 30 días, gatekeeper dual, botón var(--error))
 - [x] TSK-F-11 — Vista /auth/blocked (AuthLayout, "15 minutos" ×3, candado SVG, FR-1.1.7)
-- [x] TSK-F-11.1 — Smoke Test Bloque 3 (APROBADO — 0 bloqueantes, O-M-01 no bloquea)
+- [x] TSK-F-11.1 — Smoke Test Bloque 3 (APROBADO — 0 bloqueantes)
 - [x] TSK-F-R3 — Auditoría Lógica de Perfil (APROBADO — FR-1.1.9 y FR-1.1.7 cumplen, O-4 diferida)
 
-**Bloque 4 — Validation & UX Polish** (0/6 pendiente ⬜):
-TSK-F-12.1, TSK-F-13, TSK-F-14, TSK-F-14.1, TSK-F-R4, TSK-F-R4.1
+**Bloque 4 — Validation & UX Polish** (6/6 completo ✅):
+- [x] TSK-F-12.1 — Esquemas Zod (auth.ts + profile.ts + shared.ts, 7 schemas)
+- [x] TSK-F-13 — Tests Vitest (109 tests en 5 archivos — schemas + GlassCard)
+- [x] TSK-F-14 — Framer Motion (PageTransition + GlassCard animated + layouts)
+- [x] TSK-F-14.1 — A11y check animaciones (109 tests, WCAG 2.1 SC2.3, sin bloqueantes)
+- [x] TSK-F-R4 — Auditoría contratos Zod vs SPEC (CERTIFICADO — DIS-01/DIS-02/GAP-R4-01 documentados)
+- [x] TSK-F-R4.1 — Code Review Block 4 (APROBADO — O-1 shared.ts aplicado in situ)
 
 **Bloque 5 — QA & Final Polish** (0/5 pendiente ⬜):
 TSK-F-15, TSK-F-15.1, TSK-F-16, TSK-F-R5, TSK-F-R5.1
@@ -145,6 +161,12 @@ TSK-F-19, TSK-F-20, TSK-F-21, TSK-F-22
 - **2026-04-04** — Patrón gatekeeper establecido en `/profile/delete`: constante `CONFIRMATION_KEYWORD = "ELIMINAR MI CUENTA"` como única fuente de verdad. Botón destructivo deshabilitado con `isGatekeeperSatisfied` derivado (sin efectos secundarios). Indicador visual verde en el campo de confirmación cuando el texto coincide exactamente.
 - **2026-04-04** — O-4 registrada por `frontend-reviewer` en TSK-F-R3: `PasswordStrengthChecklist` triplicado en register, reset-password y profile/security. Extracción a componente reutilizable diferida explícitamente a TSK-F-15 (Bloque 5). No bloquea ninguna tarea del Bloque 4.
 - **2026-04-04** — FR-1.1.9 (GDPR 30 días) verificado en TSK-F-R3: aviso de 30 días presente en dos puntos de `/profile/delete` (bloque de advertencia + estado de éxito). Reactivación comunicada explícitamente: "puedes reactivar tu cuenta en cualquier momento iniciando sesión".
+- **2026-04-04** — Bloque 4 completado y certificado. 7 esquemas Zod en `src/lib/validations/` (auth.ts + profile.ts + shared.ts). Zod v4 API: usar `error:` en el segundo argumento de `z.enum()` y `z.literal()`, NO `errorMap`. Enums usan valores UI abreviados (M/F/O, CO/US/CA/MX/VE/OT) según CC-002 — no los valores textuales del CLAUDE.md que son labels de UI.
+- **2026-04-04** — DIS-01/DIS-02 documentados en TSK-F-R4: mapeo de enums UI→DB pendiente para Fase 4 (gender: M/F/O → Masculino/Femenino/Otro; country: OT → Other). Campos frontend-only identificados: `terms`, `confirm_password`, `confirm_new_password`, `confirmation` — NO enviar a la API en ningún request body.
+- **2026-04-04** — GAP-R4-01: transporte del token en `PATCH /auth/reset-password` (query param vs body) no especificado en Architecture v1.5.0. Pendiente de definición antes de Fase 4 (integration-mediator debe abrir CC si aplica).
+- **2026-04-04** — Helpers Zod compartidos extraídos a `src/lib/validations/shared.ts` (O-1 TSK-F-R4.1): `PASSWORD_REGEX`, `passwordField`, `isAtLeast18`. Este módulo es el punto único para validaciones reutilizables; cualquier nueva validación cross-schema debe ir aquí.
+- **2026-04-04** — Framer Motion integrado como capa de polish (TSK-F-14): `PageTransition` (opacity 0→1 + y 8→0, 300ms easeOut), `GlassCard` (scale 0.98→1, prop `animated?: boolean` default true). Variantes definidas como constantes externas al componente (no se recrean en cada render). `useReducedMotion` aplicado en ambos componentes — WCAG 2.1 SC2.3 cumplido. `framer-motion` añadido a `frontend/package.json`.
+- **2026-04-04** — Vitest configurado (TSK-F-13): `vitest.config.ts` con `environment: 'jsdom'` y alias `@`. Setup en `src/test/setup.ts` con `@testing-library/jest-dom`. Suite total: 109 tests en 5 archivos (todos pasando). Estructura: `src/lib/validations/__tests__/` para schemas, `src/components/ui/__tests__/` para componentes UI.
 
 ---
 
@@ -152,33 +174,46 @@ TSK-F-19, TSK-F-20, TSK-F-21, TSK-F-22
 
 ### Working Set (archivos activos de la sesión)
 ```
-frontend/src/app/profile/page.tsx                        ← creado (TSK-F-09)
-frontend/src/app/profile/security/page.tsx               ← creado (TSK-F-10.1)
-frontend/src/app/profile/delete/page.tsx                 ← creado (TSK-F-10.2)
-frontend/src/app/auth/blocked/page.tsx                   ← creado (TSK-F-11)
-docs/f1_1.1/f1_1.1_task.md                              ← actualizado (TSK-F-09 a TSK-F-R3 marcados [x])
-.agents/tokens/pipeline/frontend_coder_token.md          ← actualizado (TSK-F-11_DONE)
-.agents/tokens/pipeline/frontend_tester_token.md         ← actualizado (TSK-F-11.1_APROBADO)
-.agents/tokens/pipeline/frontend_reviewer_token.md       ← actualizado (TSK-F-R3_APROBADO)
+frontend/src/lib/validations/auth.ts                              ← creado (TSK-F-12.1)
+frontend/src/lib/validations/profile.ts                           ← creado (TSK-F-12.1)
+frontend/src/lib/validations/shared.ts                            ← creado (O-1 TSK-F-R4.1)
+frontend/src/lib/validations/__tests__/auth.test.ts               ← creado (TSK-F-13, 30 tests)
+frontend/src/lib/validations/__tests__/profile.test.ts            ← creado (TSK-F-13, 30 tests)
+frontend/src/components/ui/PageTransition.tsx                     ← creado (TSK-F-14)
+frontend/src/components/ui/__tests__/GlassCard.animated.test.tsx  ← creado (TSK-F-14.1, 10 tests)
+frontend/src/components/ui/__tests__/PageTransition.test.tsx      ← creado (TSK-F-14.1, 13 tests)
+frontend/vitest.config.ts                                         ← creado (TSK-F-13)
+frontend/src/test/setup.ts                                        ← creado (TSK-F-13)
+frontend/src/components/ui/GlassCard.tsx                          ← modificado (prop animated)
+frontend/src/components/layouts/AuthLayout.tsx                    ← modificado (PageTransition)
+frontend/src/components/layouts/AppLayout.tsx                     ← modificado (PageTransition)
+docs/f1_1.1/audits/TSK-F-R4_audit.md                             ← creado (integration-mediator)
+docs/f1_1.1/audits/TSK-F-R4.1_review.md                          ← creado (frontend-reviewer)
+docs/f1_1.1/f1_1.1_task.md                                       ← actualizado (Bloque 4 completo)
 ```
 
 ### Contexto Inmediato
-El Bloque 3 (Profile & Control Views) de la etapa f1_1.1 está **completamente cerrado y certificado**. Pipeline completo ejecutado: `frontend-coder` (×4 vistas) → `frontend-tester` (TSK-F-11.1) → `frontend-reviewer` (TSK-F-R3). 13 rutas estáticas generadas por el build. Los 11 mockups requeridos por el PRD están implementados (7 de Auth + 4 de Perfil/Control). El proyecto está limpio y listo para iniciar el Bloque 4.
+El **Bloque 4 (Validation & UX Polish)** de la etapa f1_1.1 está **completamente cerrado y certificado**. Pipeline completo ejecutado: `frontend-coder` (schemas + Framer Motion) → `frontend-tester` (109 tests + A11y) → `integration-mediator` (contratos) → `frontend-reviewer` (code review + refactor shared.ts). Build: ✅ 15 rutas estáticas. El proyecto está en estado limpio y listo para iniciar el Bloque 5.
 
 ### Bloqueador / Último Error
 **Ninguno** — la sesión cerró en estado limpio.
 
 ### Próxima Acción Concreta
-**Iniciar TSK-F-12.1** — Definir esquemas Zod (Auth & Profile) en `lib/validations/`.
+**Iniciar TSK-F-15** — Extraer `PasswordStrengthChecklist` como componente reutilizable (deuda técnica O-4 de TSK-F-R3).
 
 ```
-Agente:    frontend-coder
-Archivo:   src/lib/validations/ (directorio a crear con múltiples archivos o uno consolidado)
-Esquemas:  7 esquemas según SPEC v1.3.0 §5:
-           registerSchema, loginSchema, profileSchema, passwordChangeSchema,
-           recoveryRequestSchema, resetPasswordSchema, deleteAccountSchema
-Referencia: SPEC v1.3.0 §5 (Validation Schemas) + CLAUDE.md §Esquema de Base de Datos (enums)
-Nota:      Los enums ya están validados en las vistas: gender M/F/O, country CO/US/CA/MX/VE/OT
-           birth_date: validación de edad mínima 18 años
-           deleteAccountSchema: confirmation = literal "ELIMINAR MI CUENTA" + password
+Agente:     frontend-coder
+Tarea:      TSK-F-15 — Implementar PasswordStrengthChecklist (UI/Refine)
+Archivo:    src/components/ui/PasswordStrengthChecklist.tsx  (nuevo componente)
+Consumidores actuales (inline, a reemplazar):
+  - src/app/auth/register/page.tsx
+  - src/app/auth/reset-password/page.tsx
+  - src/app/profile/security/page.tsx
+Reglas:
+  - Props: password: string
+  - Checks: min 8 chars, 1 mayúscula, 1 número, 1 carácter especial
+  - UI: íconos check/x, verde/rojo por regla, update en tiempo real
+  - Sin colores hardcodeados, sin Framer Motion adicional
+  - Tras crear el componente: reemplazar las 3 implementaciones inline
+  - Build: ✅ debe seguir pasando sin errores
 ```

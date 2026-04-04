@@ -1,0 +1,14 @@
+# TOKEN: CONTRATO_SINCRONIZADO_OK
+- **Etapa**: f1.1.1
+- **Tarea**: TSK-F-R4 — Auditoria Tecnica y de Contratos: Zod Schemas vs SPEC
+- **Rutas Auditadas**:
+  - `POST /auth/register` — registerSchema
+  - `POST /auth/login` — loginSchema
+  - `POST /auth/recovery` — recoverySchema
+  - `PATCH /auth/reset-password` — resetPasswordSchema
+  - `PATCH /users/me` — profileSchema, securitySchema
+  - `DELETE /users/me` — deleteAccountSchema
+- **Schema Validation**: SINCRONIZADO con OBSERVACIONES (discrepancias de enum documentadas como mapeo pendiente de integracion)
+- **Veredicto**: CONTRATO_SINCRONIZADO — Los 7 esquemas Zod estan alineados con la SPEC v1.3.0. Las discrepancias de enum (gender M/F/O vs Masculino/Femenino/Otro; country OT vs Other) son coherentes con el diseno de CC-002 y requieren capa de mapeo en Fase 4.
+- **Fecha**: 2026-04-04
+- **Evidencia**: `docs/f1_1.1/audits/TSK-F-R4_audit.md`
