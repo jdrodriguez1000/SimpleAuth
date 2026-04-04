@@ -278,3 +278,124 @@ El **frontend-tester** puede iniciar la validacion de TSK-F-04.
   - Iconos SVG inline artesanales (checkmark, X, info) — cero dependencias externas
   - A11y: `role="status" aria-live="polite" aria-atomic="true"` en contenedor; `aria-label="Cerrar notificacion"` en boton cierre; `aria-hidden` en SVGs decorativos
 - **Proxima Tarea**: TSK-F-R2 — Code Review Auth Views (frontend-reviewer)
+
+---
+
+# TOKEN: FRONTEND_CODER_DONE — TSK-F-09
+- **Tarea**: TSK-F-09 — Maquetar vista `/profile` (Editor de Perfil)
+- **Archivos Modificados**:
+  - `frontend/src/app/profile/page.tsx` (CREADO)
+- **Estado**: TERMINADA
+- **Fecha**: 2026-04-04
+- **Build**: EXITOSO — Next.js 16.2.2 compila sin errores (TypeScript + Turbopack). 12 rutas generadas.
+- **Trazabilidad**:
+  - PRD FR-1.1.3 (A) — Editor de perfil: 6 campos, email inmutable, validacion +18 anos
+  - SPEC v1.3.0 §3.2 — AppLayout como contenedor de vista protegida
+  - SPEC v1.3.0 §3.3 — GlassCard (shadow="ambient") como contenedor del formulario
+  - SPEC v1.3.0 §6 — Estados submitting (opacity-60 + cursor-wait + spinner), success (inline), error (global)
+  - UI Kit §2 / §3 / §4 — Tokens CSS; cero hardcoding hexadecimal
+- **Decisiones Tecnicas**:
+  - Patron identico a /auth/register: ChevronDown SVG inline, SELECT_CLASSES con appearance-none, validacion en tiempo real de birth_date
+  - Email mostrado con INPUT_READONLY_CLASSES (opacity-50, cursor-not-allowed, readOnly + disabled) — immutabilidad garantizada sin inputs ocultos
+  - Datos mock pre-rellenados via constante MOCK_USER — integracion real con contexto/auth en Fase 4
+  - Mensaje de exito usa bg-[var(--primary)]/10 (patron informativo) vs error con bg-[var(--error)]/10
+  - role="status" aria-live="polite" en exito; role="alert" aria-live="assertive" en error
+  - SidebarNav ya incluia enlace a /profile — navegacion disponible sin modificacion adicional
+  - Grid 1 columna en mobile, 2 columnas en sm+ para first_name/last_name (responsivo)
+  - Sin React Hook Form, sin Framer Motion, sin Zod
+- **Conformidad Design System (ui-consistency-manager)**:
+  - AppLayout + GlassCard (shadow="ambient") — patron consistente con vistas protegidas
+  - Todos los colores via tokens CSS var(--*)
+  - Semantica A11y: aria-readonly + aria-disabled en email; role alerts/status; aria-hidden en SVGs; aria-label en formulario; aria-busy en boton
+- **Proxima Tarea**: frontend-tester puede iniciar la validacion de TSK-F-09
+
+---
+
+# TOKEN: FRONTEND_CODER_DONE — TSK-F-10.1
+- **Tarea**: TSK-F-10.1 — Maquetar vista `/profile/security` (Cambio de Contraseña)
+- **Archivos Modificados**:
+  - `frontend/src/app/profile/security/page.tsx` (CREADO)
+- **Estado**: TERMINADA
+- **Fecha**: 2026-04-04
+- **Build**: EXITOSO — Next.js 16.2.2 compila sin errores (TypeScript + Turbopack). 11 rutas generadas.
+- **Trazabilidad**:
+  - PRD FR-1.1.3 (B) — Cambio de contraseña desde perfil autenticado
+  - SPEC v1.3.0 §3.2 — AppLayout como contenedor de vista protegida
+  - SPEC v1.3.0 §3.3 — GlassCard (shadow="ambient") como contenedor del formulario
+  - SPEC v1.3.0 §6 — Estados submitting (opacity-60 + cursor-wait + spinner), success (inline), error (global)
+  - UI Kit §2 / §3 / §4 — Tokens CSS; cero hardcoding hexadecimal
+- **Decisiones Tecnicas**:
+  - PasswordStrengthChecklist reutilizada como sub-componente local — patron identico a /auth/register y /auth/reset-password
+  - Validacion en tiempo real de coincidencia de contraseñas via handleChange con estado confirmPasswordError
+  - Validacion adicional en submit: nueva contraseña distinta a la actual, requisitos de fortaleza via isPasswordStrong()
+  - Formulario limpiado tras exito (campos reseteados a string vacio) — UX consistente con flujos de seguridad
+  - Datos mock — integracion real con PATCH /users/me en Fase 4
+  - Mensaje de exito usa bg-[var(--primary)]/10 (patron informativo) vs error con bg-[var(--error)]/10
+  - role="status" aria-live="polite" en exito; role="alert" aria-live="assertive" en error global e inline
+  - Sin React Hook Form, sin Framer Motion, sin Zod
+- **Conformidad Design System (ui-consistency-manager)**:
+  - AppLayout + GlassCard (shadow="ambient") — patron consistente con /profile/page.tsx
+  - Todos los colores via tokens CSS var(--*)
+  - Semantica A11y: aria-describedby en confirm_password; role alerts/status; aria-hidden en SVGs; aria-label en formulario; aria-busy en boton
+- **Proxima Tarea**: frontend-tester puede iniciar la validacion de TSK-F-10.1
+
+---
+
+# TOKEN: FRONTEND_CODER_DONE — TSK-F-10.2
+- **Tarea**: TSK-F-10.2 — Maquetar vista `/profile/delete` (Confirmacion de Baja)
+- **Archivos Modificados**:
+  - `frontend/src/app/profile/delete/page.tsx` (CREADO)
+- **Estado**: TERMINADA
+- **Fecha**: 2026-04-04
+- **Build**: EXITOSO — Next.js 16.2.2 compila sin errores (TypeScript + Turbopack). 12 rutas generadas.
+- **Trazabilidad**:
+  - PRD FR-1.1.9 — Confirmacion de baja de cuenta con advertencia GDPR 30 dias
+  - SPEC v1.3.0 §3.2 — AppLayout como contenedor de vista protegida
+  - SPEC v1.3.0 §3.3 — GlassCard (shadow="ambient") como contenedor del formulario
+  - SPEC v1.3.0 §6 — Estados submitting (opacity-60 + cursor-wait + spinner), success (inline), error (global)
+  - UI Kit §2 / §3 / §4 — Tokens CSS; cero hardcoding hexadecimal
+- **Decisiones Tecnicas**:
+  - Constante CONFIRMATION_KEYWORD = "ELIMINAR MI CUENTA" — unica fuente de verdad para el gatekeeper
+  - Gatekeeper: isGatekeeperSatisfied = confirmation === CONFIRMATION_KEYWORD && password.length > 0
+  - Boton deshabilitado (opacity-40 + cursor-not-allowed) mientras gatekeeper no satisfecho; cursor-wait en submitting
+  - Indicador visual verde en el campo confirmation cuando texto coincide exactamente (border-green-500)
+  - Bloque GDPR: role="note" aria-label descriptivo + icono warning SVG en color var(--error)
+  - Estado success: icono SVG checkmark circular + mensaje de desactivacion sin redireccion automatica; role="status" aria-live="polite"
+  - Estado error: banner role="alert" aria-live="assertive" con bg-[var(--error)]/10 border-[var(--error)]/30
+  - H1 con color var(--error) — jerarquia visual destructiva para reforzar gravedad de la accion
+  - Sin React Hook Form, sin Framer Motion, sin Zod
+- **Conformidad Design System (ui-consistency-manager)**:
+  - AppLayout + GlassCard (shadow="ambient") — patron consistente con /profile/page.tsx y /profile/security/page.tsx
+  - Todos los colores via tokens CSS var(--*); boton destructivo usa bg-[var(--error)] sin hardcoding
+  - Semantica A11y: aria-busy + aria-disabled en boton; role="note" en advertencia GDPR; role="alert" aria-live="assertive" en error; role="status" aria-live="polite" en exito; aria-hidden en SVGs decorativos
+- **Token Final**: TSK-F-10.2_DONE
+- **Proxima Accion**: frontend-tester puede iniciar la validacion de TSK-F-10.2
+
+---
+
+# TOKEN: FRONTEND_CODER_DONE — TSK-F-11
+- **Tarea**: TSK-F-11 — Maquetar vista `/auth/blocked` (Rate Limit)
+- **Archivos Modificados**:
+  - `frontend/src/app/auth/blocked/page.tsx` (CREADO)
+- **Estado**: TERMINADA
+- **Fecha**: 2026-04-04
+- **Build**: EXITOSO — Next.js 16.2.2 compila sin errores (TypeScript + Turbopack). 13 rutas generadas.
+- **Trazabilidad**:
+  - PRD FR-1.1.7 — Pantalla de bloqueo por rate limit con mencion explicita de 15 minutos de espera
+  - SPEC v1.3.0 §3 — AuthLayout (title="Acceso bloqueado temporalmente") + GlassCard (shadow="elevated")
+  - UI Kit §2 / §3 / §4 — Tokens CSS; cero hardcoding hexadecimal
+- **Decisiones Tecnicas**:
+  - Server Component puro (sin "use client") — no hay estado ni eventos; vista estatica informativa
+  - Icono SVG de candado artesanal con linearGradient `var(--error)` start/end — comunica estado de bloqueo
+  - Bloque de alerta usa `bg-[var(--error)]/10 border-[var(--error)]/30` + `role="alert"` (patrón de advertencia)
+  - Icono triangulo SVG de advertencia (path triangulo + linea + dot) en color `var(--error)` — coherente con semántica de error
+  - Parrafo principal menciona literalmente "15 minutos" en negrita (FR-1.1.7 cumplido)
+  - CTA primario: Link con `bg-primary-gradient` a `/auth/login`
+  - Enlace secundario a `/auth/recovery` — permite al usuario recuperar contraseña sin esperar el bloqueo
+  - Separador `border-t border-[var(--border)]` antes del area secundaria
+- **Conformidad Design System (ui-consistency-manager)**:
+  - Patron AuthLayout + GlassCard (shadow="elevated") consistente con vistas informativas anteriores (verify-sent)
+  - Todos los colores via tokens CSS var(--*); cero hardcoding hexadecimal
+  - Semantica A11y: `role="alert" aria-label` descriptivo en bloque de alerta; `aria-hidden` en SVGs decorativos; foco gestionado por Link nativo
+- **Token Final**: TSK-F-11_DONE
+- **Proxima Accion**: frontend-tester puede iniciar la validacion de TSK-F-11

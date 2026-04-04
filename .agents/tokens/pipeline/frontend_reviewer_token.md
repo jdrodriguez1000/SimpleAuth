@@ -1,37 +1,93 @@
 # TOKEN: FRONTEND_REVIEWER_APROBADO
 
-- **Tarea**: TSK-F-R2 (TSK-F-05.1, TSK-F-05.2, TSK-F-05.3, TSK-F-06.1, TSK-F-06.2, TSK-F-07, TSK-F-08.1, TSK-F-08.2)
-- **Veredicto UI**: APROBADO (con correcciones aplicadas in situ)
+- **Tarea**: TSK-F-R3 (TSK-F-09, TSK-F-10.1, TSK-F-10.2, TSK-F-11)
+- **Veredicto UI**: APROBADO
 - **Estado Visual**: PREMIUM + CONSISTENTE
 - **Auditoría Técnica**: TypeScript Estricto (Cumple)
-- **Fecha**: 2026-04-03
+- **Fecha**: 2026-04-04
 
 ---
 
-## Correcciones aplicadas in situ
+## Resumen de Auditoría — Bloque 3
 
-### B-1 (Bloqueante — detectado por Reviewer) — Token `text-body-sm` ausente del Design System
-- **Archivo corregido**: `frontend/src/app/globals.css`
-- **Acción**: Se añadió la clase `.text-body-sm` (font-size: 0.75rem, font-weight: 400, line-height: 1.5) en el bloque `@layer utilities`, entre `text-body-md` y `text-label-sm`.
-- **Impacto previo**: La clase era referenciada en 4 lugares del código (`register/page.tsx` líneas 107-108, 368, 491; `reset-password/page.tsx` líneas 97-98) sin tener definición CSS. El build no fallaba porque Tailwind ignora clases desconocidas, pero el token no tenía efecto visual real.
+### Build
 
-### O-1 (Observación tester — elevada a corrección) — `text-sm` en error inline de `reset-password`
-- **Archivo corregido**: `frontend/src/app/auth/reset-password/page.tsx` línea 331
-- **Acción**: Reemplazado `text-sm` por `text-body-sm` para alineación con el Design System y consistencia con `register/page.tsx`.
-
-### O-2 (Observación tester — elevada a corrección) — `aria-live="assertive"` omitido en errores inline
-- **Archivos corregidos**:
-  - `frontend/src/app/auth/register/page.tsx`: `#birth-date-error` y `#confirm-password-error`
-  - `frontend/src/app/auth/reset-password/page.tsx`: `#confirm-password-error`
-- **Acción**: Se añadió `aria-live="assertive"` explícito a los tres elementos de error inline con `role="alert"`, alineando el código con la especificación literal de SPEC v1.3.0 §6.
+- `npm run build` — EXITOSO (Next.js 16.2.2 Turbopack)
+- TypeScript — 0 errores
+- Rutas generadas: 13 (4 nuevas del Bloque 3 incluidas correctamente)
 
 ---
 
-## Hallazgos sin corrección (registrados como deuda futura)
+## Matriz de Conformidad — DoD TSK-F-R3
 
-### O-3 — `PasswordStrengthChecklist` duplicado entre `/register` y `/reset-password`
-- Candidato a extracción como componente compartido en `src/components/ui/`.
-- Acción diferida a TSK-F-15 (Password Strength Checklist — Bloque 4).
+### FR-1.1.9 — Cumplimiento GDPR (crítico)
+
+| Criterio | Resultado | Referencia |
+| :--- | :--- | :--- |
+| `/profile/delete` muestra "30 días" de forma explícita y prominente | CUMPLE | `delete/page.tsx` líneas 157, 207 — aparece en bloque GDPR y en estado success |
+| Texto comunica que el usuario puede reactivar durante el periodo de gracia | CUMPLE | `delete/page.tsx` línea 159 — "puedes reactivar tu cuenta en cualquier momento" |
+| Gatekeeper: campo `confirmation` = literal "ELIMINAR MI CUENTA" | CUMPLE | `delete/page.tsx` línea 11 — constante `CONFIRMATION_KEYWORD` + validación exacta en línea 93 |
+| Gatekeeper: campo `password` presente y requerido | CUMPLE | `delete/page.tsx` líneas 271-280 |
+| Botón deshabilitado hasta que gatekeeper esté satisfecho | CUMPLE | `delete/page.tsx` línea 313 — `disabled={!isGatekeeperSatisfied \|\| submitting}` |
+
+### FR-1.1.7 — Rate Limit (crítico)
+
+| Criterio | Resultado | Referencia |
+| :--- | :--- | :--- |
+| `/auth/blocked` menciona "15 minutos" explícitamente | CUMPLE | `blocked/page.tsx` — aparece 3 veces: líneas 93, 143, 190 |
+| Texto es claro e informativo (no alarmante) | CUMPLE | Tono informativo; usa "Por seguridad" sin lenguaje alarmante |
+
+### Calidad de código — Campos extendidos (perfil)
+
+| Criterio | Resultado | Referencia |
+| :--- | :--- | :--- |
+| `/profile` incluye first_name, last_name, birth_date, gender, country + email read-only | CUMPLE | `profile/page.tsx` — `ProfileFormState` líneas 11-17; email con `readOnly disabled` líneas 265-271 |
+| Enums gender: M/F/O | CUMPLE | `profile/page.tsx` líneas 332-334 — valores exactos CC-002 |
+| Enums country: CO/US/CA/MX/VE/OT | CUMPLE | `profile/page.tsx` líneas 362-368 — valores exactos CC-002 |
+| `/profile/security` implementa current_password, new_password, confirm_password | CUMPLE | `security/page.tsx` — `SecurityFormState` líneas 11-15 |
+| Validación de nueva contraseña ≠ actual | CUMPLE | `security/page.tsx` líneas 203-206 |
+| Validación de coincidencia en tiempo real (confirm_password) | CUMPLE | `security/page.tsx` líneas 153-168 |
+| `isPasswordStrong()` — 4 reglas: 8 chars, mayúscula, número, especial | CUMPLE | `security/page.tsx` líneas 116-123 |
+
+### Estándares de código
+
+| Criterio | Resultado | Referencia |
+| :--- | :--- | :--- |
+| Sin colores hexadecimales hardcodeados en las 4 vistas | CUMPLE | Grep verificado — 0 valores hex en los 4 archivos del Bloque 3 |
+| `aria-live="assertive"` en errores globales | CUMPLE | Todos los banners de error con `role="alert"` + `aria-live="assertive"` |
+| `aria-live="polite"` en mensajes de éxito | CUMPLE | Todos los banners de éxito con `role="status"` + `aria-live="polite"` |
+| Sin React Hook Form | CUMPLE | Estado gestionado con `useState` puro |
+| Sin Framer Motion | CUMPLE | Sin import de framer-motion en ningún archivo del bloque |
+| TypeScript — sin `any` | CUMPLE | Todas las interfaces declaradas explícitamente |
+| Consistencia de patrón con Bloque 2 aprobado | CUMPLE | INPUT_CLASSES, LABEL_CLASSES, SELECT_CLASSES, spinner SVG, loading state — idénticos |
+| Tags `[REQ]` y `[TSK]` presentes en los 4 archivos | CUMPLE | Cabecera de cada archivo |
+
+### O-M-01 — Renderizado condicional del PasswordStrengthChecklist
+
+| Criterio | Resultado |
+| :--- | :--- |
+| `form.new_password.length > 0` en `/profile/security` (línea 299) es comportamiento intencional | CONFIRMADO — mismo patrón que `/auth/register` y `/auth/reset-password`, aprobados en TSK-F-R2 sin observación al respecto |
+
+---
+
+## Hallazgos del Reviewer
+
+### Bloqueantes
+
+Ninguno.
+
+### Hallazgo técnico: `stroke="var(--error)"` como atributo SVG directo en `/auth/blocked`
+
+- Archivo: `frontend/src/app/auth/blocked/page.tsx`, líneas 121, 132, 136
+- Evaluación: Patrón SVG válido y correcto. Los atributos de presentación SVG (`stroke`, `fill`, `stopColor`) aceptan valores CSS incluyendo variables `var()`. No constituye hardcoding de color porque el valor resuelve en tiempo de renderizado desde el token `--error` del Design System. Mismo patrón usado en `WarningIcon` de `/profile/delete`.
+- Clasificación: No bloqueante. Comportamiento correcto e intencional.
+
+### Observaciones diferidas (deuda técnica registrada)
+
+**O-4 — `PasswordStrengthChecklist` triplicada (register, reset-password, security)**
+- La extracción a componente compartido en `src/components/ui/` se intensifica al existir ahora 3 implementaciones idénticas.
+- Acción diferida a `TSK-F-15` (Bloque 5), ya registrada en el Task List.
+- Clasificación: Observación Menor (O-M) — no bloquea.
 
 ---
 
@@ -39,30 +95,38 @@
 
 | Criterio | Resultado |
 | :--- | :--- |
-| SPEC v1.3.0 §3.1 — Routing y layouts correctos | CUMPLE |
-| SPEC v1.3.0 §3.3 — StatusCard+ResendButton en verify-result/error | CUMPLE |
-| SPEC v1.3.0 §3.3 — GlassCard shadow="elevated" en todas las vistas auth | CUMPLE |
-| SPEC v1.3.0 §6 — Loading states `opacity-60 cursor-wait` + spinner | CUMPLE |
-| SPEC v1.3.0 §6 — verify-result: mapeo diferencial G-05 (expired/invalid) | CUMPLE |
-| SPEC v1.3.0 §6 — verify-sent: bloque Spam/Promociones FR-1.1.8-A | CUMPLE |
-| SPEC v1.3.0 §6 — logout: `router.replace` a `/auth/login?toast=logout_success` | CUMPLE |
-| SPEC v1.3.0 §6 — Toast: auto-dismiss, limpieza query param | CUMPLE |
-| UI Kit v1.1.0 — Cero hexadecimales hardcodeados en vistas auth | CUMPLE |
-| UI Kit v1.1.0 — Tipografía: `text-label-sm`, `text-body-md`, `text-headline-md` | CUMPLE (post-corrección) |
-| UI Kit v1.1.0 — Sombras exclusivamente via clases del sistema | CUMPLE |
-| TypeScript — Sin `any` explícitos, props tipadas con interfaces | CUMPLE |
-| TypeScript — `useSearchParams` bajo `<Suspense>` | CUMPLE |
-| TypeScript — `router.replace` en logout | CUMPLE |
-| A11y — Errores globales con `role="alert"` y `aria-live="assertive"` | CUMPLE |
-| A11y — Errores inline con `role="alert"` y `aria-live="assertive"` | CUMPLE (post-corrección) |
-| A11y — Toast con `role="status"` y `aria-live="polite"` | CUMPLE |
-| A11y — SVGs decorativos con `aria-hidden="true"` | CUMPLE |
+| SPEC v1.3.0 §3.1 — Routing: AppLayout en `/profile/*`, AuthLayout en `/auth/blocked` | CUMPLE |
+| SPEC v1.3.0 §3.3 — GlassCard shadow="ambient" en vistas profile, shadow="elevated" en blocked | CUMPLE |
+| SPEC v1.3.0 §6 — Loading states `opacity-60 cursor-wait` + spinner en las 3 vistas con formulario | CUMPLE |
+| CC-002 — Enums gender (M/F/O) y country (CO/US/CA/MX/VE/OT) consistentes entre register y profile | CUMPLE |
+| FR-1.1.9 — Bloque GDPR prominente, 30 días mencionados, reactivación comunicada | CUMPLE |
+| FR-1.1.9 — Gatekeeper: confirmación textual exacta + contraseña actual | CUMPLE |
+| FR-1.1.9 — Estado success sin redirección automática (usuario controla navegación) | CUMPLE |
+| FR-1.1.7 — "15 minutos" mencionado 3 veces, tono informativo no alarmante | CUMPLE |
+| UI Kit v1.1.0 — Cero hexadecimales hardcodeados en las 4 vistas del Bloque 3 | CUMPLE |
+| UI Kit v1.1.0 — Escala tipográfica: `text-body-md`, `text-body-sm`, `text-label-sm`, `text-headline-md` | CUMPLE |
+| UI Kit v1.1.0 — SVGs decorativos con `aria-hidden="true"` | CUMPLE |
+| A11y — Banners de error: `role="alert"` + `aria-live="assertive"` | CUMPLE |
+| A11y — Banners de éxito: `role="status"` + `aria-live="polite"` | CUMPLE |
 | A11y — Botones submit con `aria-busy={submitting}` | CUMPLE |
-| Navegación — login↔register↔recovery↔reset-password↔verify-sent↔verify-result | CUMPLE |
-| Navegación — logout → login con ?toast=logout_success | CUMPLE |
+| A11y — Botón delete con `aria-disabled={!isGatekeeperSatisfied}` | CUMPLE |
+| A11y — Bloque GDPR en `/profile/delete` con `role="note"` + `aria-label` | CUMPLE |
+| A11y — Bloque alerta en `/auth/blocked` con `role="alert"` + `aria-label` | CUMPLE |
+| TypeScript — Sin `any` explícitos, interfaces declaradas en todos los archivos | CUMPLE |
 
 ---
 
 ## Respaldo del Veredicto
 
 Este veredicto fue emitido con el respaldo de los lineamientos del `ui-consistency-manager` (referencia: token `UI_CONSISTENTE`, TSK-F-R1, `docs/f1_1.1/audits/TSK-F-R1_audit.md`).
+
+---
+
+## REGISTRO HISTÓRICO — Bloque 2 (TSK-F-R2, 2026-04-03)
+
+- **Tarea**: TSK-F-R2 (TSK-F-05.1, TSK-F-05.2, TSK-F-05.3, TSK-F-06.1, TSK-F-06.2, TSK-F-07, TSK-F-08.1, TSK-F-08.2)
+- **Veredicto UI**: APROBADO (con correcciones aplicadas in situ)
+- **Estado Visual**: PREMIUM + CONSISTENTE
+- **Auditoría Técnica**: TypeScript Estricto (Cumple)
+- **Fecha**: 2026-04-03
+- **Correcciones in situ**: B-1 (`text-body-sm` añadido a globals.css), O-1 (`text-sm` → `text-body-sm` en reset-password), O-2 (`aria-live="assertive"` añadido a errores inline en register y reset-password)

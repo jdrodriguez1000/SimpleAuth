@@ -46,3 +46,20 @@
 - **`router.replace` en logout** (no `push`): decisión deliberada para evitar que el usuario retroceda a `/auth/logout` con el botón atrás del navegador, lo cual reejecutaría la limpieza de storage.
 - **`PasswordStrengthChecklist` duplicado diferido**: extracción a componente compartido postergada a TSK-F-15 (Bloque 4). No bloquea el pipeline; la duplicación es aceptable hasta la tarea de UX Polish.
 - **Toast centralizado**: el mapa `TOAST_MESSAGES` en `Toast.tsx` es el único punto de registro de notificaciones por URL param. Cualquier nueva notificación (ej. email_verified, password_changed) debe añadirse ahí en fases futuras.
+
+#### Sesión: 2026-04-04 (Bloque 3 — Profile & Control Views)
+
+**✅ Lo que funcionó bien:**
+- El pipeline `frontend-coder → frontend-tester → frontend-reviewer` del Bloque 3 fue ejecutado sin fricción: 4 vistas implementadas, smoke test aprobado (0 bloqueantes), auditoría formal aprobada (0 bloqueantes). El sistema de gates funciona de forma estable y predecible cuando los briefings incluyen contexto completo.
+- El patrón de briefing "lee estos archivos de referencia antes de implementar" produjo consistencia visual automática entre las 4 vistas del bloque — todas usan `AppLayout`/`AuthLayout` + `GlassCard` de forma idéntica sin correcciones posteriores.
+- El `frontend-tester` ejecutó verificación estática eficiente (lectura de código fuente + build) sin necesidad de Playwright para el smoke test. Para vistas estáticas sin backend, este enfoque es suficiente y más rápido.
+- El `frontend-reviewer` cerró la O-M-01 del tester (PasswordStrengthChecklist condicional) confirmándola como comportamiento intencional consistente con TSK-F-R2. El sistema de observaciones numeradas permite trazabilidad entre agentes.
+
+**⚠️ Lo que no funcionó / fricción encontrada:**
+- Sin incidentes técnicos en esta sesión. El Bloque 3 cerró limpio en primera iteración para las 4 vistas.
+
+**💡 Decisiones clave tomadas:**
+- **Patrón gatekeeper de seguridad** en `/profile/delete`: constante `CONFIRMATION_KEYWORD = "ELIMINAR MI CUENTA"` como única fuente de verdad. El estado `isGatekeeperSatisfied` es derivado (sin `useEffect`). Indicador visual verde en el campo de confirmación cuando el texto coincide exactamente. Este patrón debe replicarse si se requieren confirmaciones de texto literal en otras vistas.
+- **`/auth/blocked` como Server Component** (sin `"use client"`): la vista de bloqueo por rate limit no requiere interactividad. Patrón correcto para vistas informativas estáticas — reduce el bundle de JS enviado al cliente.
+- **Deuda técnica O-4 registrada formalmente**: `PasswordStrengthChecklist` triplicado (register, reset-password, profile/security). La extracción a componente compartido está diferida a TSK-F-15. Esta decisión es **intencional** y no debe interpretarse como omisión.
+- **FR-1.1.9 implementado en dos puntos**: el aviso de 30 días aparece en el bloque de advertencia inicial Y en el estado de éxito post-borrado. Esto garantiza que el usuario lo lee en el momento más crítico (confirmación) además del momento informativo.

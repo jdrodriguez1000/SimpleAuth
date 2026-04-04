@@ -1,12 +1,111 @@
 ---
 token: frontend_tester_token
 stage: f1_1.1
-block: Bloque 2 — Auth & Recovery Views Flow
+block: Bloque 3 — Profile & Security Views
 veredicto: CONFORME
-fecha: 2026-04-03
+fecha: 2026-04-04
 ---
 
-# TOKEN: FRONTEND_TESTER_CONFORME
+# TOKEN: FRONTEND_TESTER_CONFORME — TSK-F-11.1
+
+- **Tarea**: TSK-F-11.1 — Smoke Test de Vistas de Perfil y Seguridad (Bloque 3)
+- **Resultado Tests**: EXITO en 4 componentes / 0 bloqueantes / 1 observacion menor
+- **Mocks Utilizados**: Ninguno (verificacion estatica de codigo + build de produccion)
+- **Veredicto**: CONFORME
+- **Fecha**: 2026-04-04
+
+---
+
+## Resumen del Bloque 3
+
+### Build
+
+- `npm run build` — EXITOSO (Next.js 16.2.2 Turbopack)
+- TypeScript — 0 errores
+- Rutas generadas: 13 (incluyendo las 4 nuevas del Bloque 3)
+
+### TSK-F-09 — `/profile/page.tsx`
+
+| Criterio | Resultado |
+| :--- | :--- |
+| `AppLayout` como layout contenedor | PASA — importado y usado como wrapper raiz |
+| `GlassCard` como contenedor del formulario (shadow="ambient") | PASA — `<GlassCard shadow="ambient" padding="lg">` |
+| 6 campos: first_name, last_name, birth_date, gender (select), country (select), email (read-only) | PASA — todos presentes, email con `readOnly disabled` |
+| gender: M/F/O → Masculino/Femenino/Otro | PASA — valores y labels exactos segun CC-002 |
+| country: CO/US/CA/MX/VE/OT → Colombia/EE.UU./Canada/Mexico/Venezuela/Otro | PASA — valores y labels exactos segun CC-002 |
+| Estado `submitting`: opacity-60 + cursor-wait | PASA — implementado en boton y campos disabled |
+| Estado `success`: mensaje inline con `role="status" aria-live="polite"` | PASA |
+| Estado `error`: banner con `role="alert" aria-live="assertive"` | PASA — `#profile-error` cumple |
+| Sin colores hardcodeados (solo `var(--)` tokens) | PASA — cero valores hex en el archivo |
+
+### TSK-F-10.1 — `/profile/security/page.tsx`
+
+| Criterio | Resultado |
+| :--- | :--- |
+| `AppLayout` + `GlassCard` (shadow="ambient") | PASA |
+| 3 campos: current_password, new_password, confirm_password | PASA — todos type="password" |
+| `PasswordStrengthChecklist` con 4 checks (8 chars, mayuscula, numero, especial) | PASA — sub-componente local con 4 items |
+| Checklist visible bajo new_password | PASA — condicional a `form.new_password.length > 0` (ver O-M-01) |
+| Validacion coincidencia inline en confirm_password con `aria-live="assertive"` | PASA — `#confirm-password-error` con `role="alert" aria-live="assertive"` |
+| Estado `submitting`: opacity-60 + cursor-wait | PASA |
+| Estado `success`: `role="status" aria-live="polite"` | PASA |
+| Estado `error` global: `role="alert" aria-live="assertive"` | PASA — `#security-error` cumple |
+| Sin colores hardcodeados | PASA — cero valores hex en el archivo |
+
+### TSK-F-10.2 — `/profile/delete/page.tsx`
+
+| Criterio | Resultado |
+| :--- | :--- |
+| `AppLayout` + `GlassCard` (shadow="ambient") | PASA |
+| Bloque de advertencia GDPR con mencion explicita de **30 dias** | PASA — "30 dias" aparece dos veces (bloque GDPR + estado success) |
+| Icono SVG de warning/triangulo presente | PASA — sub-componente `WarningIcon` con path de triangulo |
+| Campo `confirmation` con instruccion de escribir "ELIMINAR MI CUENTA" | PASA — constante `CONFIRMATION_KEYWORD` y label explicativo |
+| Campo `password` con `type="password"` | PASA |
+| Boton deshabilitado cuando gatekeeper no satisfecho | PASA — `disabled={!isGatekeeperSatisfied \|\| submitting}` |
+| Boton usa `bg-[var(--error)]` sin hardcoding | PASA — `"bg-[var(--error)]"` en la lista de clases |
+| Estado `success` sin redireccion automatica | PASA — renderiza mensaje inline sin `router.push` ni `redirect()` |
+| Sin colores hardcodeados | PASA — cero valores hex en el archivo |
+
+### TSK-F-11 — `/auth/blocked/page.tsx`
+
+| Criterio | Resultado |
+| :--- | :--- |
+| `AuthLayout` (NO AppLayout) + `GlassCard` (shadow="elevated") | PASA — `<AuthLayout title="Acceso bloqueado temporalmente">` + `<GlassCard shadow="elevated">` |
+| Texto menciona explicitamente "15 minutos" (FR-1.1.7) | PASA — aparece 3 veces: parrafo principal, bloque alerta h2, texto secundario |
+| Icono SVG de candado presente | PASA — SVG artesanal con path de arco + rect + circle (orificio) + line (ranura) |
+| Boton/enlace CTA a `/auth/login` | PASA — `<Link href="/auth/login">` con estilos de boton primario |
+| Sin colores hardcodeados | PASA — cero valores hex en el archivo |
+
+---
+
+## Hallazgos del Bloque 3
+
+### Bloqueantes
+
+Ninguno.
+
+### Observaciones (no bloqueantes)
+
+**O-M-01 — `/profile/security`: PasswordStrengthChecklist visible solo al escribir**
+- Archivo: `frontend/src/app/profile/security/page.tsx`, linea 299
+- Observacion: el checklist se renderiza condicionalmente con `form.new_password.length > 0`. El criterio del DoD dice "presente bajo `new_password`", lo que podria interpretarse como presencia permanente.
+- Sin embargo, el patron es identico al implementado en `/auth/register` y `/auth/reset-password`, previamente validados y aprobados en TSK-F-R2 sin observacion. Se considera comportamiento intencional y consistente.
+- Clasificacion: Observacion Menor (O-M) — no bloquea.
+- Recomendacion para reviewer: confirmar si la SPEC exige presencia permanente del checklist o solo cuando el campo tiene contenido.
+
+---
+
+## Veredicto final Bloque 3
+
+**CONFORME**
+
+Las 4 vistas del Bloque 3 superan la validacion estatica de codigo y el build de produccion sin errores TypeScript. Todos los criterios criticos del DoD estan implementados: layouts correctos, campos requeridos, opciones de enum exactas segun CC-002, estados de carga/exito/error con accesibilidad ARIA correcta, gatekeeper de seguridad en /profile/delete, mencion explicita de "15 minutos" y "30 dias" en las vistas informativas, y cero hardcoding de colores en los 4 archivos.
+
+El token es emitido para desbloquear al **frontend-reviewer** (TSK-F-R3).
+
+---
+
+# REGISTRO HISTORICO — Bloque 2 (2026-04-03)
 
 - **Tareas validadas**: TSK-F-05.1, TSK-F-05.2, TSK-F-05.3, TSK-F-06.1, TSK-F-06.2, TSK-F-07, TSK-F-08.1, TSK-F-08.2
 - **Resultado Build**: EXITOSO — 11 rutas generadas (Next.js 16.2.2 Turbopack), 0 errores TypeScript
