@@ -24,7 +24,7 @@
 
 ```
 Fase 1 — Prototipado y QA Plan
-  [🔄] E1.1 — Mockups Visuales y UX          ← ACTIVA (Bloque 1 completo, Bloque 2 pendiente)
+  [🔄] E1.1 — Mockups Visuales y UX          ← ACTIVA (Bloques 1 y 2 completos, Bloque 3 pendiente)
 
 Fase 2 — Backend Core & Unit Testing
   [⬜] E2.1 — Infraestructura, DB y Observabilidad
@@ -48,11 +48,12 @@ Fase 4 — Integración UI, Operaciones e Higiene
 
 | Componente / Archivo | Ruta | Estado |
 |---|---|---|
-| Design System Tokens | `src/app/globals.css` | ✅ Completo |
+| Design System Tokens | `src/app/globals.css` | ✅ Completo (token `.text-body-sm` añadido) |
 | Root Layout + ThemeProvider | `src/app/layout.tsx` | ✅ Completo |
 | GlassCard | `src/components/ui/GlassCard.tsx` | ✅ Completo |
 | StatusCard + ResendButton + ConfirmDeleteButton | `src/components/ui/StatusCard.tsx` | ✅ Completo |
 | ThemeToggle | `src/components/ui/ThemeToggle.tsx` | ✅ Completo |
+| Toast | `src/components/ui/Toast.tsx` | ✅ Completo (TSK-F-08.2) |
 | AuthLayout | `src/components/layouts/AuthLayout.tsx` | ✅ Completo |
 | AppLayout | `src/components/layouts/AppLayout.tsx` | ✅ Completo |
 | SidebarNav | `src/components/layouts/SidebarNav.tsx` | ✅ Completo |
@@ -60,14 +61,13 @@ Fase 4 — Integración UI, Operaciones e Higiene
 | MockAuthContext | `src/context/MockAuthContext.tsx` | ✅ Completo |
 | Logo SVG | `public/logo.svg` | ✅ Completo (G-11) |
 | Favicon SVG | `public/favicon.svg` | ✅ Completo (G-11) |
-| Vista /auth/login | `src/app/auth/login/page.tsx` | ⬜ Pendiente (TSK-F-05.1) |
-| Vista /auth/register | `src/app/auth/register/page.tsx` | ⬜ Pendiente (TSK-F-05.2) |
-| Vista /auth/verify-sent | `src/app/auth/verify-sent/page.tsx` | ⬜ Pendiente (TSK-F-05.3) |
-| Vista /auth/recovery | `src/app/auth/recovery/page.tsx` | ⬜ Pendiente (TSK-F-06.1) |
-| Vista /auth/reset-password | `src/app/auth/reset-password/page.tsx` | ⬜ Pendiente (TSK-F-06.2) |
-| Vista /auth/verify-result | `src/app/auth/verify-result/page.tsx` | ⬜ Pendiente (TSK-F-07) |
-| Vista /auth/logout | `src/app/auth/logout/page.tsx` | ⬜ Pendiente (TSK-F-08.1) |
-| Toast | `src/components/ui/Toast.tsx` | ⬜ Pendiente (TSK-F-08.2) |
+| Vista /auth/login | `src/app/auth/login/page.tsx` | ✅ Completo (TSK-F-05.1) |
+| Vista /auth/register | `src/app/auth/register/page.tsx` | ✅ Completo (TSK-F-05.2) |
+| Vista /auth/verify-sent | `src/app/auth/verify-sent/page.tsx` | ✅ Completo (TSK-F-05.3) |
+| Vista /auth/recovery | `src/app/auth/recovery/page.tsx` | ✅ Completo (TSK-F-06.1) |
+| Vista /auth/reset-password | `src/app/auth/reset-password/page.tsx` | ✅ Completo (TSK-F-06.2) |
+| Vista /auth/verify-result | `src/app/auth/verify-result/page.tsx` | ✅ Completo (TSK-F-07) |
+| Vista /auth/logout | `src/app/auth/logout/page.tsx` | ✅ Completo (TSK-F-08.1) |
 | Vista /profile | `src/app/profile/page.tsx` | ⬜ Pendiente (TSK-F-09) |
 | Vista /profile/security | `src/app/profile/security/page.tsx` | ⬜ Pendiente (TSK-F-10.1) |
 | Vista /profile/delete | `src/app/profile/delete/page.tsx` | ⬜ Pendiente (TSK-F-10.2) |
@@ -85,7 +85,7 @@ Fase 4 — Integración UI, Operaciones e Higiene
 | PRD v1.3.0 | `docs/f1_1.1/f1_1.1_prd.md` | ✅ Autorizado |
 | SPEC v1.3.0 | `docs/f1_1.1/f1_1.1_spec.md` | ✅ Autorizado |
 | PLAN | `docs/f1_1.1/f1_1.1_plan.md` | ✅ Autorizado |
-| TASK | `docs/f1_1.1/f1_1.1_task.md` | 🔄 En progreso — Bloque 1 completo |
+| TASK | `docs/f1_1.1/f1_1.1_task.md` | 🔄 En progreso — Bloques 1 y 2 completos |
 | Auditoría TSK-F-R1 | `docs/f1_1.1/audits/TSK-F-R1_audit.md` | ✅ UI_CONSISTENTE_OK |
 
 ### Estado del TASK (f1_1.1_task.md)
@@ -99,8 +99,16 @@ Fase 4 — Integración UI, Operaciones e Higiene
 - [x] TSK-F-04 — Assets Logo/Favicon (G-11)
 - [x] TSK-F-R1 — Auditoría UI/UX Base (UI_CONSISTENTE_OK)
 
-**Bloque 2 — Auth & Recovery Views** (0/8 pendiente ⬜):
-TSK-F-05.1, TSK-F-05.2, TSK-F-05.3, TSK-F-06.1, TSK-F-06.2, TSK-F-07, TSK-F-08.1, TSK-F-08.2, TSK-F-R2
+**Bloque 2 — Auth & Recovery Views** (9/9 completo ✅):
+- [x] TSK-F-05.1 — Vista /auth/login
+- [x] TSK-F-05.2 — Vista /auth/register (9 campos, PasswordStrengthChecklist, selects CC-002)
+- [x] TSK-F-05.3 — Vista /auth/verify-sent (Server Component, bloque Spam FR-1.1.8-A)
+- [x] TSK-F-06.1 — Vista /auth/recovery (formulario + estado éxito dual)
+- [x] TSK-F-06.2 — Vista /auth/reset-password (Suspense+useSearchParams, dos estados)
+- [x] TSK-F-07 — Vista /auth/verify-result (mapeo diferencial expired/invalid G-05, StatusCard)
+- [x] TSK-F-08.1 — Vista /auth/logout (router.replace + localStorage.clear + contrato toast)
+- [x] TSK-F-08.2 — Componente Toast (useSearchParams, auto-dismiss 4s, limpieza query param)
+- [x] TSK-F-R2 — Code Review Auth Views (APROBADO con 3 correcciones in situ)
 
 **Bloque 3 — Profile & Control Views** (0/5 pendiente ⬜):
 TSK-F-09, TSK-F-10.1, TSK-F-10.2, TSK-F-11, TSK-F-R3
@@ -123,6 +131,11 @@ TSK-F-19, TSK-F-20, TSK-F-21, TSK-F-22
 - **2026-04-03** — BLQ-H-01 detectado por `ui-consistency-manager` en TSK-F-R1: `ThemeProvider` de `next-themes` ausente en RootLayout. Corregido por el orquestador directamente en `src/app/layout.tsx`. Patrón correcto: `<ThemeProvider attribute="class" defaultTheme="system" enableSystem>` dentro del `<body>`.
 - **2026-04-03** — `StatusCard` implementado con 3 exports nombrados: `StatusCard`, `ResendButton`, `ConfirmDeleteButton`. El mapeo G-05 ("Expirado" vs "Inválido") se resuelve via props `title`/`message` del consumidor — no hay lógica de string hardcoded en el componente.
 - **2026-04-03** — `MockAuthContext` creado en `src/context/MockAuthContext.tsx` con `isMockAuthenticated: true`. Preparado para ser reemplazado en Fase 4 sin modificar consumidores.
+- **2026-04-03** — Token `.text-body-sm` (0.75rem, weight 400) añadido a `globals.css`. Estaba referenciado en código pero no definido; ahora es parte oficial del Design System de la etapa.
+- **2026-04-03** — Patrón `Suspense + inner component` establecido como estándar para cualquier componente que use `useSearchParams` en Next.js 15 App Router. Aplica a: `reset-password/page.tsx`, `Toast.tsx`. Sin este patrón el build falla en SSR.
+- **2026-04-03** — Contrato de Toast establecido: logout → `/auth/login?toast=logout_success`. El componente `Toast` en `src/components/ui/Toast.tsx` es el punto centralizado de notificaciones por URL param. Futuras notificaciones deben añadirse al mapa `TOAST_MESSAGES` en dicho archivo.
+- **2026-04-03** — `PasswordStrengthChecklist` está duplicado en `register/page.tsx` y `reset-password/page.tsx`. Extracción diferida intencionalmente a TSK-F-15 (Bloque 4 — UX Polish) para no bloquear el pipeline de vistas.
+- **2026-04-03** — `/auth/logout` usa `router.replace` (no `router.push`) de forma deliberada. Evita que el usuario retroceda a la ruta `/auth/logout` con el botón atrás del navegador, lo cual reejecutaría la lógica de limpieza innecesariamente.
 
 ---
 
@@ -130,40 +143,37 @@ TSK-F-19, TSK-F-20, TSK-F-21, TSK-F-22
 
 ### Working Set (archivos activos de la sesión)
 ```
-frontend/src/app/globals.css                        ← modificado
-frontend/src/app/layout.tsx                         ← modificado (BLQ-H-01 fix)
-frontend/src/components/ui/GlassCard.tsx            ← creado
-frontend/src/components/ui/StatusCard.tsx           ← creado
-frontend/src/components/ui/ThemeToggle.tsx          ← creado
-frontend/src/components/ui/UserNav.tsx              ← creado
-frontend/src/components/layouts/AuthLayout.tsx      ← creado
-frontend/src/components/layouts/AppLayout.tsx       ← creado
-frontend/src/components/layouts/SidebarNav.tsx      ← creado
-frontend/src/context/MockAuthContext.tsx            ← creado
-frontend/public/logo.svg                            ← creado
-frontend/public/favicon.svg                         ← creado
-docs/f1_1.1/f1_1.1_task.md                         ← actualizado (Bloque 1 marcado [x])
-docs/f1_1.1/audits/TSK-F-R1_audit.md               ← creado
-.agents/tokens/pipeline/frontend_coder_token.md     ← actualizado (TERMINADA)
-.agents/tokens/consulting/ui_consistency_token.md   ← actualizado (UI_CONSISTENTE_OK)
+frontend/src/app/globals.css                             ← modificado (token .text-body-sm)
+frontend/src/app/auth/login/page.tsx                     ← creado (TSK-F-05.1)
+frontend/src/app/auth/register/page.tsx                  ← creado + aria-live fix (TSK-F-05.2)
+frontend/src/app/auth/verify-sent/page.tsx               ← creado (TSK-F-05.3)
+frontend/src/app/auth/recovery/page.tsx                  ← creado (TSK-F-06.1)
+frontend/src/app/auth/reset-password/page.tsx            ← creado + text-sm→text-body-sm + aria-live fix (TSK-F-06.2)
+frontend/src/app/auth/verify-result/page.tsx             ← creado (TSK-F-07)
+frontend/src/app/auth/logout/page.tsx                    ← creado (TSK-F-08.1)
+frontend/src/components/ui/Toast.tsx                     ← creado (TSK-F-08.2)
+docs/f1_1.1/f1_1.1_task.md                              ← actualizado (TSK-F-05.1 a TSK-F-R2 marcados [x])
+.agents/tokens/pipeline/frontend_coder_token.md          ← actualizado
+.agents/tokens/pipeline/frontend_tester_token.md         ← creado (CONFORME)
+.agents/tokens/pipeline/frontend_reviewer_token.md       ← creado (APROBADO)
 ```
 
 ### Contexto Inmediato
-El Bloque 1 (Foundation & Shared UI Components) de la etapa f1_1.1 está **completamente cerrado y certificado**. Los 7 entregables (globals.css, GlassCard, StatusCard, AuthLayout, AppLayout, Assets, Auditoría) pasaron el gate de calidad del `ui-consistency-manager` con veredicto `UI_CONSISTENTE_OK`. El proyecto Next.js compila sin errores (`npm run build` ✅).
+El Bloque 2 (Auth & Recovery Views Flow) de la etapa f1_1.1 está **completamente cerrado y certificado**. El pipeline completo fue ejecutado: `frontend-coder` → `frontend-tester` → `frontend-reviewer`. El reviewer aprobó con 3 correcciones in situ (aria-live en register, text-body-sm en reset-password). Build ✅, pipeline completo ✅. Los tokens de pipeline del Bloque 2 están emitidos en `.agents/tokens/pipeline/`.
 
 ### Bloqueador / Último Error
-**Ninguno** — la sesión cerró en estado limpio. BLQ-H-01 fue detectado y resuelto dentro de la misma sesión.
+**Ninguno** — la sesión cerró en estado limpio.
 
 ### Próxima Acción Concreta
-**Iniciar TSK-F-05.1** — Maquetación de la vista `/auth/login`.
+**Iniciar TSK-F-09** — Maquetación de la vista `/profile` (Editor de perfil).
 
 ```
 Agente:    frontend-coder
-Archivo:   src/app/auth/login/page.tsx
-Layout:    AuthLayout (ya existe en src/components/layouts/AuthLayout.tsx)
+Archivo:   src/app/profile/page.tsx
+Layout:    AppLayout (ya existe en src/components/layouts/AppLayout.tsx)
 GlassCard: usar con blur="md", shadow="elevated"
-Campos:    email (input), password (input + show/hide toggle)
-Estados:   loading/submitting (opacidad 70% en botón, cursor wait)
-DoD SPEC:  formulario con estados de carga; navegación a /auth/register y /auth/recovery
-Referencia: SPEC v1.3.0 §3.1 (ruta /auth/login → AuthLayout) + §6 (loading states)
+Campos:    País (select enum CO/US/CA/MX/VE/Other), Género (select enum Masculino/Femenino/Otro),
+           Fecha de Nacimiento (date input, validación 18+ años), nombre, apellido
+Referencia: PRD FR-1.1.3 (campos de perfil) + SPEC v1.3.0 §3 (ruta /profile → AppLayout)
+Nota:      MockAuthContext ya provee datos de usuario mock para precargar el formulario
 ```
