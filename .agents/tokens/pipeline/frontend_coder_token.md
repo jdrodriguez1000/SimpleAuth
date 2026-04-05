@@ -1,8 +1,25 @@
 # TOKEN: FRONTEND_CODER_DONE
 
-- **Tarea**: TSK-F-14 — Configurar Framer Motion y transiciones globales
-- **Estado**: ✅ TERMINADA
-- **Fecha**: 2026-04-04
+- **Tarea**: TSK-F-15 — Implementar Password Strength Checklist (UI/Refine)
+- **Estado**: TERMINADA
+- **Fecha**: 2026-04-05
+- **Archivos Modificados**:
+  - `frontend/src/components/ui/PasswordStrengthChecklist.tsx` (CREADO)
+  - `frontend/src/app/auth/register/page.tsx` (definición local eliminada, import añadido)
+  - `frontend/src/app/auth/reset-password/page.tsx` (definición local eliminada, import añadido)
+  - `frontend/src/app/profile/security/page.tsx` (definición local eliminada, import añadido)
+- **Build**: npm run build — PASS (15/15 rutas generadas sin errores)
+- **Notas**:
+  - Implementación idéntica en los 3 archivos originales — extracción sin pérdida de comportamiento
+  - Exportación nombrada: `export function PasswordStrengthChecklist`
+  - Interfaz exportada: `export interface PasswordStrengthProps`
+  - Sin colores hardcodeados — exclusivamente tokens CSS `var(--*)`
+  - Sin React Hook Form ni Framer Motion
+  - Sin uso de `any` en TypeScript
+
+---
+
+## Historial anterior
 
 ---
 

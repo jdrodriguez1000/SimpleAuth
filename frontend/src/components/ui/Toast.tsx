@@ -36,8 +36,8 @@ function ToastUI({ message, type, onClose }: ToastUIProps) {
     { border: string; icon: string; iconPath: string }
   > = {
     success: {
-      border: "border-green-500/40",
-      icon: "text-green-500",
+      border: "border-[var(--success)]/40",
+      icon: "text-[var(--success)]",
       iconPath: "M5 13l4 4L19 7",
     },
     error: {

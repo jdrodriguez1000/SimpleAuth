@@ -83,3 +83,36 @@
 - **`src/lib/validations/shared.ts`** como módulo canónico de helpers Zod compartidos (`PASSWORD_REGEX`, `passwordField`, `isAtLeast18`). Cualquier nueva validación reutilizable entre schemas debe añadirse aquí — no duplicar en `auth.ts`/`profile.ts`.
 - **Framer Motion como capa de polish no intrusiva**: variantes definidas como constantes externas al componente (sin recreación en cada render), `useReducedMotion` obligatorio, duración máxima 300ms. `PageTransition` es el punto único de animación de entrada de página — no añadir animaciones individuales en los `page.tsx`.
 - **Mocks de Framer Motion en Vitest**: `motion.div` se mapea a `div` descartando props de animación; `useReducedMotion` se mockea con `vi.fn()` para controlar el comportamiento en tests. Este patrón es el estándar para cualquier test futuro que implique componentes animados.
+
+#### Sesión: 2026-04-05 (Bloque 5 + Cierre de Etapa — f1_1.1)
+
+**Lo que funcionó bien:**
+- La extracción de `PasswordStrengthChecklist` como componente reutilizable (TSK-F-15) fue trivial una vez identificada la deuda. La diferencia entre diferirla y resolverla fue aproximadamente 15 minutos de trabajo del agente. Resolver deuda técnica antes del cierre de etapa siempre vale la pena — el costo es mínimo y el resultado es una suite de tests coherente.
+- El flujo de cierre formal (TSK-F-19 suite completa → TSK-F-20 auditoría forense → TSK-F-21 ejecutivo) funcionó sin fricciones cuando todos los tokens previos estaban en orden. La cadena de tokens como mecanismo de gobernanza demostró su valor: al llegar a TSK-F-20, los 32 requisitos tuvieron trazabilidad completa sin correcciones adicionales.
+- Playwright se integró en una sola tarea (TSK-F-16): instalación + `playwright.config.ts` + `e2e/navigation.spec.ts` con 11 rutas. 11/11 PASS en primera ejecución. La infraestructura E2E queda lista para la Fase 4 sin deuda de configuración.
+- La auditoría WCAG 2.1 AA (TSK-F-R5) alcanzó 96/100 con correcciones todas aplicables in situ (TSK-F-R5.1), sin requerir rediseño estructural. El puntaje demuestra que construir con tokens semánticos desde el inicio produce accesibilidad nativa.
+
+**Lo que no funcionó / fricción encontrada:**
+- **Tokens CSS incompletos en el Design System inicial**: el token `--success` no fue definido en TSK-F-01 al inicio de la etapa. El color verde `text-green-500` fue utilizado en 4 archivos de forma hardcodeada y no fue detectado hasta la auditoría WCAG final (TSK-F-R5). Requirió corrección en `globals.css`, `StatusCard.tsx`, `Toast.tsx` y `PasswordStrengthChecklist.tsx`. El costo fue bajo en esta etapa, pero escala linealmente con el numero de archivos del proyecto.
+- **TSK-F-22 no ejecutado**: el commit atómico y push de la etapa completa quedó pendiente al cierre de sesión. No es un error técnico, pero implica que la rama `feat/f1_1.1_setup` tiene trabajo sin sincronizar con el remoto. Debe ser la primera acción de la siguiente sesión.
+
+**Decisiones clave tomadas:**
+- **Checklist de tokens en TSK-F-01**: para etapas futuras, el briefing de la tarea de Design System debe incluir explícitamente todos los tokens semánticos requeridos (`--success`, `--warning`, `--error`, `--info`). Ningún componente debe usar clases de color utilitarias de Tailwind directamente si existe un token equivalente.
+- **`PasswordStrengthChecklist` como componente de referencia de extracción**: la deuda fue documentada en O-4 (TSK-F-R3), diferida formalmente a TSK-F-15, y resuelta con 39 tests RTL. Este ciclo (detectar → diferir con token → resolver en bloque de polish) es el patrón correcto para gestionar deuda técnica sin bloquear el pipeline principal.
+- **Suite dual Vitest + Playwright como cierre de etapa frontend**: 149 tests unitarios/componentes (Vitest) + 11 tests de navegación (Playwright) + build sin errores es el estándar de cierre para cualquier etapa de la capa Frontend. No se puede emitir el ejecutivo sin estos tres checks en verde.
+
+---
+
+### Resumen de Etapa 1.1 — Mockups Visuales y UX
+
+**Lecciones mas valiosas para el futuro:**
+1. Definir el Design System completo (todos los tokens semánticos) en TSK-F-01 antes de implementar cualquier componente. Los tokens `--success` y `--warning` son tan fundamentales como `--primary` y `--error`.
+2. El pipeline de 4 agentes (`frontend-coder → frontend-tester → integration-mediator → frontend-reviewer`) es estable y predecible. Su eficiencia depende directamente de la calidad del briefing inicial: contexto completo en el briefing = cero iteraciones de corrección mayor.
+3. La deuda técnica diferida con token formal (O-4, TSK-F-15) es preferible a resolver de inmediato si bloquearía el pipeline. Lo crítico es registrarla formalmente y asignarle una tarea concreta.
+4. Playwright debe instalarse al inicio de la etapa de QA (Bloque 5), no al final — evita dependencias de configuración de última hora.
+
+**Decisiones criticas que no deben revertirse:**
+- `PasswordStrengthChecklist` en `src/components/ui/` es el componente canónico. No duplicar lógica de validación de contraseña en ninguna vista.
+- El mapeo `TOAST_MESSAGES` en `Toast.tsx` es el único punto de registro de notificaciones por URL param.
+- Los enums Zod siguen CC-002 (valores abreviados de UI). El mapeo UI→DB es responsabilidad de la capa de integración en Fase 4.
+- GAP-R4-01 (transporte del token de reset-password) debe resolverse mediante CC formal antes de iniciar E4.1.

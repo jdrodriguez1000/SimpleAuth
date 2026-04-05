@@ -41,6 +41,7 @@
   --color-surface-container-high:     var(--surface-container-high);
   --color-surface-container-highest:  var(--surface-container-highest);
   --color-error:                      var(--error);
+  --color-success:                    var(--success);
 
   /* Sombras tintadas (UI Kit §2.3 — prohibido sombras negras puras) */
   --shadow-ambient: 0 12px 40px rgba(0, 41, 86, 0.08);
@@ -96,6 +97,9 @@
   /* --- Color de error --- */
   --error: #cf142b;
 
+  /* --- Color de éxito (token canónico — sustituye text-green-500 hardcodeado) --- */
+  --success: #16a34a;
+
   /* --- Sombra tintada (modo claro) --- */
   --shadow-tint: hsla(230, 20%, 30%, 0.1);
 
@@ -148,6 +152,9 @@
 
   /* --- Color de error (vibrante en dark) --- */
   --error: #f43f5e;
+
+  /* --- Color de éxito (más claro en dark para contraste sobre superficies oscuras) --- */
+  --success: #4ade80;
 
   /* --- Sombra tintada (modo oscuro — más densa) --- */
   --shadow-tint: hsla(230, 20%, 5%, 0.5);

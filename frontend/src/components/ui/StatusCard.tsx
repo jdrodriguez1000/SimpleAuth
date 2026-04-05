@@ -76,12 +76,16 @@ function ConfirmDeleteButton({ onClick }: ConfirmDeleteButtonProps) {
   return (
     <div className="flex flex-col gap-3 w-full">
       {/* Aviso GDPR 30 días — FR-1.1.9 */}
-      <p className="text-body-md text-muted-foreground text-center text-sm">
+      <p
+        id="gdpr-delete-notice"
+        className="text-body-md text-muted-foreground text-center text-sm"
+      >
         Tu cuenta permanecerá inactiva 30 días antes de ser eliminada definitivamente.
       </p>
       <button
         type="button"
         onClick={onClick}
+        aria-describedby="gdpr-delete-notice"
         className={cn(
           // Color destructivo del Design System (--error / --destructive)
           "bg-destructive text-white w-full",
@@ -124,11 +128,11 @@ function StatusCard({
       {/* Ícono de estado — centrado, grande */}
       <div role="img" aria-label={isSuccess ? "Operación exitosa" : "Error"}>
         {isSuccess ? (
-          // CheckCircle verde: light → green-500, dark → green-400
+          // CheckCircle verde: token --success del Design System (adaptativo a dark mode)
           <CheckCircle
             size={64}
             strokeWidth={1.5}
-            className="text-green-500 dark:text-green-400"
+            className="text-[var(--success)]"
             aria-hidden="true"
           />
         ) : (

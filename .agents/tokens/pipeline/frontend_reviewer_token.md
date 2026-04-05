@@ -1,10 +1,25 @@
 # TOKEN: FRONTEND_REVIEWER_APROBADO
 
-- **Tarea**: TSK-F-R4.1 — Code Review Block 4: Esquemas Zod y Animaciones
+- **Tarea**: TSK-F-R5.1 — Certificación Visual y de Código Final
 - **Veredicto UI**: APROBADO
 - **Estado Visual**: PREMIUM + CONSISTENTE
 - **Auditoría Técnica**: Typescript Estricto (Cumple)
-- **Fecha**: 2026-04-04
+- **Fecha**: 2026-04-05
+
+## Resumen TSK-F-R5.1
+
+- Build: EXITOSO — 13 rutas estáticas, 0 errores TypeScript
+- Tests: 149/149 PASANDO — 0 regresiones
+- O-EST-01: CORREGIDO in situ — token `--success` añadido en `globals.css` (`:root` y `.dark`), 5 instancias de `text-green-500`/`border-green-500` reemplazadas en 4 archivos, tests actualizados al token canónico
+- OBS-J-02: CORREGIDO in situ — `aria-describedby="gdpr-delete-notice"` añadido a `ConfirmDeleteButton` en `StatusCard.tsx`
+- OBS-R5-04: DIFERIDO a Fase 4 — `grid-cols-2` sin `sm:` breakpoint en `/auth/register`; no bloquea cierre de Fase 1
+- TSK-F-15 (O-4): VERIFICADO — exportación nombrada correcta, sin `any`, `buildChecks()` encapsulada, 3 consumidores con importación correcta
+- Cadena de tokens: 8 tokens previos verificados, cadena completa satisfecha
+- Etapa f1_1.1 lista para cierre formal (TSK-F-19 → TSK-F-22)
+
+---
+
+## REGISTRO HISTORICO — TSK-F-R4.1 (2026-04-04)
 
 ## Resumen TSK-F-R4.1
 

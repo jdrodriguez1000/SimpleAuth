@@ -246,7 +246,7 @@ export default function DeleteAccountPage() {
                     INPUT_CLASSES,
                     // Indicador visual: borde verde cuando el texto coincide
                     form.confirmation === CONFIRMATION_KEYWORD
-                      ? "border-green-500 focus:ring-green-500/30"
+                      ? "border-[var(--success)] focus:ring-[var(--success)]/30"
                       : "",
                   ].join(" ")}
                 />

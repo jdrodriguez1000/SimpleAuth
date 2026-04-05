@@ -13,10 +13,10 @@
 | **Etapa Activa** | 1.1 — Mockups Visuales y UX |
 | **Capa Medallón** | Frontend (UI/UX) |
 | **Rama Git** | `feat/f1_1.1_setup` |
-| **Progreso Global** | 0 / 8 etapas cerradas (0%) — ningún ejecutivo emitido aún |
+| **Progreso Global** | 1 / 8 etapas cerradas (12.5%) — ejecutivo emitido: `docs/executives/f1_1.1_executive.md` |
 | **SDD activo** | `docs/f1_1.1/` (PRD + SPEC v1.3.0 + PLAN + TASK) |
 
-> **Cálculo dinámico**: E_total = 8 etapas (F1:1 + F2:2 + F3:3 + F4:2). C = 0 ejecutivos en `docs/executives/`. Progreso = 0/8 = 0%.
+> **Cálculo dinámico**: E_total = 8 etapas (F1:1 + F2:2 + F3:3 + F4:2). C = 1 ejecutivo en `docs/executives/`. Progreso = 1/8 = 12.5%.
 
 ---
 
@@ -24,7 +24,7 @@
 
 ```
 Fase 1 — Prototipado y QA Plan
-  [🔄] E1.1 — Mockups Visuales y UX          ← ACTIVA (Bloques 1-4 completos, Bloque 5 pendiente)
+  [✅] E1.1 — Mockups Visuales y UX          ← CERRADA (ejecutivo emitido, TSK-F-22 pendiente git push)
 
 Fase 2 — Backend Core & Unit Testing
   [⬜] E2.1 — Infraestructura, DB y Observabilidad
@@ -48,13 +48,14 @@ Fase 4 — Integración UI, Operaciones e Higiene
 
 | Componente / Archivo | Ruta | Estado |
 |---|---|---|
-| Design System Tokens | `src/app/globals.css` | ✅ Completo (token `.text-body-sm` añadido) |
+| Design System Tokens | `src/app/globals.css` | ✅ Completo (token `--success` añadido en TSK-F-R5.1) |
 | Root Layout + ThemeProvider | `src/app/layout.tsx` | ✅ Completo |
 | GlassCard | `src/components/ui/GlassCard.tsx` | ✅ Completo (prop `animated`, Framer Motion) |
-| StatusCard + ResendButton + ConfirmDeleteButton | `src/components/ui/StatusCard.tsx` | ✅ Completo |
+| StatusCard + ResendButton + ConfirmDeleteButton | `src/components/ui/StatusCard.tsx` | ✅ Completo (token --success en TSK-F-R5.1) |
 | ThemeToggle | `src/components/ui/ThemeToggle.tsx` | ✅ Completo |
-| Toast | `src/components/ui/Toast.tsx` | ✅ Completo (TSK-F-08.2) |
+| Toast | `src/components/ui/Toast.tsx` | ✅ Completo (token --success en TSK-F-R5.1) |
 | PageTransition | `src/components/ui/PageTransition.tsx` | ✅ Completo (TSK-F-14, useReducedMotion) |
+| PasswordStrengthChecklist | `src/components/ui/PasswordStrengthChecklist.tsx` | ✅ Completo (TSK-F-15, extraído de 3 archivos) |
 | AuthLayout | `src/components/layouts/AuthLayout.tsx` | ✅ Completo (PageTransition integrado) |
 | AppLayout | `src/components/layouts/AppLayout.tsx` | ✅ Completo (PageTransition integrado) |
 | SidebarNav | `src/components/layouts/SidebarNav.tsx` | ✅ Completo |
@@ -63,15 +64,15 @@ Fase 4 — Integración UI, Operaciones e Higiene
 | Logo SVG | `public/logo.svg` | ✅ Completo (G-11) |
 | Favicon SVG | `public/favicon.svg` | ✅ Completo (G-11) |
 | Vista /auth/login | `src/app/auth/login/page.tsx` | ✅ Completo (TSK-F-05.1) |
-| Vista /auth/register | `src/app/auth/register/page.tsx` | ✅ Completo (TSK-F-05.2) |
+| Vista /auth/register | `src/app/auth/register/page.tsx` | ✅ Completo (import PasswordStrengthChecklist TSK-F-15) |
 | Vista /auth/verify-sent | `src/app/auth/verify-sent/page.tsx` | ✅ Completo (TSK-F-05.3) |
 | Vista /auth/recovery | `src/app/auth/recovery/page.tsx` | ✅ Completo (TSK-F-06.1) |
-| Vista /auth/reset-password | `src/app/auth/reset-password/page.tsx` | ✅ Completo (TSK-F-06.2) |
+| Vista /auth/reset-password | `src/app/auth/reset-password/page.tsx` | ✅ Completo (import PasswordStrengthChecklist TSK-F-15) |
 | Vista /auth/verify-result | `src/app/auth/verify-result/page.tsx` | ✅ Completo (TSK-F-07) |
 | Vista /auth/logout | `src/app/auth/logout/page.tsx` | ✅ Completo (TSK-F-08.1) |
 | Vista /profile | `src/app/profile/page.tsx` | ✅ Completo (TSK-F-09) |
-| Vista /profile/security | `src/app/profile/security/page.tsx` | ✅ Completo (TSK-F-10.1) |
-| Vista /profile/delete | `src/app/profile/delete/page.tsx` | ✅ Completo (TSK-F-10.2) |
+| Vista /profile/security | `src/app/profile/security/page.tsx` | ✅ Completo (import PasswordStrengthChecklist TSK-F-15) |
+| Vista /profile/delete | `src/app/profile/delete/page.tsx` | ✅ Completo (aria-describedby TSK-F-R5.1) |
 | Vista /auth/blocked | `src/app/auth/blocked/page.tsx` | ✅ Completo (TSK-F-11) |
 | Zod auth schemas | `src/lib/validations/auth.ts` | ✅ Completo (TSK-F-12.1) |
 | Zod profile schemas | `src/lib/validations/profile.ts` | ✅ Completo (TSK-F-12.1) |
@@ -80,7 +81,10 @@ Fase 4 — Integración UI, Operaciones e Higiene
 | Tests schemas profile | `src/lib/validations/__tests__/profile.test.ts` | ✅ Completo (TSK-F-13, 30 tests) |
 | Tests GlassCard animated | `src/components/ui/__tests__/GlassCard.animated.test.tsx` | ✅ Completo (TSK-F-14.1, 10 tests) |
 | Tests PageTransition | `src/components/ui/__tests__/PageTransition.test.tsx` | ✅ Completo (TSK-F-14.1, 13 tests) |
+| Tests PasswordStrengthChecklist | `src/components/ui/__tests__/PasswordStrengthChecklist.test.tsx` | ✅ Completo (TSK-F-15.1, 39 tests) |
 | Vitest config | `vitest.config.ts` + `src/test/setup.ts` | ✅ Completo (TSK-F-13) |
+| Playwright config | `playwright.config.ts` | ✅ Completo (TSK-F-16) |
+| E2E navigation spec | `e2e/navigation.spec.ts` | ✅ Completo (TSK-F-16, 11/11 rutas PASS) |
 
 ### Backend — Sin iniciar (Fase 2+)
 ### Infraestructura Docker — Sin iniciar (Fase 2+)
@@ -94,54 +98,34 @@ Fase 4 — Integración UI, Operaciones e Higiene
 | PRD v1.3.0 | `docs/f1_1.1/f1_1.1_prd.md` | ✅ Autorizado |
 | SPEC v1.3.0 | `docs/f1_1.1/f1_1.1_spec.md` | ✅ Autorizado |
 | PLAN | `docs/f1_1.1/f1_1.1_plan.md` | ✅ Autorizado |
-| TASK | `docs/f1_1.1/f1_1.1_task.md` | 🔄 En progreso — Bloques 1–4 completos |
+| TASK | `docs/f1_1.1/f1_1.1_task.md` | ✅ Completo — todos los bloques cerrados |
 | Auditoría TSK-F-R1 | `docs/f1_1.1/audits/TSK-F-R1_audit.md` | ✅ UI_CONSISTENTE_OK |
 | Auditoría TSK-F-R4 | `docs/f1_1.1/audits/TSK-F-R4_audit.md` | ✅ CONTRATO_SINCRONIZADO |
 | Review TSK-F-R4.1 | `docs/f1_1.1/audits/TSK-F-R4.1_review.md` | ✅ APROBADO |
+| Auditoría TSK-F-R5 | `docs/f1_1.1/audits/TSK-F-R5_audit.md` | ✅ UI_ACCESIBLE (96/100) |
+| Auditoría TSK-F-R5.1 | `docs/f1_1.1/audits/TSK-F-R5.1_audit.md` | ✅ TSK-F-R5.1_APROBADO |
+| Auditoría TSK-F-20 | `docs/f1_1.1/audits/TSK-F-20_audit.md` | ✅ ETAPA_CERTIFICADA (32/32 trazabilidad) |
+| Resumen Ejecutivo | `docs/executives/f1_1.1_executive.md` | ✅ Emitido (cierre oficial de etapa) |
 
-### Estado del TASK (f1_1.1_task.md)
+### Estado del TASK (f1_1.1_task.md) — COMPLETO
 
-**Bloque 1 — Foundation** (7/7 completo ✅):
-- [x] TSK-F-01 — globals.css tokens HSL
-- [x] TSK-F-02.1 — GlassCard
-- [x] TSK-F-02.2 — StatusCard + ResendButton
-- [x] TSK-F-03.1 — AuthLayout
-- [x] TSK-F-03.2 — AppLayout
-- [x] TSK-F-04 — Assets Logo/Favicon (G-11)
-- [x] TSK-F-R1 — Auditoría UI/UX Base (UI_CONSISTENTE_OK)
+**Bloque 1 — Foundation** (7/7 ✅)
+**Bloque 2 — Auth & Recovery Views** (9/9 ✅)
+**Bloque 3 — Profile & Control Views** (6/6 ✅)
+**Bloque 4 — Validation & UX Polish** (6/6 ✅)
 
-**Bloque 2 — Auth & Recovery Views** (9/9 completo ✅):
-- [x] TSK-F-05.1 — Vista /auth/login
-- [x] TSK-F-05.2 — Vista /auth/register (9 campos, PasswordStrengthChecklist, selects CC-002)
-- [x] TSK-F-05.3 — Vista /auth/verify-sent (Server Component, bloque Spam FR-1.1.8-A)
-- [x] TSK-F-06.1 — Vista /auth/recovery (formulario + estado éxito dual)
-- [x] TSK-F-06.2 — Vista /auth/reset-password (Suspense+useSearchParams, dos estados)
-- [x] TSK-F-07 — Vista /auth/verify-result (mapeo diferencial expired/invalid G-05, StatusCard)
-- [x] TSK-F-08.1 — Vista /auth/logout (router.replace + localStorage.clear + contrato toast)
-- [x] TSK-F-08.2 — Componente Toast (useSearchParams, auto-dismiss 4s, limpieza query param)
-- [x] TSK-F-R2 — Code Review Auth Views (APROBADO con 3 correcciones in situ)
+**Bloque 5 — QA & Final Polish** (5/5 ✅):
+- [x] TSK-F-15 — PasswordStrengthChecklist extraído (~70 líneas deuda eliminada en 3 archivos)
+- [x] TSK-F-15.1 — 39 tests RTL para PasswordStrengthChecklist. Suite total: 149/149 PASS
+- [x] TSK-F-16 — Playwright instalado, 11/11 rutas E2E PASS
+- [x] TSK-F-R5 — Auditoría WCAG 2.1 AA — 96/100, token UI_ACCESIBLE emitido
+- [x] TSK-F-R5.1 — Correcciones in situ: token --success, text-green-500 → 4 archivos, aria-describedby
 
-**Bloque 3 — Profile & Control Views** (6/6 completo ✅):
-- [x] TSK-F-09 — Vista /profile (Editor — 6 campos, enums CC-002, email read-only)
-- [x] TSK-F-10.1 — Vista /profile/security (3 campos password, PasswordStrengthChecklist, coincidencia)
-- [x] TSK-F-10.2 — Vista /profile/delete (GDPR 30 días, gatekeeper dual, botón var(--error))
-- [x] TSK-F-11 — Vista /auth/blocked (AuthLayout, "15 minutos" ×3, candado SVG, FR-1.1.7)
-- [x] TSK-F-11.1 — Smoke Test Bloque 3 (APROBADO — 0 bloqueantes)
-- [x] TSK-F-R3 — Auditoría Lógica de Perfil (APROBADO — FR-1.1.9 y FR-1.1.7 cumplen, O-4 diferida)
-
-**Bloque 4 — Validation & UX Polish** (6/6 completo ✅):
-- [x] TSK-F-12.1 — Esquemas Zod (auth.ts + profile.ts + shared.ts, 7 schemas)
-- [x] TSK-F-13 — Tests Vitest (109 tests en 5 archivos — schemas + GlassCard)
-- [x] TSK-F-14 — Framer Motion (PageTransition + GlassCard animated + layouts)
-- [x] TSK-F-14.1 — A11y check animaciones (109 tests, WCAG 2.1 SC2.3, sin bloqueantes)
-- [x] TSK-F-R4 — Auditoría contratos Zod vs SPEC (CERTIFICADO — DIS-01/DIS-02/GAP-R4-01 documentados)
-- [x] TSK-F-R4.1 — Code Review Block 4 (APROBADO — O-1 shared.ts aplicado in situ)
-
-**Bloque 5 — QA & Final Polish** (0/5 pendiente ⬜):
-TSK-F-15, TSK-F-15.1, TSK-F-16, TSK-F-R5, TSK-F-R5.1
-
-**Cierre de Etapa** (0/4 pendiente ⬜):
-TSK-F-19, TSK-F-20, TSK-F-21, TSK-F-22
+**Cierre de Etapa** (4/4 ✅):
+- [x] TSK-F-19 — Suite completa: 149 Vitest + 11 Playwright + build 13 rutas
+- [x] TSK-F-20 — Auditoría forense: 32/32 trazabilidad, cero código fantasma
+- [x] TSK-F-21 — Resumen ejecutivo emitido en `docs/executives/f1_1.1_executive.md`
+- [ ] TSK-F-22 — Sincronización Git & Push (pendiente — primera acción de la próxima sesión)
 
 ---
 
@@ -167,6 +151,10 @@ TSK-F-19, TSK-F-20, TSK-F-21, TSK-F-22
 - **2026-04-04** — Helpers Zod compartidos extraídos a `src/lib/validations/shared.ts` (O-1 TSK-F-R4.1): `PASSWORD_REGEX`, `passwordField`, `isAtLeast18`. Este módulo es el punto único para validaciones reutilizables; cualquier nueva validación cross-schema debe ir aquí.
 - **2026-04-04** — Framer Motion integrado como capa de polish (TSK-F-14): `PageTransition` (opacity 0→1 + y 8→0, 300ms easeOut), `GlassCard` (scale 0.98→1, prop `animated?: boolean` default true). Variantes definidas como constantes externas al componente (no se recrean en cada render). `useReducedMotion` aplicado en ambos componentes — WCAG 2.1 SC2.3 cumplido. `framer-motion` añadido a `frontend/package.json`.
 - **2026-04-04** — Vitest configurado (TSK-F-13): `vitest.config.ts` con `environment: 'jsdom'` y alias `@`. Setup en `src/test/setup.ts` con `@testing-library/jest-dom`. Suite total: 109 tests en 5 archivos (todos pasando). Estructura: `src/lib/validations/__tests__/` para schemas, `src/components/ui/__tests__/` para componentes UI.
+- **2026-04-05** — Bloque 5 + Cierre de Etapa 1.1 completados. `PasswordStrengthChecklist` extraído como componente reutilizable (`src/components/ui/PasswordStrengthChecklist.tsx`), eliminando ~70 líneas duplicadas de 3 archivos. Suite Vitest: 149/149 PASS (39 tests nuevos RTL). Playwright: 11/11 rutas E2E PASS. Auditoría WCAG 2.1 AA: 96/100 (token `UI_ACCESIBLE`). Correcciones in situ: token `--success` añadido a `globals.css`, `text-green-500` reemplazado en 4 archivos, `aria-describedby` en `/profile/delete`.
+- **2026-04-05** — Los tokens CSS del design system deben definirse exhaustivamente desde el inicio (incluyendo `--success`, `--warning`). El color verde hardcodeado `text-green-500` no fue detectado hasta la auditoría WCAG final. Prevención: checklist de tokens en TSK-F-01 de futuras etapas.
+- **2026-04-05** — Auditoría forense TSK-F-20: 32/32 trazabilidad completa, cero código fantasma. Token `ETAPA_CERTIFICADA` emitido. Resumen ejecutivo generado en `docs/executives/f1_1.1_executive.md`. Progreso global actualizado a 1/8 etapas = 12.5%.
+- **2026-04-05** — TSK-F-22 (commit atómico + push de toda la etapa f1_1.1) no ejecutado en esta sesión. Queda como primera acción pendiente. El agente responsable es `devops-integrator`. La rama es `feat/f1_1.1_setup`.
 
 ---
 
@@ -174,46 +162,44 @@ TSK-F-19, TSK-F-20, TSK-F-21, TSK-F-22
 
 ### Working Set (archivos activos de la sesión)
 ```
-frontend/src/lib/validations/auth.ts                              ← creado (TSK-F-12.1)
-frontend/src/lib/validations/profile.ts                           ← creado (TSK-F-12.1)
-frontend/src/lib/validations/shared.ts                            ← creado (O-1 TSK-F-R4.1)
-frontend/src/lib/validations/__tests__/auth.test.ts               ← creado (TSK-F-13, 30 tests)
-frontend/src/lib/validations/__tests__/profile.test.ts            ← creado (TSK-F-13, 30 tests)
-frontend/src/components/ui/PageTransition.tsx                     ← creado (TSK-F-14)
-frontend/src/components/ui/__tests__/GlassCard.animated.test.tsx  ← creado (TSK-F-14.1, 10 tests)
-frontend/src/components/ui/__tests__/PageTransition.test.tsx      ← creado (TSK-F-14.1, 13 tests)
-frontend/vitest.config.ts                                         ← creado (TSK-F-13)
-frontend/src/test/setup.ts                                        ← creado (TSK-F-13)
-frontend/src/components/ui/GlassCard.tsx                          ← modificado (prop animated)
-frontend/src/components/layouts/AuthLayout.tsx                    ← modificado (PageTransition)
-frontend/src/components/layouts/AppLayout.tsx                     ← modificado (PageTransition)
-docs/f1_1.1/audits/TSK-F-R4_audit.md                             ← creado (integration-mediator)
-docs/f1_1.1/audits/TSK-F-R4.1_review.md                          ← creado (frontend-reviewer)
-docs/f1_1.1/f1_1.1_task.md                                       ← actualizado (Bloque 4 completo)
+frontend/src/components/ui/PasswordStrengthChecklist.tsx              ← creado (TSK-F-15)
+frontend/src/components/ui/__tests__/PasswordStrengthChecklist.test.tsx ← creado (TSK-F-15.1, 39 tests)
+frontend/playwright.config.ts                                         ← creado (TSK-F-16)
+frontend/e2e/navigation.spec.ts                                       ← creado (TSK-F-16, 11 rutas)
+frontend/src/app/globals.css                                          ← modificado (token --success, TSK-F-R5.1)
+frontend/src/components/ui/StatusCard.tsx                             ← modificado (token --success, TSK-F-R5.1)
+frontend/src/components/ui/Toast.tsx                                  ← modificado (token --success, TSK-F-R5.1)
+frontend/src/app/profile/delete/page.tsx                              ← modificado (aria-describedby, TSK-F-R5.1)
+frontend/src/app/auth/register/page.tsx                               ← modificado (import PasswordStrengthChecklist)
+frontend/src/app/auth/reset-password/page.tsx                         ← modificado (import PasswordStrengthChecklist)
+frontend/src/app/profile/security/page.tsx                            ← modificado (import PasswordStrengthChecklist)
+docs/f1_1.1/f1_1.1_task.md                                           ← modificado (todos los bloques cerrados)
+docs/executives/f1_1.1_executive.md                                   ← creado (TSK-F-21)
+docs/f1_1.1/audits/TSK-F-R5_audit.md                                 ← creado
+docs/f1_1.1/audits/TSK-F-R5.1_audit.md                               ← creado
+docs/f1_1.1/audits/TSK-F-20_audit.md                                 ← creado
 ```
 
 ### Contexto Inmediato
-El **Bloque 4 (Validation & UX Polish)** de la etapa f1_1.1 está **completamente cerrado y certificado**. Pipeline completo ejecutado: `frontend-coder` (schemas + Framer Motion) → `frontend-tester` (109 tests + A11y) → `integration-mediator` (contratos) → `frontend-reviewer` (code review + refactor shared.ts). Build: ✅ 15 rutas estáticas. El proyecto está en estado limpio y listo para iniciar el Bloque 5.
+La **Etapa 1.1 (Mockups Visuales y UX)** esta **oficialmente cerrada**. Todos los bloques (1 al 5) y las tareas de cierre (TSK-F-19 a TSK-F-21) estan completados. El resumen ejecutivo en `docs/executives/f1_1.1_executive.md` es la prueba formal de cierre. Suite de tests: 149 Vitest PASS + 11 Playwright PASS. Build: 13 rutas estáticas sin errores.
+
+La unica tarea pendiente antes de iniciar el ciclo SDD de E2.1 es la sincronización Git.
 
 ### Bloqueador / Último Error
-**Ninguno** — la sesión cerró en estado limpio.
+Ninguno — la sesión cerró en estado limpio.
 
 ### Próxima Acción Concreta
-**Iniciar TSK-F-15** — Extraer `PasswordStrengthChecklist` como componente reutilizable (deuda técnica O-4 de TSK-F-R3).
+**Ejecutar TSK-F-22** — Commit atómico de toda la etapa f1_1.1 y push a origin.
 
 ```
-Agente:     frontend-coder
-Tarea:      TSK-F-15 — Implementar PasswordStrengthChecklist (UI/Refine)
-Archivo:    src/components/ui/PasswordStrengthChecklist.tsx  (nuevo componente)
-Consumidores actuales (inline, a reemplazar):
-  - src/app/auth/register/page.tsx
-  - src/app/auth/reset-password/page.tsx
-  - src/app/profile/security/page.tsx
-Reglas:
-  - Props: password: string
-  - Checks: min 8 chars, 1 mayúscula, 1 número, 1 carácter especial
-  - UI: íconos check/x, verde/rojo por regla, update en tiempo real
-  - Sin colores hardcodeados, sin Framer Motion adicional
-  - Tras crear el componente: reemplazar las 3 implementaciones inline
-  - Build: ✅ debe seguir pasando sin errores
+Agente:     devops-integrator
+Tarea:      TSK-F-22 — Sincronización Git & Push
+Rama:       feat/f1_1.1_setup
+Acción:     git add <archivos de la etapa>; git commit -m "feat: completar etapa f1_1.1 mockups y qa plan"; git push origin feat/f1_1.1_setup
+Archivos a incluir: todos los listados en el Working Set anterior + archivos de sesiones previas no commiteados
+
+Tras TSK-F-22 completado:
+  → Iniciar ciclo SDD de Etapa 2.1 (E2.1 — Infraestructura, DB y Observabilidad)
+  → Secuencia obligatoria: PRD → SPEC → PLAN → TASK (tokens en .agents/tokens/sdd/)
+  → Rama nueva: feat/f2_2.1_infra (o equivalente según convención)
 ```
